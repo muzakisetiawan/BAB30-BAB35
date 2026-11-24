@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-<title>和 Flashcards — Kotoba &amp; Kanji Minna no Nihongo II (Bab 31–35)</title>
+<title>和 Flashcards — Kotoba, Kanji &amp; Referensi Minna no Nihongo II (Bab 31–38)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <style>
@@ -220,6 +220,7 @@
   .group-row .g-tags{ display:flex; gap:5px; flex-wrap:wrap; }
   .group-row .g-tag{ font-family:'Poppins',sans-serif; font-size:9px; font-weight:600; padding:2px 7px; border-radius:999px; background:var(--card-bg-soft); color:var(--ink-soft); border:1px solid var(--card-border); white-space:nowrap; }
   .group-row .g-tag.page-tag{ background:rgba(198,150,87,.18); color:var(--accent-gold); border-color:transparent; font-weight:700; }
+  .group-row .g-tag.ref-tag{ background:rgba(61,90,120,.14); color:var(--accent-indigo); border-color:transparent; font-weight:700; }
   .group-row .g-tag.done{ background:rgba(79,157,110,.16); color:var(--color-correct); border-color:transparent; }
   .group-row .g-chevron{ flex-shrink:0; opacity:.45; }
   .group-row .g-chevron svg{ width:15px; height:15px; stroke:var(--ink-soft); }
@@ -316,8 +317,22 @@
   .font-kanji-light{ font-family:'Noto Sans JP',sans-serif; font-weight:300; font-synthesis:none; }
 
   .face-mid{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; text-align:center; padding:2px 4px; min-height:0; }
-  .kanji-display{ font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:600; color:var(--ink); line-height:1.35; letter-spacing:0.02em; word-break:break-word; }
-  .kanji-display.is-kanji-card{ font-size:27px; font-weight:300; letter-spacing:0.03em; }
+  .face-mid.kotoba-mid{ position:relative; width:100%; }
+  .kanji-display{ font-family:'Noto Sans JP',sans-serif; font-size:22px; font-weight:600; color:var(--ink); line-height:1.35; letter-spacing:0.02em; word-break:break-word; }
+  .kanji-display.is-kanji-card{ font-size:25px; font-weight:300; letter-spacing:0.03em; }
+  .kotoba-romaji-sub{
+    position:absolute;
+    right:4px;
+    bottom:4px;
+    font-family:'Poppins',sans-serif;
+    font-size:10.5px;
+    font-style:italic;
+    font-weight:500;
+    color:var(--accent-indigo);
+    line-height:1.15;
+    text-align:right;
+    pointer-events:none;
+  }
 
   /* ============ KARTU DIBALIK (HERO PROMINENT VIEW) ============ */
   .kanji-back-hero{
@@ -325,26 +340,26 @@
     text-align:center; width:100%; padding:2px 4px;
   }
   .kanji-back-ruby{
-    font-size:21px; font-weight:700; color:var(--ink); line-height:1.3;
+    font-size:20px; font-weight:700; color:var(--ink); line-height:1.3;
     display:inline-block; word-break:break-word;
   }
   .kanji-back-ruby.is-kanji-card{
-    font-size:26px; font-weight:300; line-height:1.35;
+    font-size:24px; font-weight:300; line-height:1.35;
   }
   .kanji-back-ruby rt{
     font-size:0.46em; font-weight:600; color:var(--accent-indigo);
     line-height:1; letter-spacing:0.04em;
   }
   .kanji-back-romaji{
-    font-family:'Poppins',sans-serif; font-size:12px; font-style:italic;
+    font-family:'Poppins',sans-serif; font-size:11.5px; font-style:italic;
     color:var(--accent-indigo); margin-top:3px;
   }
   .kanji-back-arti{
-    font-family:'Poppins',sans-serif; font-size:16px; font-weight:700;
-    color:var(--accent-sakura-deep); margin-top:4px; line-height:1.28;
+    font-family:'Poppins',sans-serif; font-size:15px; font-weight:700;
+    color:var(--accent-sakura-deep); margin-top:4px; line-height:1.25;
   }
   .kanji-back-divider{
-    width:36px; height:1.5px; background:var(--card-border); margin:6px auto;
+    width:36px; height:1.5px; background:var(--card-border); margin:5px auto;
   }
 
   .face-bottom{ display:flex; align-items:center; justify-content:center; gap:5px; flex-shrink:0; }
@@ -475,6 +490,63 @@
     font-size:10.5px; font-weight:600; color:var(--ink-soft);
   }
 
+  /* ============ CHAPTER CHECKBOX FILTER (LATIHAN GABUNGAN) ============ */
+  .chapter-filter-card{
+    background:var(--card-bg); border:1px solid var(--card-border);
+    border-radius:var(--radius-lg); padding:11px 12px; margin-bottom:12px;
+    box-shadow:var(--shadow-soft);
+  }
+  .chapter-filter-head{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    margin-bottom:8px;
+  }
+  .chapter-filter-title{
+    font-family:'Noto Sans JP',sans-serif; font-size:11.5px; font-weight:700; color:var(--ink);
+  }
+  .chapter-filter-sub{
+    font-size:9.5px; color:var(--ink-soft);
+  }
+  .chapter-check-list{
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .chapter-check-item{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    padding:8px 10px; border-radius:10px;
+    background:var(--card-bg-soft); border:1.5px solid var(--card-border);
+    cursor:pointer; user-select:none; transition:all .2s var(--ease);
+  }
+  .chapter-check-item.is-checked{
+    border-color:var(--accent-indigo);
+    background:color-mix(in srgb, var(--accent-indigo) 12%, var(--card-bg));
+  }
+  .chapter-check-left{
+    display:flex; align-items:center; gap:8px; min-width:0; flex:1;
+  }
+  .chapter-checkbox-box{
+    width:16px; height:16px; border-radius:5px; flex-shrink:0;
+    border:1.5px solid var(--ink-faint); background:var(--card-bg);
+    display:flex; align-items:center; justify-content:center;
+    transition:all .2s ease;
+  }
+  .chapter-check-item.is-checked .chapter-checkbox-box{
+    border-color:transparent;
+    background:linear-gradient(135deg, var(--accent-indigo), var(--accent-sakura-deep));
+  }
+  .chapter-checkbox-box svg{
+    width:10px; height:10px; stroke:#fff; stroke-width:3; display:none;
+  }
+  .chapter-check-item.is-checked .chapter-checkbox-box svg{
+    display:block;
+  }
+  .chapter-check-label{
+    font-family:'Noto Sans JP',sans-serif; font-size:11.5px; font-weight:700; color:var(--ink);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .chapter-check-count{
+    font-family:'Poppins',sans-serif; font-size:10px; font-weight:600; color:var(--ink-soft);
+    flex-shrink:0;
+  }
+
   /* ============ TYPE FILTER & SELECTION ============ */
   .kanji-select-bar{ display:flex; justify-content:space-between; align-items:center; margin:10px 0 8px; }
   .kanji-select-meta{ font-family:'Poppins',sans-serif; font-size:11px; font-weight:600; color:var(--ink-soft); }
@@ -591,7 +663,7 @@
   <div class="content">
     <div class="topbar">
       <div class="brand">
-        <span class="eyebrow">MINNA NO NIHONGO II · BAB 31–35</span>
+        <span class="eyebrow">MINNA NO NIHONGO II · BAB 31–38</span>
         <span class="title"><span>和</span> Flashcards</span>
         <span class="rule"></span>
       </div>
@@ -673,7 +745,7 @@
 
 <script>
 /* ============================================================
-   ICONS & DATA CHAPTERS (KOTOBA + KANJI BAB 31 – 35)
+   ICONS & DATA CHAPTERS (KOTOBA + KANJI + REFERENSI BAB 31–38)
    ============================================================ */
 const ICONS = {
   scale: '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h18"/>',
@@ -707,7 +779,7 @@ function k(kana, words){ return { type:'kotoba', kana, words }; }
 function kj(kanji, words){ return { type:'kanji', kanji, words }; }
 
 const CHAPTERS = [
-  /* ==================== KELOMPOK KOTOBA (KANA MURNI) ==================== */
+  /* ==================== KELOMPOK KOTOBA UTAMA (KANA MURNI) ==================== */
   {
     id: 'bab_31',
     kind: 'kotoba',
@@ -1077,7 +1149,534 @@ const CHAPTERS = [
       }
     ]
   },
-  /* ==================== KELOMPOK KANJI (KANJI + FURIGANA) ==================== */
+  {
+    id: 'bab_36',
+    kind: 'kotoba',
+    number: '36',
+    title: 'Kotoba Pelajaran 36 (Bab 36)',
+    desc: '39 Kosakata Kotoba Minna no Nihongo II Bab 36 murni huruf Kana dalam 3 sub-kelompok',
+    icon: 'layers', accent: 'accent-indigo',
+    groups: [
+      {
+        id: 'b36_g1', title: '1. Kosakata Pokok (No. 1–21)', desc: '21 Kotoba: あいます, ちょきんします, すぎます, なれます, くさります, けんどう, うちゅう, dll.', page: 'Bab 36 · 1–21', kategori: 'Kotoba Bab 36', icon: 'hanko', accent: 'accent-indigo',
+        cards: [
+          k('あいます［じこに～］', [{ kana:'あいます［じこに～］', jp:'あいます［じこに～］', id:'tertimpa [kecelakaan]', romaji:'aimasu [jiko ni ~]' }]),
+          k('ちょきんします', [{ kana:'ちょきんします', jp:'ちょきんします', id:'menabung', romaji:'chokinshimasu' }]),
+          k('すぎます［７じを～］', [{ kana:'すぎます［７じを～］', jp:'すぎます［７じを～］', id:'lewat [pukul tujuh]', romaji:'sugimasu [shichiji wo ~]' }]),
+          k('なれます［しごとに～］', [{ kana:'なれます［しごとに～］', jp:'なれます［しごとに～］', id:'terbiasa [dengan tugas]', romaji:'naremasu [shigoto ni ~]' }]),
+          k('くさります［たべものが～］', [{ kana:'くさります［たべものが～］', jp:'くさります［たべものが～］', id:'[makanan] busuk', romaji:'kusarimasu [tabemono ga ~]' }]),
+          k('けんどう', [{ kana:'けんどう', jp:'けんどう', id:'kendo (anggar gaya Jepang)', romaji:'kendou' }]),
+          k('じゅうどう', [{ kana:'じゅうどう', jp:'じゅうどう', id:'judo', romaji:'juudou' }]),
+          k('ラッシュ', [{ kana:'ラッシュ', jp:'ラッシュ', id:'keramaian, kesibukan', romaji:'rasshu' }]),
+          k('うちゅう', [{ kana:'うちゅう', jp:'うちゅう', id:'angkasa', romaji:'uchuu' }]),
+          k('きょく', [{ kana:'きょく', jp:'きょく', id:'musik', romaji:'kyoku' }]),
+          k('まいしゅう', [{ kana:'まいしゅう', jp:'まいしゅう', id:'setiap minggu', romaji:'maishuu' }]),
+          k('まいつき', [{ kana:'まいつき', jp:'まいつき', id:'setiap bulan', romaji:'maitsuki' }]),
+          k('まいとし (まいねん)', [{ kana:'まいとし (まいねん)', jp:'まいとし (まいねん)', id:'setiap tahun', romaji:'maitoshi (mainen)' }]),
+          k('このごろ', [{ kana:'このごろ', jp:'このごろ', id:'akhir-akhir ini', romaji:'konogoro' }]),
+          k('やっと', [{ kana:'やっと', jp:'やっと', id:'akhirnya', romaji:'yatto' }]),
+          k('かなり', [{ kana:'かなり', jp:'かなり', id:'cukup', romaji:'kanari' }]),
+          k('かならず', [{ kana:'かならず', jp:'かならず', id:'pasti', romaji:'kanarazu' }]),
+          k('ぜったいに', [{ kana:'ぜったいに', jp:'ぜったいに', id:'mutlak', romaji:'zettai ni' }]),
+          k('じょうずに', [{ kana:'じょうずに', jp:'じょうずに', id:'dengan pandai', romaji:'jouzu ni' }]),
+          k('できるだけ', [{ kana:'できるだけ', jp:'できるだけ', id:'sedapat mungkin', romaji:'dekirudake' }]),
+          k('ほとんど', [{ kana:'ほとんど', jp:'ほとんど', id:'sebagian besar', romaji:'hotondo' }])
+        ]
+      },
+      {
+        id: 'b36_g2', title: '2. Kosakata Percakapan 〈会話〉 (No. 22–29)', desc: '8 Kotoba: おきゃくさま, とくべつ［な］, していらっしゃいます, すいえい, チャレンジします, dll.', page: 'Bab 36 · 22–29', kategori: 'Kotoba Bab 36', icon: 'target', accent: 'accent-sakura',
+        cards: [
+          k('おきゃくさま', [{ kana:'おきゃくさま', jp:'おきゃくさま', id:'tamu (kata hormat dari おきゃくさん)', romaji:'okyakusama' }]),
+          k('とくべつ［な］', [{ kana:'とくべつ［な］', jp:'とくべつ［な］', id:'khusus, spesial', romaji:'tokubetsu [na]' }]),
+          k('していらっしゃいます', [{ kana:'していらっしゃいます', jp:'していらっしゃいます', id:'melakukan (kata hormat dari しています)', romaji:'shiteirasshaimasu' }]),
+          k('すいえい', [{ kana:'すいえい', jp:'すいえい', id:'renang', romaji:'suiei' }]),
+          k('ちがいます', [{ kana:'ちがいます', jp:'ちがいます', id:'salah, tidak benar', romaji:'chigaimasu' }]),
+          k('つかっていらっしゃるんですね。', [{ kana:'つかっていらっしゃるんですね。', jp:'つかっていらっしゃるんですね。', id:'Menggunakan ~, ya. / Memakai ~, ya. (kata hormat dari つかっているんですね)', romaji:'tsukatteirassharun desu ne.' }]),
+          k('チャレンジします', [{ kana:'チャレンジします', jp:'チャレンジします', id:'menantang', romaji:'charenjishimasu' }]),
+          k('きもち', [{ kana:'きもち', jp:'きもち', id:'sikap', romaji:'kimochi' }])
+        ]
+      },
+      {
+        id: 'b36_g3', title: '3. Kosakata Bacaan 〈読み物〉 (No. 30–39)', desc: '10 Kotoba: のりもの, ―せいき, とおく, めずらしい, きしゃ, きせん, はこびます, りようします, dll.', page: 'Bab 36 · 30–39', kategori: 'Kotoba Bab 36', icon: 'book', accent: 'accent-gold',
+        cards: [
+          k('のりもの', [{ kana:'のりもの', jp:'のりもの', id:'kendaraan', romaji:'norimono' }]),
+          k('―せいき', [{ kana:'―せいき', jp:'―せいき', id:'abad ke -', romaji:'-seiki' }]),
+          k('とおく', [{ kana:'とおく', jp:'とおく', id:'jauh', romaji:'tooku' }]),
+          k('めずらしい', [{ kana:'めずらしい', jp:'めずらしい', id:'langka', romaji:'mezurashii' }]),
+          k('きしゃ', [{ kana:'きしゃ', jp:'きしゃ', id:'kereta api', romaji:'kisha' }]),
+          k('きせん', [{ kana:'きせん', jp:'きせん', id:'kapal api', romaji:'kisen' }]),
+          k('おおぜいの ～', [{ kana:'おおぜいの ～', jp:'おおぜいの ～', id:'banyak ~', romaji:'oozei no ~' }]),
+          k('はこびます', [{ kana:'はこびます', jp:'はこびます', id:'mengangkut', romaji:'hakobimasu' }]),
+          k('りようします', [{ kana:'りようします', jp:'りようします', id:'menggunakan', romaji:'riyoushimasu' }]),
+          k('じゆうに', [{ kana:'じゆうに', jp:'じゆうに', id:'dengan bebas', romaji:'jiyuu ni' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'bab_37',
+    kind: 'kotoba',
+    number: '37',
+    title: 'Kotoba Pelajaran 37 (Bab 37)',
+    desc: '51 Kosakata Kotoba Minna no Nihongo II Bab 37 murni huruf Kana dalam 3 sub-kelompok',
+    icon: 'book', accent: 'accent-gold',
+    groups: [
+      {
+        id: 'b37_g1', title: '1. Kosakata Pokok (No. 1–30)', desc: '30 Kotoba: ほめます, しかります, さそいます, しょうたいします, はつめいします, せかいじゅう, dll.', page: 'Bab 37 · 1–30', kategori: 'Kotoba Bab 37', icon: 'hanko', accent: 'accent-gold',
+        cards: [
+          k('ほめます', [{ kana:'ほめます', jp:'ほめます', id:'memuji', romaji:'homemasu' }]),
+          k('しかります', [{ kana:'しかります', jp:'しかります', id:'memarahi', romaji:'shikarimasu' }]),
+          k('さそいます', [{ kana:'さそいます', jp:'さそいます', id:'mengajak', romaji:'sasoimasu' }]),
+          k('しょうたいします', [{ kana:'しょうたいします', jp:'しょうたいします', id:'mengundang', romaji:'shoutaishimasu' }]),
+          k('たのみます', [{ kana:'たのみます', jp:'たのみます', id:'meminta', romaji:'tanomimasu' }]),
+          k('ちゅういします', [{ kana:'ちゅういします', jp:'ちゅういします', id:'menasihati', romaji:'chuuishimasu' }]),
+          k('とります', [{ kana:'とります', jp:'とります', id:'mencuri', romaji:'torimasu' }]),
+          k('ふみます', [{ kana:'ふみます', jp:'ふみます', id:'menginjak', romaji:'fumimasu' }]),
+          k('こわします', [{ kana:'こわします', jp:'こわします', id:'merusak', romaji:'kowashimasu' }]),
+          k('よごします', [{ kana:'よごします', jp:'よごします', id:'mengotori', romaji:'yogoshimasu' }]),
+          k('おこないます', [{ kana:'おこないます', jp:'おこないます', id:'mengadakan', romaji:'okonaimasu' }]),
+          k('ゆしゅつします', [{ kana:'ゆしゅつします', jp:'ゆしゅつします', id:'mengekspor', romaji:'yushutsushimasu' }]),
+          k('ゆにゅうします', [{ kana:'ゆにゅうします', jp:'ゆにゅうします', id:'mengimpor', romaji:'yunyuushimasu' }]),
+          k('ほんやくします', [{ kana:'ほんやくします', jp:'ほんやくします', id:'menerjemahkan', romaji:'honyakushimasu' }]),
+          k('はつめいします', [{ kana:'はつめいします', jp:'はつめいします', id:'menciptakan', romaji:'hatsumeishimasu' }]),
+          k('はっけんします', [{ kana:'はっけんします', jp:'はっけんします', id:'menemukan', romaji:'hakkenshimasu' }]),
+          k('こめ', [{ kana:'こめ', jp:'こめ', id:'beras', romaji:'kome' }]),
+          k('むぎ', [{ kana:'むぎ', jp:'むぎ', id:'gandum', romaji:'mugi' }]),
+          k('せきゆ', [{ kana:'せきゆ', jp:'せきゆ', id:'minyak tanah', romaji:'sekiyu' }]),
+          k('げんりょう', [{ kana:'げんりょう', jp:'げんりょう', id:'bahan baku', romaji:'genryou' }]),
+          k('インスタントラーメン', [{ kana:'インスタントラーメン', jp:'インスタントラーメン', id:'mie instan', romaji:'insutanto raamen' }]),
+          k('デート', [{ kana:'デート', jp:'デート', id:'kencan', romaji:'deeto' }]),
+          k('どろぼう', [{ kana:'どろぼう', jp:'どろぼう', id:'pencuri', romaji:'dorobou' }]),
+          k('けいかん', [{ kana:'けいかん', jp:'けいかん', id:'polisi', romaji:'keikan' }]),
+          k('せかいじゅう', [{ kana:'せかいじゅう', jp:'せかいじゅう', id:'seluruh dunia', romaji:'sekaijuu' }]),
+          k('～じゅう', [{ kana:'～じゅう', jp:'～じゅう', id:'seluruh ~', romaji:'~juu' }]),
+          k('―せいき', [{ kana:'―せいき', jp:'―せいき', id:'abad ke -', romaji:'-seiki' }]),
+          k('なにご', [{ kana:'なにご', jp:'なにご', id:'bahasa apa', romaji:'nanigo' }]),
+          k('だれか', [{ kana:'だれか', jp:'だれか', id:'siapa', romaji:'dareka' }]),
+          k('よかったですね。', [{ kana:'よかったですね。', jp:'よかったですね。', id:'Bagus, ya.', romaji:'yokatta desu ne.' }])
+        ]
+      },
+      {
+        id: 'b37_g2', title: '2. Kosakata Percakapan 〈会話〉 (No. 31–40)', desc: '10 Kotoba: みなさま, やけます, せかいいさん, きんいろ, ほんもの, きん, うつくしい, dll.', page: 'Bab 37 · 31–40', kategori: 'Kotoba Bab 37', icon: 'target', accent: 'accent-sakura',
+        cards: [
+          k('みなさま', [{ kana:'みなさま', jp:'みなさま', id:'semuanya (Kata Hormat dari みなさん)', romaji:'minasama' }]),
+          k('やけます［うちが～］', [{ kana:'やけます［うちが～］', jp:'やけます［うちが～］', id:'[rumah] terbakar', romaji:'yakemasu [uchi ga ~]' }]),
+          k('そのご', [{ kana:'そのご', jp:'そのご', id:'setelah, sesudah', romaji:'sonogo' }]),
+          k('せかいいさん', [{ kana:'せかいいさん', jp:'せかいいさん', id:'Situs Warisan Dunia UNESCO', romaji:'sekaiisan' }]),
+          k('～の ひとつ', [{ kana:'～の ひとつ', jp:'～の ひとつ', id:'salah satu ~', romaji:'~ no hitotsu' }]),
+          k('きんいろ', [{ kana:'きんいろ', jp:'きんいろ', id:'warna emas', romaji:'kiniro' }]),
+          k('ほんもの', [{ kana:'ほんもの', jp:'ほんもの', id:'asli', romaji:'honmono' }]),
+          k('きん', [{ kana:'きん', jp:'きん', id:'emas', romaji:'kin' }]),
+          k('―キロ', [{ kana:'―キロ', jp:'―キロ', id:'- kilogram, - kilometer', romaji:'-kiro' }]),
+          k('うつくしい', [{ kana:'うつくしい', jp:'うつくしい', id:'indah, elok', romaji:'utsukushii' }])
+        ]
+      },
+      {
+        id: 'b37_g3', title: '3. Kosakata Bacaan 〈読み物〉 (No. 41–51)', desc: '11 Kotoba: ごうか［な］, ちょうこく, いいつたえ, ねむります, ほります, いっしょうけんめい, ねずみ, dll.', page: 'Bab 37 · 41–51', kategori: 'Kotoba Bab 37', icon: 'layers', accent: 'accent-indigo',
+        cards: [
+          k('ごうか［な］', [{ kana:'ごうか［な］', jp:'ごうか［な］', id:'mewah', romaji:'gouka [na]' }]),
+          k('ちょうこく', [{ kana:'ちょうこく', jp:'ちょうこく', id:'ukiran, pahatan', romaji:'choukoku' }]),
+          k('いいつたえ', [{ kana:'いいつたえ', jp:'いいつたえ', id:'tradisi', romaji:'iitsutae' }]),
+          k('ねむります', [{ kana:'ねむります', jp:'ねむります', id:'tidur', romaji:'nemurimasu' }]),
+          k('ほります', [{ kana:'ほります', jp:'ほります', id:'mengukir, memahat', romaji:'horimasu' }]),
+          k('なかま', [{ kana:'なかま', jp:'なかま', id:'teman', romaji:'nakama' }]),
+          k('しかし', [{ kana:'しかし', jp:'しかし', id:'tetapi', romaji:'shikashi' }]),
+          k('その あと', [{ kana:'その あと', jp:'その あと', id:'setelah itu, sesudah itu', romaji:'sono ato' }]),
+          k('いっしょうけんめい', [{ kana:'いっしょうけんめい', jp:'いっしょうけんめい', id:'sungguh-sungguh', romaji:'isshoukenmei' }]),
+          k('ねずみ', [{ kana:'ねずみ', jp:'ねずみ', id:'tikus', romaji:'nezumi' }]),
+          k('いっぴきも いません。', [{ kana:'いっぴきも いません。', jp:'いっぴきも いません。', id:'Tidak ada seekor pun.', romaji:'ippiki mo imasen.' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'bab_38',
+    kind: 'kotoba',
+    number: '38',
+    title: 'Kotoba Pelajaran 38 (Bab 38)',
+    desc: '57 Kosakata Kotoba Minna no Nihongo II Bab 38 murni huruf Kana dalam 3 sub-kelompok',
+    icon: 'target', accent: 'accent-sakura',
+    groups: [
+      {
+        id: 'b38_g1', title: '1. Kosakata Pokok (No. 1–32)', desc: '32 Kotoba: さんかします, そだてます, にゅういんします, たいいんします, ゆびわ, でんげん, dll.', page: 'Bab 38 · 1–32', kategori: 'Kotoba Bab 38', icon: 'hanko', accent: 'accent-sakura',
+        cards: [
+          k('さんかします［りょこうに～］', [{ kana:'さんかします［りょこうに～］', jp:'さんかします［りょこうに～］', id:'mengikuti [perjalanan]', romaji:'sankashimasu [ryokou ni ~]' }]),
+          k('そだてます', [{ kana:'そだてます', jp:'そだてます', id:'memelihara', romaji:'sodatemasu' }]),
+          k('はこびます', [{ kana:'はこびます', jp:'はこびます', id:'mengangkut', romaji:'hakobimasu' }]),
+          k('にゅういんします', [{ kana:'にゅういんします', jp:'にゅういんします', id:'opname', romaji:'nyuuinshimasu' }]),
+          k('たいいんします', [{ kana:'たいいんします', jp:'たいいんします', id:'keluar dari rumah sakit', romaji:'taiinshimasu' }]),
+          k('いれます［でんげんを～］', [{ kana:'いれます［でんげんを～］', jp:'いれます［でんげんを～］', id:'menghidupkan [power supply]', romaji:'iremasu [dengen wo ~]' }]),
+          k('きります［でんげんを～］', [{ kana:'きります［でんげんを～］', jp:'きります［でんげんを～］', id:'mematikan [power supply]', romaji:'kirimasu [dengen wo ~]' }]),
+          k('かけます［かぎを～］', [{ kana:'かけます［かぎを～］', jp:'かけます［かぎを～］', id:'mengunci', romaji:'kakemasu [kagi wo ~]' }]),
+          k('つきます［うそを～］', [{ kana:'つきます［うそを～］', jp:'つきます［うそを～］', id:'berbohong', romaji:'tsukimasu [uso wo ~]' }]),
+          k('きもちが いい', [{ kana:'きもちが いい', jp:'きもちが いい', id:'rasa enak', romaji:'kimochi ga ii' }]),
+          k('きもちが わるい', [{ kana:'きもちが わるい', jp:'きもちが わるい', id:'rasa tidak enak, jijik', romaji:'kimochi ga warui' }]),
+          k('おおきな ～', [{ kana:'おおきな ～', jp:'おおきな ～', id:'besar ～', romaji:'ookina ~' }]),
+          k('ちいさな ～', [{ kana:'ちいさな ～', jp:'ちいさな ～', id:'kecil ～', romaji:'chiisana ~' }]),
+          k('あかちゃん', [{ kana:'あかちゃん', jp:'あかちゃん', id:'bayi', romaji:'akachan' }]),
+          k('しょうがっこう', [{ kana:'しょうがっこう', jp:'しょうがっこう', id:'SD', romaji:'shougakkou' }]),
+          k('ちゅうがっこう', [{ kana:'ちゅうがっこう', jp:'ちゅうがっこう', id:'SMP', romaji:'chuugakkou' }]),
+          k('えきまえ', [{ kana:'えきまえ', jp:'えきまえ', id:'depan stasiun', romaji:'ekimae' }]),
+          k('かいがん', [{ kana:'かいがん', jp:'かいがん', id:'pantai laut', romaji:'kaigan' }]),
+          k('こうじょう', [{ kana:'こうじょう', jp:'こうじょう', id:'pabrik', romaji:'koujou' }]),
+          k('むら', [{ kana:'むら', jp:'むら', id:'desa, kampung', romaji:'mura' }]),
+          k('かな', [{ kana:'かな', jp:'かな', id:'huruf Hiragana, huruf Katakana', romaji:'kana' }]),
+          k('ゆびわ', [{ kana:'ゆびわ', jp:'ゆびわ', id:'cincin', romaji:'yubiwa' }]),
+          k('でんげん', [{ kana:'でんげん', jp:'でんげん', id:'power supply', romaji:'dengen' }]),
+          k('しゅうかん', [{ kana:'しゅうかん', jp:'しゅうかん', id:'kebiasaan', romaji:'shuukan' }]),
+          k('けんこう', [{ kana:'けんこう', jp:'けんこう', id:'kesehatan', romaji:'kenkou' }]),
+          k('～せい', [{ kana:'～せい', jp:'～せい', id:'buatan ～', romaji:'~sei' }]),
+          k('おととし', [{ kana:'おととし', jp:'おととし', id:'dua tahun yang lalu', romaji:'ototoshi' }]),
+          k('［あ、］いけない。', [{ kana:'［あ、］いけない。', jp:'［あ、］いけない。', id:'[Ah,] Salah! (memakai ketika bersalah atau gagal)', romaji:'[a,] ikenai.' }]),
+          k('おさきに［しつれいします］。', [{ kana:'おさきに［しつれいします］。', jp:'おさきに［しつれいします］。', id:'[Permisi] duluan.', romaji:'osaki ni [shitsureishimasu].' }]),
+          k('げんばくドーム', [{ kana:'げんばくドーム', jp:'げんばくドーム', id:'dome untuk memperingati kejatuhan bom atom di Hiroshima', romaji:'genbaku doomu' }]),
+          k('いずもたいしゃ', [{ kana:'いずもたいしゃ', jp:'いずもたいしゃ', id:'kuil yang ada di Kota Izumo, Prefektur Shimane', romaji:'izumotaisha' }]),
+          k('チェンマイ', [{ kana:'チェンマイ', jp:'チェンマイ', id:'Chiang Mai (Thailand)', romaji:'chenmai' }])
+        ]
+      },
+      {
+        id: 'b38_g2', title: '2. Kosakata Percakapan 〈会話〉 (No. 33–41)', desc: '9 Kotoba: かいらん, けんきゅうしつ, きちんと, せいりします, ほうほう, はんこ, おします, dll.', page: 'Bab 38 · 33–41', kategori: 'Kotoba Bab 38', icon: 'layers', accent: 'accent-gold',
+        cards: [
+          k('かいらん', [{ kana:'かいらん', jp:'かいらん', id:'edaran', romaji:'kairan' }]),
+          k('けんきゅうしつ', [{ kana:'けんきゅうしつ', jp:'けんきゅうしつ', id:'laboratorium / ruang dosen', romaji:'kenkyuushitsu' }]),
+          k('きちんと', [{ kana:'きちんと', jp:'きちんと', id:'dengan rapi', romaji:'kichinto' }]),
+          k('せいりします', [{ kana:'せいりします', jp:'せいりします', id:'mengatur', romaji:'seirishimasu' }]),
+          k('ほうほう', [{ kana:'ほうほう', jp:'ほうほう', id:'cara', romaji:'houhou' }]),
+          k('～という', [{ kana:'～という', jp:'～という', id:'dengan judul ～', romaji:'~to iu' }]),
+          k('―さつ', [{ kana:'―さつ', jp:'―さつ', id:'- buah (kata bantu bilangan untuk menghitung buku, dll.)', romaji:'-satsu' }]),
+          k('はんこ', [{ kana:'はんこ', jp:'はんこ', id:'cap', romaji:'hanko' }]),
+          k('おします［はんこを～］', [{ kana:'おします［はんこを～］', jp:'おします［はんこを～］', id:'mengecap', romaji:'oshimasu [hanko wo ~]' }])
+        ]
+      },
+      {
+        id: 'b38_g3', title: '3. Kosakata Bacaan 〈読み物〉 (No. 42–57)', desc: '16 Kotoba: ふたご, しまい, にて います, せいかく, おとなしい, やさしい, せわを します, ねんれい, dll.', page: 'Bab 38 · 42–57', kategori: 'Kotoba Bab 38', icon: 'book', accent: 'accent-indigo',
+        cards: [
+          k('ふたご', [{ kana:'ふたご', jp:'ふたご', id:'anak kembar', romaji:'futago' }]),
+          k('しまい', [{ kana:'しまい', jp:'しまい', id:'saudara perempuan', romaji:'shimai' }]),
+          k('５ねんせい', [{ kana:'５ねんせい', jp:'５ねんせい', id:'kelas lima', romaji:'gonensei' }]),
+          k('にて います', [{ kana:'にて います', jp:'にて います', id:'mirip', romaji:'nite imasu' }]),
+          k('せいかく', [{ kana:'せいかく', jp:'せいかく', id:'sifat', romaji:'seikaku' }]),
+          k('おとなしい', [{ kana:'おとなしい', jp:'おとなしい', id:'pendiam', romaji:'otonashii' }]),
+          k('やさしい', [{ kana:'やさしい', jp:'やさしい', id:'baik hati', romaji:'yasashii' }]),
+          k('せわを します', [{ kana:'せわを します', jp:'せわを します', id:'merawat', romaji:'sewa wo shimasu' }]),
+          k('じかんが たちます', [{ kana:'じかんが たちます', jp:'じかんが たちます', id:'waktu berlalu', romaji:'jikan ga tachimasu' }]),
+          k('だいすき［な］', [{ kana:'だいすき［な］', jp:'だいすき［な］', id:'suka sekali', romaji:'daisuki [na]' }]),
+          k('―てん', [{ kana:'―てん', jp:'―てん', id:'- point', romaji:'-ten' }]),
+          k('きが つよい', [{ kana:'きが つよい', jp:'きが つよい', id:'bersifat keras, galak', romaji:'ki ga tsuyoi' }]),
+          k('けんかします', [{ kana:'けんかします', jp:'けんかします', id:'bertengkar', romaji:'kenkashimasu' }]),
+          k('ふしぎ［な］', [{ kana:'ふしぎ［な］', jp:'ふしぎ［な］', id:'aneh', romaji:'fushigi [na]' }]),
+          k('ねんれい', [{ kana:'ねんれい', jp:'ねんれい', id:'usia, umur', romaji:'nenrei' }]),
+          k('しかた', [{ kana:'しかた', jp:'しかた', id:'cara', romaji:'shikata' }])
+        ]
+      }
+    ]
+  },
+  /* ==================== KELOMPOK KOTOBA REFERENSI (BAB 31–36) ==================== */
+  {
+    id: 'ref_kotoba_31',
+    kind: 'kotoba',
+    isRef: true,
+    parentBab: '31',
+    number: '31',
+    title: 'Referensi Kotoba Pelajaran 31 (せんもん — Bidang Keilmuan)',
+    desc: '36 Kosakata Referensi Bidang Keilmuan Bab 31 dalam 2 sub-kelompok',
+    icon: 'scroll', accent: 'accent-indigo',
+    groups: [
+      {
+        id: 'rk31_g1', title: '1. Ilmu Alam, Eksakta & Rekayasa/Teknik (No. 1–20)', desc: '20 Referensi: いがく, やくがく, かがく, すうがく, ぶつりがく, こうがく, けんちくがく, dll.', page: 'Ref 31 · 1–20', kategori: 'Referensi Bab 31', icon: 'hanko', accent: 'accent-indigo',
+        cards: [
+          k('いがく', [{ kana:'いがく', jp:'いがく', id:'ilmu kedokteran', romaji:'igaku' }]),
+          k('やくがく', [{ kana:'やくがく', jp:'やくがく', id:'ilmu farmasi', romaji:'yakugaku' }]),
+          k('かがく', [{ kana:'かがく', jp:'かがく', id:'ilmu kimia', romaji:'kagaku' }]),
+          k('せいかがく', [{ kana:'せいかがく', jp:'せいかがく', id:'ilmu biokimia', romaji:'seikagaku' }]),
+          k('せいぶつがく', [{ kana:'せいぶつがく', jp:'せいぶつがく', id:'ilmu biologi', romaji:'seibutsugaku' }]),
+          k('のうがく', [{ kana:'のうがく', jp:'のうがく', id:'ilmu pertanian', romaji:'nougaku' }]),
+          k('ちがく', [{ kana:'ちがく', jp:'ちがく', id:'ilmu geologi', romaji:'chigaku' }]),
+          k('ちりがく', [{ kana:'ちりがく', jp:'ちりがく', id:'ilmu geografi', romaji:'chirigaku' }]),
+          k('すうがく', [{ kana:'すうがく', jp:'すうがく', id:'ilmu matematika', romaji:'suugaku' }]),
+          k('ぶつりがく', [{ kana:'ぶつりがく', jp:'ぶつりがく', id:'ilmu fisika', romaji:'butsurigaku' }]),
+          k('こうがく', [{ kana:'こうがく', jp:'こうがく', id:'ilmu teknik', romaji:'kougaku' }]),
+          k('どぼくこうがく', [{ kana:'どぼくこうがく', jp:'どぼくこうがく', id:'ilmu teknik sipil', romaji:'dobokukougaku' }]),
+          k('でんしこうがく', [{ kana:'でんしこうがく', jp:'でんしこうがく', id:'ilmu teknik elektronik', romaji:'denshikougaku' }]),
+          k('でんきこうがく', [{ kana:'でんきこうがく', jp:'でんきこうがく', id:'ilmu teknik listrik', romaji:'denkikougaku' }]),
+          k('きかいこうがく', [{ kana:'きかいこうがく', jp:'きかいこうがく', id:'ilmu teknik mesin', romaji:'kikaikougaku' }]),
+          k('コンピューターこうがく', [{ kana:'コンピューターこうがく', jp:'コンピューターこうがく', id:'ilmu informatika', romaji:'konpyuutaa kougaku' }]),
+          k('いでんしこうがく', [{ kana:'いでんしこうがく', jp:'いでんしこうがく', id:'ilmu genetika', romaji:'idenshikougaku' }]),
+          k('けんちくがく', [{ kana:'けんちくがく', jp:'けんちくがく', id:'ilmu arsitektur', romaji:'kenchikugaku' }]),
+          k('てんもんがく', [{ kana:'てんもんがく', jp:'てんもんがく', id:'ilmu astronomi', romaji:'tenmongaku' }]),
+          k('かんきょうかがく', [{ kana:'かんきょうかがく', jp:'かんきょうかがく', id:'ilmu tata lingkungan', romaji:'kankyoukagaku' }])
+        ]
+      },
+      {
+        id: 'rk31_g2', title: '2. Ilmu Sosial, Humaniora & Seni (No. 21–36)', desc: '16 Referensi: せいじがく, ほうりつがく, けいざいがく, しゃかいがく, ぶんがく, しんりがく, げいじゅつ, dll.', page: 'Ref 31 · 21–36', kategori: 'Referensi Bab 31', icon: 'book', accent: 'accent-gold',
+        cards: [
+          k('せいじがく', [{ kana:'せいじがく', jp:'せいじがく', id:'ilmu politik', romaji:'seijigaku' }]),
+          k('こくさいかんけいがく', [{ kana:'こくさいかんけいがく', jp:'こくさいかんけいがく', id:'ilmu hubungan internasional', romaji:'kokusaikankeigaku' }]),
+          k('ほうりつがく', [{ kana:'ほうりつがく', jp:'ほうりつがく', id:'ilmu hukum', romaji:'houritsugaku' }]),
+          k('けいざいがく', [{ kana:'けいざいがく', jp:'けいざいがく', id:'ilmu ekonomi', romaji:'keizaigaku' }]),
+          k('けいえいがく', [{ kana:'けいえいがく', jp:'けいえいがく', id:'ilmu manajemen bisnis', romaji:'keieigaku' }]),
+          k('しゃかいがく', [{ kana:'しゃかいがく', jp:'しゃかいがく', id:'ilmu sosial', romaji:'shakaigaku' }]),
+          k('きょういくがく', [{ kana:'きょういくがく', jp:'きょういくがく', id:'ilmu pendidikan', romaji:'kyouikugaku' }]),
+          k('ぶんがく', [{ kana:'ぶんがく', jp:'ぶんがく', id:'ilmu sastra', romaji:'bungaku' }]),
+          k('げんごがく', [{ kana:'げんごがく', jp:'げんごがく', id:'ilmu linguistik', romaji:'gengogaku' }]),
+          k('しんりがく', [{ kana:'しんりがく', jp:'しんりがく', id:'ilmu psikologi', romaji:'shinrigaku' }]),
+          k('てつがく', [{ kana:'てつがく', jp:'てつがく', id:'ilmu filsafat', romaji:'tetsugaku' }]),
+          k('しゅうきょうがく', [{ kana:'しゅうきょうがく', jp:'しゅうきょうがく', id:'ilmu teologi', romaji:'shuukyougaku' }]),
+          k('げいじゅつ', [{ kana:'げいじゅつ', jp:'げいじゅつ', id:'ilmu seni', romaji:'geijutsu' }]),
+          k('びじゅつ', [{ kana:'びじゅつ', jp:'びじゅつ', id:'ilmu seni murni', romaji:'bijutsu' }]),
+          k('おんがく', [{ kana:'おんがく', jp:'おんがく', id:'ilmu seni musik', romaji:'ongaku' }]),
+          k('たいいくがく', [{ kana:'たいいくがく', jp:'たいいくがく', id:'ilmu pendidikan jasmani', romaji:'taiikugaku' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kotoba_32',
+    kind: 'kotoba',
+    isRef: true,
+    parentBab: '32',
+    number: '32',
+    title: 'Referensi Kotoba Pelajaran 32 (てんきよほう — Prakiraan Cuaca)',
+    desc: '37 Kosakata Referensi Prakiraan Cuaca Bab 32 dalam 3 sub-kelompok',
+    icon: 'scroll', accent: 'accent-sakura',
+    groups: [
+      {
+        id: 'rk32_g1', title: '1. Simbol & Kondisi Cuaca (No. 1–7)', desc: '7 Referensi: はれ, くもり, あめ, ゆき, はれのちくもり, くもりときどきあめ, dll.', page: 'Ref 32 · 1–7', kategori: 'Referensi Bab 32', icon: 'target', accent: 'accent-sakura',
+        cards: [
+          k('はれ', [{ kana:'はれ', jp:'はれ', id:'cerah', romaji:'hare' }]),
+          k('くもり', [{ kana:'くもり', jp:'くもり', id:'mendung/berawan', romaji:'kumori' }]),
+          k('あめ', [{ kana:'あめ', jp:'あめ', id:'hujan', romaji:'ame' }]),
+          k('ゆき', [{ kana:'ゆき', jp:'ゆき', id:'salju', romaji:'yuki' }]),
+          k('はれのちくもり', [{ kana:'はれのちくもり', jp:'はれのちくもり', id:'cerah kemudian berawan', romaji:'hare nochi kumori' }]),
+          k('くもりときどきあめ', [{ kana:'くもりときどきあめ', jp:'くもりときどきあめ', id:'berawan kadang-kadang hujan', romaji:'kumori tokidoki ame' }]),
+          k('くもりところによってあめ', [{ kana:'くもりところによってあめ', jp:'くもりところによってあめ', id:'berawan dan hujan di beberapa daerah', romaji:'kumori tokoro ni yotte ame' }])
+        ]
+      },
+      {
+        id: 'rk32_g2', title: '2. Istilah Suhu, Probabilitas & Fenomena Alam (No. 8–19)', desc: '12 Referensi: こうすいかくりつ, さいこうきおん, さいていきおん, たいふう, にじ, dll.', page: 'Ref 32 · 8–19', kategori: 'Referensi Bab 32', icon: 'hanko', accent: 'accent-gold',
+        cards: [
+          k('こうすいかくりつ', [{ kana:'こうすいかくりつ', jp:'こうすいかくりつ', id:'kemungkinan turun hujan', romaji:'kousuikakuritsu' }]),
+          k('さいこうきおん', [{ kana:'さいこうきおん', jp:'さいこうきおん', id:'suhu udara tertinggi', romaji:'saikou kion' }]),
+          k('さいていきおん', [{ kana:'さいていきおん', jp:'さいていきおん', id:'suhu udara terendah', romaji:'saitei kion' }]),
+          k('にわかあめ／ゆうだち', [{ kana:'にわかあめ／ゆうだち', jp:'にわかあめ／ゆうだち', id:'hujan sebentar', romaji:'niwakaame / yuudachi' }]),
+          k('かみなり', [{ kana:'かみなり', jp:'かみなり', id:'guntur', romaji:'kaminari' }]),
+          k('たいふう', [{ kana:'たいふう', jp:'たいふう', id:'angin topan', romaji:'taifuu' }]),
+          k('にじ', [{ kana:'にじ', jp:'にじ', id:'pelangi', romaji:'niji' }]),
+          k('かぜ', [{ kana:'かぜ', jp:'かぜ', id:'angin', romaji:'kaze' }]),
+          k('くも', [{ kana:'くも', jp:'くも', id:'awan', romaji:'kumo' }]),
+          k('しつど', [{ kana:'しつど', jp:'しつど', id:'kelembaban', romaji:'shitsudo' }]),
+          k('むしあつい', [{ kana:'むしあつい', jp:'むしあつい', id:'panas lembab', romaji:'mushiatsui' }]),
+          k('さわやか［な］', [{ kana:'さわやか［な］', jp:'さわやか［な］', id:'segar', romaji:'sawayaka [na]' }])
+        ]
+      },
+      {
+        id: 'rk32_g3', title: '3. Nama Daerah & Kota pada Peta Cuaca Jepang (No. 20–37)', desc: '18 Referensi: ほっかいどうちほう, さっぽろ, とうきょう, なごや, おおさか, なは, dll.', page: 'Ref 32 · 20–37', kategori: 'Referensi Bab 32', icon: 'layers', accent: 'accent-indigo',
+        cards: [
+          k('ほっかいどうちほう', [{ kana:'ほっかいどうちほう', jp:'ほっかいどうちほう', id:'daerah Hokkaido', romaji:'hokkaidoo chihou' }]),
+          k('さっぽろ', [{ kana:'さっぽろ', jp:'さっぽろ', id:'Sapporo', romaji:'sapporo' }]),
+          k('とうほくちほう', [{ kana:'とうほくちほう', jp:'とうほくちほう', id:'daerah Tohoku', romaji:'touhoku chihou' }]),
+          k('せんだい', [{ kana:'せんだい', jp:'せんだい', id:'Sendai', romaji:'sendai' }]),
+          k('かんとうちほう', [{ kana:'かんとうちほう', jp:'かんとうちほう', id:'daerah Kanto', romaji:'kantou chihou' }]),
+          k('とうきょう', [{ kana:'とうきょう', jp:'とうきょう', id:'Tokyo', romaji:'toukyou' }]),
+          k('ちゅうぶちほう', [{ kana:'ちゅうぶちほう', jp:'ちゅうぶちほう', id:'daerah Chubu', romaji:'chuubu chihou' }]),
+          k('ながの', [{ kana:'ながの', jp:'ながの', id:'Nagano', romaji:'nagano' }]),
+          k('なごや', [{ kana:'なごや', jp:'なごや', id:'Nagoya', romaji:'nagoya' }]),
+          k('きんきちほう', [{ kana:'きんきちほう', jp:'きんきちほう', id:'daerah Kinki', romaji:'kinki chihou' }]),
+          k('おおさか', [{ kana:'おおさか', jp:'おおさか', id:'Osaka', romaji:'oosaka' }]),
+          k('ちゅうごくちほう', [{ kana:'ちゅうごくちほう', jp:'ちゅうごくちほう', id:'daerah Chugoku', romaji:'chuugoku chihou' }]),
+          k('まつえ', [{ kana:'まつえ', jp:'まつえ', id:'Matsue', romaji:'matsue' }]),
+          k('しこくちほう', [{ kana:'しこくちほう', jp:'しこくちほう', id:'daerah Shikoku', romaji:'shikoku chihou' }]),
+          k('こうち', [{ kana:'こうち', jp:'こうち', id:'Kochi', romaji:'kouchi' }]),
+          k('きゅうしゅうちほう', [{ kana:'きゅうしゅうちほう', jp:'きゅうしゅうちほう', id:'daerah Kyushu', romaji:'kyuushuu chihou' }]),
+          k('かごしま', [{ kana:'かごしま', jp:'かごしま', id:'Kagoshima', romaji:'kagoshima' }]),
+          k('なは', [{ kana:'なは', jp:'なは', id:'Naha', romaji:'naha' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kotoba_33',
+    kind: 'kotoba',
+    isRef: true,
+    parentBab: '33',
+    number: '33',
+    title: 'Referensi Kotoba Pelajaran 33 (ひょうしき — Tanda)',
+    desc: '16 Kosakata Referensi Tanda Bab 33 dalam 4 sub-kelompok',
+    icon: 'scroll', accent: 'accent-indigo',
+    groups: [
+      {
+        id: 'rk33_g1', title: '1. Tanda Toko / Pelayanan (No. 1–4)', desc: '4 Referensi: えいぎょうちゅう, じゅんびちゅう, へいてん, ていきゅうび', page: 'Ref 33 · 1–4', kategori: 'Referensi Bab 33', icon: 'hanko', accent: 'accent-indigo',
+        cards: [
+          k('えいぎょうちゅう', [{ kana:'えいぎょうちゅう', jp:'えいぎょうちゅう', id:'Buka', romaji:'eigyouchuu' }]),
+          k('じゅんびちゅう', [{ kana:'じゅんびちゅう', jp:'じゅんびちゅう', id:'Dalam Persiapan', romaji:'junbichuu' }]),
+          k('へいてん', [{ kana:'へいてん', jp:'へいてん', id:'Tutup', romaji:'heiten' }]),
+          k('ていきゅうび', [{ kana:'ていきゅうび', jp:'ていきゅうび', id:'Hari Libur', romaji:'teikyuubi' }])
+        ]
+      },
+      {
+        id: 'rk33_g2', title: '2. Fasilitas & Tempat Duduk (No. 5–8)', desc: '4 Referensi: けしょうしつ, きんえんせき, よやくせき, ひじょうぐち', page: 'Ref 33 · 5–8', kategori: 'Referensi Bab 33', icon: 'layers', accent: 'accent-gold',
+        cards: [
+          k('けしょうしつ', [{ kana:'けしょうしつ', jp:'けしょうしつ', id:'Kamar kecil/Toilet/WC', romaji:'keshoushitsu' }]),
+          k('きんえんせき', [{ kana:'きんえんせき', jp:'きんえんせき', id:'Tempat duduk bebas rokok', romaji:'kinenseki' }]),
+          k('よやくせき', [{ kana:'よやくせき', jp:'よやくせき', id:'Tempat duduk yang telah dipesan', romaji:'yoyakuseki' }]),
+          k('ひじょうぐち', [{ kana:'ひじょうぐち', jp:'ひじょうぐち', id:'Pintu darurat', romaji:'hijouguchi' }])
+        ]
+      },
+      {
+        id: 'rk33_g3', title: '3. Tanda Peringatan & Keselamatan (No. 9–12)', desc: '4 Referensi: かきげんきん, われものちゅうい, うんてんしょしんしゃちゅうい, こうじちゅう', page: 'Ref 33 · 9–12', kategori: 'Referensi Bab 33', icon: 'shield', accent: 'accent-sakura',
+        cards: [
+          k('かきげんきん', [{ kana:'かきげんきん', jp:'かきげんきん', id:'Mudah terbakar', romaji:'kakigenkin' }]),
+          k('われものちゅうい', [{ kana:'われものちゅうい', jp:'われものちゅうい', id:'Hati-hati barang pecah belah', romaji:'waremonochuui' }]),
+          k('うんてんしょしんしゃちゅうい', [{ kana:'うんてんしょしんしゃちゅうい', jp:'うんてんしょしんしゃちゅうい', id:'Tanda bagi pengemudi yang baru mendapatkan SIM', romaji:'untenshoshinshachuui' }]),
+          k('こうじちゅう', [{ kana:'こうじちゅう', jp:'こうじちゅう', id:'Sedang konstruksi', romaji:'koujichuu' }])
+        ]
+      },
+      {
+        id: 'rk33_g4', title: '4. Tanda Petunjuk Perawatan Pakaian (No. 13–16)', desc: '4 Referensi: えんそけいひょうはくざいふか, てあらい, アイロン（ていおん）, ドライクリーニング', page: 'Ref 33 · 13–16', kategori: 'Referensi Bab 33', icon: 'target', accent: 'accent-indigo',
+        cards: [
+          k('えんそけいひょうはくざいふか', [{ kana:'えんそけいひょうはくざいふか', jp:'えんそけいひょうはくざいふか', id:'Jangan gunakan pemutih', romaji:'ensokeihyouhakuzai fuka' }]),
+          k('てあらい', [{ kana:'てあらい', jp:'てあらい', id:'Cuci dengan tangan', romaji:'tearai' }]),
+          k('アイロン（ていおん）', [{ kana:'アイロン（ていおん）', jp:'アイロン（ていおん）', id:'Harus disetrika dalam suhu rendah', romaji:'airon (teion)' }]),
+          k('ドライクリーニング', [{ kana:'ドライクリーニング', jp:'ドライクリーニング', id:'Hanya untuk di-dry cleaning', romaji:'dorai kuriiningu' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kotoba_34',
+    kind: 'kotoba',
+    isRef: true,
+    parentBab: '34',
+    number: '34',
+    title: 'Referensi Kotoba Pelajaran 34 (りょうり — Masakan)',
+    desc: '43 Kosakata Referensi Masakan Bab 34 dalam 3 sub-kelompok',
+    icon: 'scroll', accent: 'accent-gold',
+    groups: [
+      {
+        id: 'rk34_g1', title: '1. Cara Memasak / Mengolah (No. 1–10)', desc: '10 Referensi: にる, やく, あげる, いためる, ゆでる, むす, たく, むく, きざむ, かきまぜる', page: 'Ref 34 · 1–10', kategori: 'Referensi Bab 34', icon: 'hanko', accent: 'accent-gold',
+        cards: [
+          k('にる', [{ kana:'にる', jp:'にる', id:'merebus', romaji:'niru' }]),
+          k('やく', [{ kana:'やく', jp:'やく', id:'membakar, memanggang', romaji:'yaku' }]),
+          k('あげる', [{ kana:'あげる', jp:'あげる', id:'menggoreng', romaji:'ageru' }]),
+          k('いためる', [{ kana:'いためる', jp:'いためる', id:'menumis', romaji:'itameru' }]),
+          k('ゆでる', [{ kana:'ゆでる', jp:'ゆでる', id:'memasak, merebus', romaji:'yuderu' }]),
+          k('むす', [{ kana:'むす', jp:'むす', id:'mengukus', romaji:'musu' }]),
+          k('たく', [{ kana:'たく', jp:'たく', id:'memasak nasi / menanak nasi', romaji:'taku' }]),
+          k('むく', [{ kana:'むく', jp:'むく', id:'mengupas', romaji:'muku' }]),
+          k('きざむ', [{ kana:'きざむ', jp:'きざむ', id:'mencincang', romaji:'kizamu' }]),
+          k('かきまぜる', [{ kana:'かきまぜる', jp:'かきまぜる', id:'mengaduk, mencampur', romaji:'kakimazeru' }])
+        ]
+      },
+      {
+        id: 'rk34_g2', title: '2. Bumbu-Bumbu Dapur (No. 11–25)', desc: '15 Referensi: しょうゆ, さとう, しお, す, みそ, あぶら, マヨネーズ, わさび, カレーこ, dll.', page: 'Ref 34 · 11–25', kategori: 'Referensi Bab 34', icon: 'layers', accent: 'accent-sakura',
+        cards: [
+          k('しょうゆ', [{ kana:'しょうゆ', jp:'しょうゆ', id:'kecap asin', romaji:'shouyu' }]),
+          k('さとう', [{ kana:'さとう', jp:'さとう', id:'gula', romaji:'satou' }]),
+          k('しお', [{ kana:'しお', jp:'しお', id:'garam', romaji:'shio' }]),
+          k('す', [{ kana:'す', jp:'す', id:'cuka', romaji:'su' }]),
+          k('みそ', [{ kana:'みそ', jp:'みそ', id:'miso, tauco', romaji:'miso' }]),
+          k('あぶら', [{ kana:'あぶら', jp:'あぶら', id:'minyak, lemak', romaji:'abura' }]),
+          k('ソース', [{ kana:'ソース', jp:'ソース', id:'saus Inggris', romaji:'soosu' }]),
+          k('マヨネーズ', [{ kana:'マヨネーズ', jp:'マヨネーズ', id:'mayonese', romaji:'mayoneezu' }]),
+          k('ケチャップ', [{ kana:'ケチャップ', jp:'ケチャップ', id:'saus tomat', romaji:'kechappu' }]),
+          k('からし（マスタード）', [{ kana:'からし（マスタード）', jp:'からし（マスタード）', id:'mustard', romaji:'karashi (masutaado)' }]),
+          k('こしょう', [{ kana:'こしょう', jp:'こしょう', id:'merica', romaji:'koshou' }]),
+          k('とうがらし', [{ kana:'とうがらし', jp:'とうがらし', id:'cabai', romaji:'tougarashi' }]),
+          k('しょうが', [{ kana:'しょうが', jp:'しょうが', id:'jahe', romaji:'shouga' }]),
+          k('わさび', [{ kana:'わさび', jp:'わさび', id:'wasabi (lobak hijau Jepang)', romaji:'wasabi' }]),
+          k('カレーこ', [{ kana:'カレーこ', jp:'カレーこ', id:'tepung kare', romaji:'kareeko' }])
+        ]
+      },
+      {
+        id: 'rk34_g3', title: '3. Peralatan Dapur (No. 26–43)', desc: '18 Referensi: なべ, やかん, ふた, おたま, まないた, ほうちょう, すいはんき, しゃもじ, dll.', page: 'Ref 34 · 26–43', kategori: 'Referensi Bab 34', icon: 'target', accent: 'accent-indigo',
+        cards: [
+          k('なべ', [{ kana:'なべ', jp:'なべ', id:'panci', romaji:'nabe' }]),
+          k('やかん', [{ kana:'やかん', jp:'やかん', id:'ceret, ketel', romaji:'yakan' }]),
+          k('ふた', [{ kana:'ふた', jp:'ふた', id:'tutup', romaji:'futa' }]),
+          k('おたま', [{ kana:'おたま', jp:'おたま', id:'sendok sayur', romaji:'otama' }]),
+          k('まないた', [{ kana:'まないた', jp:'まないた', id:'talenan', romaji:'manaita' }]),
+          k('ほうちょう', [{ kana:'ほうちょう', jp:'ほうちょう', id:'pisau', romaji:'houchou' }]),
+          k('ふきん', [{ kana:'ふきん', jp:'ふきん', id:'kain lap', romaji:'fukin' }]),
+          k('フライパン', [{ kana:'フライパン', jp:'フライパン', id:'penggorengan', romaji:'furaipan' }]),
+          k('でんしオーブンレンジ', [{ kana:'でんしオーブンレンジ', jp:'でんしオーブンレンジ', id:'microwave oven', romaji:'denshi oobun renji' }]),
+          k('すいはんき', [{ kana:'すいはんき', jp:'すいはんき', id:'rice cooker', romaji:'suihanki' }]),
+          k('しゃもじ', [{ kana:'しゃもじ', jp:'しゃもじ', id:'sendok nasi', romaji:'shamoji' }]),
+          k('かんきり', [{ kana:'かんきり', jp:'かんきり', id:'pembuka kaleng', romaji:'kankiri' }]),
+          k('せんぬき', [{ kana:'せんぬき', jp:'せんぬき', id:'pembuka botol', romaji:'sennuki' }]),
+          k('ざる', [{ kana:'ざる', jp:'ざる', id:'saringan', romaji:'zaru' }]),
+          k('ポット', [{ kana:'ポット', jp:'ポット', id:'termos', romaji:'potto' }]),
+          k('ガスだい', [{ kana:'ガスだい', jp:'ガスだい', id:'kompor gas', romaji:'gasudai' }]),
+          k('ながし［だい］', [{ kana:'ながし［だい］', jp:'ながし［だい］', id:'bak cuci piring', romaji:'nagashi [dai]' }]),
+          k('かんきせん', [{ kana:'かんきせん', jp:'かんきせん', id:'kipas ventilasi', romaji:'kankisen' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kotoba_35',
+    kind: 'kotoba',
+    isRef: true,
+    parentBab: '35',
+    number: '35',
+    title: 'Referensi Kotoba Pelajaran 35 (ことわざ — Pepatah)',
+    desc: '6 Pepatah Referensi Bab 35 lengkap dengan arti & makna peribahasa',
+    icon: 'scroll', accent: 'accent-sakura',
+    groups: [
+      {
+        id: 'rk35_g1', title: '1. Pepatah Klasik Jepang (No. 1–6)', desc: '6 Referensi: すめば みやこ, さんにん よれば もんじゅの ちえ, ちりも つもれば やまと なる, dll.', page: 'Ref 35 · 1–6', kategori: 'Referensi Bab 35', icon: 'book', accent: 'accent-sakura',
+        cards: [
+          k('すめば みやこ', [{ kana:'すめば みやこ', jp:'すめば みやこ', id:'Alah bisa karena biasa (didiami lama terasa tempat terbaik)', romaji:'sumeba miyako' }]),
+          k('さんにん よれば もんじゅの ちえ', [{ kana:'さんにん よれば もんじゅの ちえ', jp:'さんにん よれば もんじゅの ちえ', id:'Dua kepala lebih baik daripada satu (tiga orang berunding dapat ide bagus)', romaji:'sannin yoreba monju no chie' }]),
+          k('たてば しゃくやく、すわれば ぼたん、あるく すがたは ゆりの はな', [{ kana:'たてば しゃくやく、すわれば ぼたん、あるく すがたは ゆりの はな', jp:'たてば しゃくやく、すわれば ぼたん、あるく すがたは ゆりの はな', id:'Cantiknya bagaikan bulan (perumpamaan orang cantik)', romaji:'tateba shakuyaku, suwareba botan, aruku sugata wa yuri no hana' }]),
+          k('ちりも つもれば やまと なる', [{ kana:'ちりも つもれば やまと なる', jp:'ちりも つもれば やまと なる', id:'Sedikit demi sedikit, lama-lama menjadi bukit', romaji:'chiri mo tsumoreba yama to naru' }]),
+          k('うわさを すれば かげ', [{ kana:'うわさを すれば かげ', jp:'うわさを すれば かげ', id:'Panjang umur (orang yang dibicarakan suka muncul)', romaji:'uwasa wo sureba kage' }]),
+          k('く あれば らく あり、らく あれば く あり', [{ kana:'く あれば らく あり、らく あれば く あり', jp:'く あれば らく あり、らく あれば く あり', id:'Berakit-rakit kita ke hulu, berenang kemudian', romaji:'ku areba raku ari, raku areba ku ari' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kotoba_36',
+    kind: 'kotoba',
+    isRef: true,
+    parentBab: '36',
+    number: '36',
+    title: 'Referensi Kotoba Pelajaran 36 (けんこう — Kesehatan)',
+    desc: '19 Kosakata Referensi Kesehatan Bab 36 dalam 2 sub-kelompok',
+    icon: 'scroll', accent: 'accent-indigo',
+    groups: [
+      {
+        id: 'rk36_g1', title: '1. Pola Hidup Sehat & Buruk (No. 1–14)', desc: '14 Referensi: いいださん (7 kebiasaan sehat) & だめださん (7 kebiasaan kurang sehat)', page: 'Ref 36 · 1–14', kategori: 'Referensi Bab 36', icon: 'hanko', accent: 'accent-indigo',
+        cards: [
+          k('きそくただしい せいかつを する', [{ kana:'きそくただしい せいかつを する', jp:'きそくただしい せいかつを する', id:'hidup secara teratur (いいださん)', romaji:'kisokutadashii seikatsu wo suru' }]),
+          k('はやね、はやおきを する', [{ kana:'はやね、はやおきを する', jp:'はやね、はやおきを する', id:'cepat tidur dan bangun pagi-pagi (いいださん)', romaji:'hayane, hayaoki wo suru' }]),
+          k('うんどうする／スポーツをする', [{ kana:'うんどうする／スポーツをする', jp:'うんどうする／スポーツをする', id:'berolahraga (いいださん)', romaji:'undousuru / supootsu wo suru' }]),
+          k('よく あるく', [{ kana:'よく あるく', jp:'よく あるく', id:'suka berjalan kaki (いいださん)', romaji:'yoku aruku' }]),
+          k('すききらいが ない', [{ kana:'すききらいが ない', jp:'すききらいが ない', id:'tidak pilih makan (いいださん)', romaji:'sukikirai ga nai' }]),
+          k('えいようの バランスを かんがえて たべる', [{ kana:'えいようの バランスを かんがえて たべる', jp:'えいようの バランスを かんがえて たべる', id:'makan dengan mempertimbangkan keseimbangan gizi (いいださん)', romaji:'eiyou no baransu wo kangaete taberu' }]),
+          k('けんこうしんだんを うける', [{ kana:'けんこうしんだんを うける', jp:'けんこうしんだんを うける', id:'mengikuti pemeriksaan kesehatan (いいださん)', romaji:'kenkoushindan wo ukeru' }]),
+          k('よふかしを する', [{ kana:'よふかしを する', jp:'よふかしを する', id:'begadang (だめださん)', romaji:'yofukashi wo suru' }]),
+          k('あまり うんどうしない', [{ kana:'あまり うんどうしない', jp:'あまり うんどうしない', id:'kurang berolahraga (だめださん)', romaji:'amari undoushinai' }]),
+          k('すききらいが ある', [{ kana:'すききらいが ある', jp:'すききらいが ある', id:'pilih makan (だめださん)', romaji:'sukikirai ga aru' }]),
+          k('よく インスタント しょくひんを たべる', [{ kana:'よく インスタント しょくひんを たべる', jp:'よく インスタント しょくひんを たべる', id:'suka makan makanan instan (だめださん)', romaji:'yoku insutanto shokuhin wo taberu' }]),
+          k('がいしょくが おおい', [{ kana:'がいしょくが おおい', jp:'がいしょくが おおい', id:'sering makan di luar (だめださん)', romaji:'gaishoku ga ooi' }]),
+          k('たばこを すう', [{ kana:'たばこを すう', jp:'たばこを すう', id:'merokok (だめださん)', romaji:'tabako wo suu' }]),
+          k('よく おさけを のむ', [{ kana:'よく おさけを のむ', jp:'よく おさけを のむ', id:'suka minum minuman keras (だめださん)', romaji:'yoku osake wo nomu' }])
+        ]
+      },
+      {
+        id: 'rk36_g2', title: '2. 5 Nutrisi Penting & Makanan (No. 15–19)', desc: '5 Referensi: たんすいかぶつ, しぼう, たんぱくしつ, カルシウム, ビタミン', page: 'Ref 36 · 15–19', kategori: 'Referensi Bab 36', icon: 'layers', accent: 'accent-gold',
+        cards: [
+          k('たんすいかぶつ', [{ kana:'たんすいかぶつ', jp:'たんすいかぶつ', id:'karbohidrat (roti, nasi, いも, gula)', romaji:'tansuikabutsu' }]),
+          k('しぼう', [{ kana:'しぼう', jp:'しぼう', id:'lemak (mentega, minyak goreng/salad)', romaji:'shibou' }]),
+          k('たんぱくしつ', [{ kana:'たんぱくしつ', jp:'たんぱくしつ', id:'protein (とうふ, daging, ikan, telur, kacang)', romaji:'tanpakushitsu' }]),
+          k('カルシウム', [{ kana:'カルシウム', jp:'カルシウム', id:'kalsium (susu, keju, のり, 豆, 海草)', romaji:'karushiumu' }]),
+          k('ビタミン', [{ kana:'ビタミン', jp:'ビタミン', id:'vitamin (wortel, bawang bombai, sayur hijau, apel)', romaji:'bitamin' }])
+        ]
+      }
+    ]
+  },
+  /* ==================== KELOMPOK KANJI UTAMA (KANJI + FURIGANA) ==================== */
   {
     id: 'kanji_31',
     kind: 'kanji',
@@ -1446,6 +2045,533 @@ const CHAPTERS = [
         ]
       }
     ]
+  },
+  {
+    id: 'kanji_36',
+    kind: 'kanji',
+    number: '36',
+    title: 'Kanji Pelajaran 36 (Bab 36)',
+    desc: '39 Kosakata ber-Kanji & Furigana Minna no Nihongo II Bab 36 dalam 3 sub-kelompok',
+    icon: 'hanko', accent: 'accent-indigo',
+    groups: [
+      {
+        id: 'k36_g1', title: '1. Kosakata Pokok (No. 1–21)', desc: '21 Kanji: 逢います・遭います, 貯金します, 過ぎます, 慣れます, 腐ります, 剣道, 柔道, 宇宙, 曲, dll.', page: 'Kanji 36 · 1–21', kategori: 'Kanji Bab 36', icon: 'hanko', accent: 'accent-indigo',
+        cards: [
+          kj('逢います、遭います［事故に～］', [{ kanjiText:'逢います、遭います［事故に～］', jp:'<ruby>逢<rt>あ</rt></ruby>います、<ruby>遭<rt>あ</rt></ruby>います［<ruby>事故<rt>じこ</rt></ruby>に～］', kana:'あいます［じこに～］', id:'tertimpa [kecelakaan]', romaji:'aimasu [jiko ni ~]' }]),
+          kj('貯金します', [{ kanjiText:'貯金します', jp:'<ruby>貯金<rt>ちょきん</rt></ruby>します', kana:'ちょきんします', id:'menabung', romaji:'chokinshimasu' }]),
+          kj('過ぎます［７時を～］', [{ kanjiText:'過ぎます［７時を～］', jp:'<ruby>過<rt>す</rt></ruby>ぎます［７<ruby>時<rt>じ</rt></ruby>を～］', kana:'すぎます［７じを～］', id:'lewat [pukul tujuh]', romaji:'sugimasu [shichiji wo ~]' }]),
+          kj('慣れます［仕事に～］', [{ kanjiText:'慣れます［仕事に～］', jp:'<ruby>慣<rt>な</rt></ruby>れます［<ruby>仕事<rt>しごと</rt></ruby>に～］', kana:'なれます［しごとに～］', id:'terbiasa [dengan tugas]', romaji:'naremasu [shigoto ni ~]' }]),
+          kj('腐ります［食べ物が～］', [{ kanjiText:'腐ります［食べ物が～］', jp:'<ruby>腐<rt>くさ</rt></ruby>ります［<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>が～］', kana:'くさります［たべものが～］', id:'[makanan] busuk', romaji:'kusarimasu [tabemono ga ~]' }]),
+          kj('剣道', [{ kanjiText:'剣道', jp:'<ruby>剣道<rt>けんどう</rt></ruby>', kana:'けんどう', id:'kendo (anggar gaya Jepang)', romaji:'kendou' }]),
+          kj('柔道', [{ kanjiText:'柔道', jp:'<ruby>柔道<rt>じゅうどう</rt></ruby>', kana:'じゅうどう', id:'judo', romaji:'juudou' }]),
+          kj('ラッシュ', [{ kanjiText:'ラッシュ', jp:'ラッシュ', kana:'ラッシュ', id:'keramaian, kesibukan', romaji:'rasshu' }]),
+          kj('宇宙', [{ kanjiText:'宇宙', jp:'<ruby>宇宙<rt>うちゅう</rt></ruby>', kana:'うちゅう', id:'angkasa', romaji:'uchuu' }]),
+          kj('曲', [{ kanjiText:'曲', jp:'<ruby>曲<rt>きょく</rt></ruby>', kana:'きょく', id:'musik', romaji:'kyoku' }]),
+          kj('毎週', [{ kanjiText:'毎週', jp:'<ruby>毎週<rt>まいしゅう</rt></ruby>', kana:'まいしゅう', id:'setiap minggu', romaji:'maishuu' }]),
+          kj('毎月', [{ kanjiText:'毎月', jp:'<ruby>毎月<rt>まいつき</rt></ruby>', kana:'まいつき', id:'setiap bulan', romaji:'maitsuki' }]),
+          kj('毎年', [{ kanjiText:'毎年', jp:'<ruby>毎年<rt>まいとし</rt></ruby>', kana:'まいとし (まいねん)', id:'setiap tahun', romaji:'maitoshi (mainen)' }]),
+          kj('このごろ', [{ kanjiText:'このごろ', jp:'このごろ', kana:'このごろ', id:'akhir-akhir ini', romaji:'konogoro' }]),
+          kj('やっと', [{ kanjiText:'やっと', jp:'やっと', kana:'やっと', id:'akhirnya', romaji:'yatto' }]),
+          kj('かなり', [{ kanjiText:'かなり', jp:'かなり', kana:'かなり', id:'cukup', romaji:'kanari' }]),
+          kj('必ず', [{ kanjiText:'必ず', jp:'<ruby>必<rt>かなら</rt></ruby>ず', kana:'かならず', id:'pasti', romaji:'kanarazu' }]),
+          kj('絶対に', [{ kanjiText:'絶対に', jp:'<ruby>絶対<rt>ぜったい</rt></ruby>に', kana:'ぜったいに', id:'mutlak', romaji:'zettai ni' }]),
+          kj('上手に', [{ kanjiText:'上手に', jp:'<ruby>上手<rt>じょうず</rt></ruby>に', kana:'じょうずに', id:'dengan pandai', romaji:'jouzu ni' }]),
+          kj('できるだけ', [{ kanjiText:'できるだけ', jp:'できるだけ', kana:'できるだけ', id:'sedapat mungkin', romaji:'dekirudake' }]),
+          kj('ほとんど', [{ kanjiText:'ほとんど', jp:'ほとんど', kana:'ほとんど', id:'sebagian besar', romaji:'hotondo' }])
+        ]
+      },
+      {
+        id: 'k36_g2', title: '2. Kosakata Percakapan 〈会話〉 (No. 22–29)', desc: '8 Kanji: お客様, 特別［な］, していらっしゃいます, 水泳, 違います, 使っていらっしゃるんですね。, 気持ち, dll.', page: 'Kanji 36 · 22–29', kategori: 'Kanji Bab 36', icon: 'target', accent: 'accent-sakura',
+        cards: [
+          kj('お客様', [{ kanjiText:'お客様', jp:'お<ruby>客様<rt>きゃくさま</rt></ruby>', kana:'おきゃくさま', id:'tamu (kata hormat dari お客さん)', romaji:'okyakusama' }]),
+          kj('特別［な］', [{ kanjiText:'特別［な］', jp:'<ruby>特別<rt>とくべつ</rt></ruby>［な］', kana:'とくべつ［な］', id:'khusus, spesial', romaji:'tokubetsu [na]' }]),
+          kj('していらっしゃいます', [{ kanjiText:'していらっしゃいます', jp:'していらっしゃいます', kana:'していらっしゃいます', id:'melakukan (kata hormat dari しています)', romaji:'shiteirasshaimasu' }]),
+          kj('水泳', [{ kanjiText:'水泳', jp:'<ruby>水泳<rt>すいえい</rt></ruby>', kana:'すいえい', id:'renang', romaji:'suiei' }]),
+          kj('違います', [{ kanjiText:'違います', jp:'<ruby>違<rt>ちが</rt></ruby>います', kana:'ちがいます', id:'salah, tidak benar', romaji:'chigaimasu' }]),
+          kj('使っていらっしゃるんですね。', [{ kanjiText:'使っていらっしゃるんですね。', jp:'<ruby>使<rt>つか</rt></ruby>っていらっしゃるんですね。', kana:'つかっていらっしゃるんですね。', id:'Menggunakan ~, ya. / Memakai ~, ya. (kata hormat dari つかっているんですね)', romaji:'tsukatteirassharun desu ne.' }]),
+          kj('チャレンジします', [{ kanjiText:'チャレンジします', jp:'チャレンジします', kana:'チャレンジします', id:'menantang', romaji:'charenjishimasu' }]),
+          kj('気持ち', [{ kanjiText:'気持ち', jp:'<ruby>気持<rt>きも</rt></ruby>ち', kana:'きもち', id:'sikap', romaji:'kimochi' }])
+        ]
+      },
+      {
+        id: 'k36_g3', title: '3. Kosakata Bacaan 〈読み物〉 (No. 30–39)', desc: '10 Kanji: 乗り物, ―世紀, 遠く, 珍しい, 汽車, 汽船, 大勢の ～, 運びます, 利用します, 自由に', page: 'Kanji 36 · 30–39', kategori: 'Kanji Bab 36', icon: 'book', accent: 'accent-gold',
+        cards: [
+          kj('乗り物', [{ kanjiText:'乗り物', jp:'<ruby>乗<rt>の</rt></ruby>り<ruby>物<rt>もの</rt></ruby>', kana:'のりもの', id:'kendaraan', romaji:'norimono' }]),
+          kj('―世紀', [{ kanjiText:'―世紀', jp:'―<ruby>世紀<rt>せいき</rt></ruby>', kana:'―せいき', id:'abad ke -', romaji:'-seiki' }]),
+          kj('遠く', [{ kanjiText:'遠く', jp:'<ruby>遠<rt>とお</rt></ruby>く', kana:'とおく', id:'jauh', romaji:'tooku' }]),
+          kj('珍しい', [{ kanjiText:'珍しい', jp:'<ruby>珍<rt>めずら</rt></ruby>しい', kana:'めずらしい', id:'langka', romaji:'mezurashii' }]),
+          kj('汽車', [{ kanjiText:'汽車', jp:'<ruby>汽車<rt>きしゃ</rt></ruby>', kana:'きしゃ', id:'kereta api', romaji:'kisha' }]),
+          kj('汽船', [{ kanjiText:'汽船', jp:'<ruby>汽船<rt>きせん</rt></ruby>', kana:'きせん', id:'kapal api', romaji:'kisen' }]),
+          kj('大勢の ～', [{ kanjiText:'大勢の ～', jp:'<ruby>大勢<rt>おおぜい</rt></ruby>の ～', kana:'おおぜいの ～', id:'banyak ~', romaji:'oozei no ~' }]),
+          kj('運びます', [{ kanjiText:'運びます', jp:'<ruby>運<rt>はこ</rt></ruby>びます', kana:'はこびます', id:'mengangkut', romaji:'hakobimasu' }]),
+          kj('利用します', [{ kanjiText:'利用します', jp:'<ruby>利用<rt>りよう</rt></ruby>します', kana:'りようします', id:'menggunakan', romaji:'riyoushimasu' }]),
+          kj('自由に', [{ kanjiText:'自由に', jp:'<ruby>自由<rt>じゆう</rt></ruby>に', kana:'じゆうに', id:'dengan bebas', romaji:'jiyuu ni' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'kanji_37',
+    kind: 'kanji',
+    number: '37',
+    title: 'Kanji Pelajaran 37 (Bab 37)',
+    desc: '51 Kosakata ber-Kanji & Furigana Minna no Nihongo II Bab 37 dalam 3 sub-kelompok',
+    icon: 'hanko', accent: 'accent-gold',
+    groups: [
+      {
+        id: 'k37_g1', title: '1. Kosakata Pokok (No. 1–30)', desc: '30 Kanji: 褒めます, 誘います, 招待します, 発明します, 発見します, 泥棒, 警官, 世界中, dll.', page: 'Kanji 37 · 1–30', kategori: 'Kanji Bab 37', icon: 'hanko', accent: 'accent-gold',
+        cards: [
+          kj('褒めます', [{ kanjiText:'褒めます', jp:'<ruby>褒<rt>ほ</rt></ruby>めます', kana:'ほめます', id:'memuji', romaji:'homemasu' }]),
+          kj('しかります', [{ kanjiText:'しかります', jp:'しかります', kana:'しかります', id:'memarahi', romaji:'shikarimasu' }]),
+          kj('誘います', [{ kanjiText:'誘います', jp:'<ruby>誘<rt>さそ</rt></ruby>います', kana:'さそいます', id:'mengajak', romaji:'sasoimasu' }]),
+          kj('招待します', [{ kanjiText:'招待します', jp:'<ruby>招待<rt>しょうたい</rt></ruby>します', kana:'しょうたいします', id:'mengundang', romaji:'shoutaishimasu' }]),
+          kj('頼みます', [{ kanjiText:'頼みます', jp:'<ruby>頼<rt>たの</rt></ruby>みます', kana:'たのみます', id:'meminta', romaji:'tanomimasu' }]),
+          kj('注意します', [{ kanjiText:'注意します', jp:'<ruby>注意<rt>ちゅうい</rt></ruby>します', kana:'ちゅういします', id:'menasihati', romaji:'chuuishimasu' }]),
+          kj('とります', [{ kanjiText:'とります', jp:'とります', kana:'とります', id:'mencuri', romaji:'torimasu' }]),
+          kj('踏みます', [{ kanjiText:'踏みます', jp:'<ruby>踏<rt>ふ</rt></ruby>みます', kana:'ふみます', id:'menginjak', romaji:'fumimasu' }]),
+          kj('壊します', [{ kanjiText:'壊します', jp:'<ruby>壊<rt>こわ</rt></ruby>します', kana:'こわします', id:'merusak', romaji:'kowashimasu' }]),
+          kj('汚します', [{ kanjiText:'汚します', jp:'<ruby>汚<rt>よご</rt></ruby>します', kana:'よごします', id:'mengotori', romaji:'yogoshimasu' }]),
+          kj('行います', [{ kanjiText:'行います', jp:'<ruby>行<rt>おこな</rt></ruby>います', kana:'おこないます', id:'mengadakan', romaji:'okonaimasu' }]),
+          kj('輸出します', [{ kanjiText:'輸出します', jp:'<ruby>輸出<rt>ゆしゅつ</rt></ruby>します', kana:'ゆしゅつします', id:'mengekspor', romaji:'yushutsushimasu' }]),
+          kj('輸入します', [{ kanjiText:'輸入します', jp:'<ruby>輸入<rt>ゆにゅう</rt></ruby>します', kana:'ゆにゅうします', id:'mengimpor', romaji:'yunyuushimasu' }]),
+          kj('翻訳します', [{ kanjiText:'翻訳します', jp:'<ruby>翻訳<rt>ほんやく</rt></ruby>します', kana:'ほんやくします', id:'menerjemahkan', romaji:'honyakushimasu' }]),
+          kj('発明します', [{ kanjiText:'発明します', jp:'<ruby>発明<rt>はつめい</rt></ruby>します', kana:'はつめいします', id:'menciptakan', romaji:'hatsumeishimasu' }]),
+          kj('発見します', [{ kanjiText:'発見します', jp:'<ruby>発見<rt>はっけん</rt></ruby>します', kana:'はっけんします', id:'menemukan', romaji:'hakkenshimasu' }]),
+          kj('米', [{ kanjiText:'米', jp:'<ruby>米<rt>こめ</rt></ruby>', kana:'こめ', id:'beras', romaji:'kome' }]),
+          kj('麦', [{ kanjiText:'麦', jp:'<ruby>麦<rt>むぎ</rt></ruby>', kana:'むぎ', id:'gandum', romaji:'mugi' }]),
+          kj('石油', [{ kanjiText:'石油', jp:'<ruby>石油<rt>せきゆ</rt></ruby>', kana:'せきゆ', id:'minyak tanah', romaji:'sekiyu' }]),
+          kj('原料', [{ kanjiText:'原料', jp:'<ruby>原料<rt>げんりょう</rt></ruby>', kana:'げんりょう', id:'bahan baku', romaji:'genryou' }]),
+          kj('インスタントラーメン', [{ kanjiText:'インスタントラーメン', jp:'インスタントラーメン', kana:'インスタントラーメン', id:'mie instan', romaji:'insutanto raamen' }]),
+          kj('デート', [{ kanjiText:'デート', jp:'デート', kana:'デート', id:'kencan', romaji:'deeto' }]),
+          kj('泥棒', [{ kanjiText:'泥棒', jp:'<ruby>泥棒<rt>どろぼう</rt></ruby>', kana:'どろぼう', id:'pencuri', romaji:'dorobou' }]),
+          kj('警官', [{ kanjiText:'警官', jp:'<ruby>警官<rt>けいかん</rt></ruby>', kana:'けいかん', id:'polisi', romaji:'keikan' }]),
+          kj('世界中', [{ kanjiText:'世界中', jp:'<ruby>世界中<rt>せかいじゅう</rt></ruby>', kana:'せかいじゅう', id:'seluruh dunia', romaji:'sekaijuu' }]),
+          kj('～中', [{ kanjiText:'～中', jp:'～<ruby>中<rt>じゅう</rt></ruby>', kana:'～じゅう', id:'seluruh ~', romaji:'~juu' }]),
+          kj('―世紀', [{ kanjiText:'―世紀', jp:'―<ruby>世紀<rt>せいき</rt></ruby>', kana:'―せいき', id:'abad ke -', romaji:'-seiki' }]),
+          kj('何語', [{ kanjiText:'何語', jp:'<ruby>何語<rt>なにご</rt></ruby>', kana:'なにご', id:'bahasa apa', romaji:'nanigo' }]),
+          kj('だれか', [{ kanjiText:'だれか', jp:'だれか', kana:'だれか', id:'siapa', romaji:'dareka' }]),
+          kj('よかったですね。', [{ kanjiText:'よかったですね。', jp:'よかったですね。', kana:'よかったですね。', id:'Bagus, ya.', romaji:'yokatta desu ne.' }])
+        ]
+      },
+      {
+        id: 'k37_g2', title: '2. Kosakata Percakapan 〈会話〉 (No. 31–40)', desc: '10 Kanji: 皆様, 焼けます, その後, 世界遺産, 金色, 本物, 金, 美しい, dll.', page: 'Kanji 37 · 31–40', kategori: 'Kanji Bab 37', icon: 'target', accent: 'accent-sakura',
+        cards: [
+          kj('皆様', [{ kanjiText:'皆様', jp:'<ruby>皆様<rt>みなさま</rt></ruby>', kana:'みなさま', id:'semuanya (Kata Hormat dari みなさん)', romaji:'minasama' }]),
+          kj('焼けます［うちが～］', [{ kanjiText:'焼けます［うちが～］', jp:'<ruby>焼<rt>や</rt></ruby>けます［うちが～］', kana:'やけます［うちが～］', id:'[rumah] terbakar', romaji:'yakemasu [uchi ga ~]' }]),
+          kj('その後', [{ kanjiText:'その後', jp:'その<ruby>後<rt>ご</rt></ruby>', kana:'そのご', id:'setelah, sesudah', romaji:'sonogo' }]),
+          kj('世界遺産', [{ kanjiText:'世界遺産', jp:'<ruby>世界遺産<rt>せかいいさん</rt></ruby>', kana:'せかいいさん', id:'Situs Warisan Dunia UNESCO', romaji:'sekaiisan' }]),
+          kj('～の 一つ', [{ kanjiText:'～の 一つ', jp:'～の <ruby>一<rt>ひと</rt></ruby>つ', kana:'～の ひとつ', id:'salah satu ~', romaji:'~ no hitotsu' }]),
+          kj('金色', [{ kanjiText:'金色', jp:'<ruby>金色<rt>きんいろ</rt></ruby>', kana:'きんいろ', id:'warna emas', romaji:'kiniro' }]),
+          kj('本物', [{ kanjiText:'本物', jp:'<ruby>本物<rt>ほんもの</rt></ruby>', kana:'ほんもの', id:'asli', romaji:'honmono' }]),
+          kj('金', [{ kanjiText:'金', jp:'<ruby>金<rt>きん</rt></ruby>', kana:'きん', id:'emas', romaji:'kin' }]),
+          kj('―キロ', [{ kanjiText:'―キロ', jp:'―キロ', kana:'―キロ', id:'- kilogram, - kilometer', romaji:'-kiro' }]),
+          kj('美しい', [{ kanjiText:'美しい', jp:'<ruby>美<rt>うつく</rt></ruby>しい', kana:'うつくしい', id:'indah, elok', romaji:'utsukushii' }])
+        ]
+      },
+      {
+        id: 'k37_g3', title: '3. Kosakata Bacaan 〈読み物〉 (No. 41–51)', desc: '11 Kanji: 豪華［な］, 彫刻, 言い伝え, 眠ります, 彫ります, 一生懸命, 一匹も いません。, dll.', page: 'Kanji 37 · 41–51', kategori: 'Kanji Bab 37', icon: 'layers', accent: 'accent-indigo',
+        cards: [
+          kj('豪華［な］', [{ kanjiText:'豪華［な］', jp:'<ruby>豪華<rt>ごうか</rt></ruby>［な］', kana:'ごうか［な］', id:'mewah', romaji:'gouka [na]' }]),
+          kj('彫刻', [{ kanjiText:'彫刻', jp:'<ruby>彫刻<rt>ちょうこく</rt></ruby>', kana:'ちょうこく', id:'ukiran, pahatan', romaji:'choukoku' }]),
+          kj('言い伝え', [{ kanjiText:'言い伝え', jp:'<ruby>言<rt>い</rt></ruby>い<ruby>伝<rt>つた</rt></ruby>え', kana:'いいつたえ', id:'tradisi', romaji:'iitsutae' }]),
+          kj('眠ります', [{ kanjiText:'眠ります', jp:'<ruby>眠<rt>ねむ</rt></ruby>ります', kana:'ねむります', id:'tidur', romaji:'nemurimasu' }]),
+          kj('彫ります', [{ kanjiText:'彫ります', jp:'<ruby>彫<rt>ほ</rt></ruby>ります', kana:'ほります', id:'mengukir, memahat', romaji:'horimasu' }]),
+          kj('仲間', [{ kanjiText:'仲間', jp:'<ruby>仲間<rt>なかま</rt></ruby>', kana:'なかま', id:'teman', romaji:'nakama' }]),
+          kj('しかし', [{ kanjiText:'しかし', jp:'しかし', kana:'しかし', id:'tetapi', romaji:'shikashi' }]),
+          kj('その あと', [{ kanjiText:'その あと', jp:'その あと', kana:'その あと', id:'setelah itu, sesudah itu', romaji:'sono ato' }]),
+          kj('一生懸命', [{ kanjiText:'一生懸命', jp:'<ruby>一生懸命<rt>いっしょうけんめい</rt></ruby>', kana:'いっしょうけんめい', id:'sungguh-sungguh', romaji:'isshoukenmei' }]),
+          kj('ねずみ', [{ kanjiText:'ねずみ', jp:'ねずみ', kana:'ねずみ', id:'tikus', romaji:'nezumi' }]),
+          kj('一匹も いません。', [{ kanjiText:'一匹も いません。', jp:'<ruby>一匹<rt>いっぴき</rt></ruby>も いません。', kana:'いっぴきも いません。', id:'Tidak ada seekor pun.', romaji:'ippiki mo imasen.' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'kanji_38',
+    kind: 'kanji',
+    number: '38',
+    title: 'Kanji Pelajaran 38 (Bab 38)',
+    desc: '57 Kosakata ber-Kanji & Furigana Minna no Nihongo II Bab 38 dalam 3 sub-kelompok',
+    icon: 'hanko', accent: 'accent-sakura',
+    groups: [
+      {
+        id: 'k38_g1', title: '1. Kosakata Pokok (No. 1–32)', desc: '32 Kanji: 参加します, 育てます, 入院します, 退院します, 指輪, 電源, 原爆ドーム, 出雲大社, dll.', page: 'Kanji 38 · 1–32', kategori: 'Kanji Bab 38', icon: 'hanko', accent: 'accent-sakura',
+        cards: [
+          kj('参加します［旅行に～］', [{ kanjiText:'参加します［旅行に～］', jp:'<ruby>参加<rt>さんか</rt></ruby>します［<ruby>旅行<rt>りょこう</rt></ruby>に～］', kana:'さんかします［りょこうに～］', id:'mengikuti [perjalanan]', romaji:'sankashimasu [ryokou ni ~]' }]),
+          kj('育てます', [{ kanjiText:'育てます', jp:'<ruby>育<rt>そだ</rt></ruby>てます', kana:'そだてます', id:'memelihara', romaji:'sodatemasu' }]),
+          kj('運びます', [{ kanjiText:'運びます', jp:'<ruby>運<rt>はこ</rt></ruby>びます', kana:'はこびます', id:'mengangkut', romaji:'hakobimasu' }]),
+          kj('入院します', [{ kanjiText:'入院します', jp:'<ruby>入院<rt>にゅういん</rt></ruby>します', kana:'にゅういんします', id:'opname', romaji:'nyuuinshimasu' }]),
+          kj('退院します', [{ kanjiText:'退院します', jp:'<ruby>退院<rt>たいいん</rt></ruby>します', kana:'たいいんします', id:'keluar dari rumah sakit', romaji:'taiinshimasu' }]),
+          kj('入れます［電源を～］', [{ kanjiText:'入れます［電源を～］', jp:'<ruby>入<rt>い</rt></ruby>れます［<ruby>電源<rt>でんげん</rt></ruby>を～］', kana:'いれます［でんげんを～］', id:'menghidupkan [power supply]', romaji:'iremasu [dengen wo ~]' }]),
+          kj('切ります［電源を～］', [{ kanjiText:'切ります［電源を～］', jp:'<ruby>切<rt>き</rt></ruby>ります［<ruby>電源<rt>でんげん</rt></ruby>を～］', kana:'きります［でんげんを～］', id:'mematikan [power supply]', romaji:'kirimasu [dengen wo ~]' }]),
+          kj('掛けます［鍵を～］', [{ kanjiText:'掛けます［鍵を～］', jp:'<ruby>掛<rt>か</rt></ruby>けます［<ruby>鍵<rt>かぎ</rt></ruby>を～］', kana:'かけます［かぎを～］', id:'mengunci', romaji:'kakemasu [kagi wo ~]' }]),
+          kj('つきます［嘘を～］', [{ kanjiText:'つきます［嘘を～］', jp:'つきます［<ruby>嘘<rt>うそ</rt></ruby>を～］', kana:'つきます［うそを～］', id:'berbohong', romaji:'tsukimasu [uso wo ~]' }]),
+          kj('気持ちが いい', [{ kanjiText:'気持ちが いい', jp:'<ruby>気持<rt>きも</rt></ruby>ちが いい', kana:'きもちが いい', id:'rasa enak', romaji:'kimochi ga ii' }]),
+          kj('気持ちが 悪い', [{ kanjiText:'気持ちが 悪い', jp:'<ruby>気持<rt>きも</rt></ruby>ちが <ruby>悪<rt>わる</rt></ruby>い', kana:'きもちが わるい', id:'rasa tidak enak, jijik', romaji:'kimochi ga warui' }]),
+          kj('大きな ～', [{ kanjiText:'大きな ～', jp:'<ruby>大<rt>おお</rt></ruby>きな ～', kana:'おおきな ～', id:'besar ～', romaji:'ookina ~' }]),
+          kj('小さな ～', [{ kanjiText:'小さな ～', jp:'<ruby>小<rt>ちい</rt></ruby>さな ～', kana:'ちいさな ～', id:'kecil ～', romaji:'chiisana ~' }]),
+          kj('赤ちゃん', [{ kanjiText:'赤ちゃん', jp:'<ruby>赤<rt>あか</rt></ruby>ちゃん', kana:'あかちゃん', id:'bayi', romaji:'akachan' }]),
+          kj('小学校', [{ kanjiText:'小学校', jp:'<ruby>小学校<rt>しょうがっこう</rt></ruby>', kana:'しょうがっこう', id:'SD', romaji:'shougakkou' }]),
+          kj('中学校', [{ kanjiText:'中学校', jp:'<ruby>中学校<rt>ちゅうがっこう</rt></ruby>', kana:'ちゅうがっこう', id:'SMP', romaji:'chuugakkou' }]),
+          kj('駅前', [{ kanjiText:'駅前', jp:'<ruby>駅前<rt>えきまえ</rt></ruby>', kana:'えきまえ', id:'depan stasiun', romaji:'ekimae' }]),
+          kj('海岸', [{ kanjiText:'海岸', jp:'<ruby>海岸<rt>かいがん</rt></ruby>', kana:'かいがん', id:'pantai laut', romaji:'kaigan' }]),
+          kj('工場', [{ kanjiText:'工場', jp:'<ruby>工場<rt>こうじょう</rt></ruby>', kana:'こうじょう', id:'pabrik', romaji:'koujou' }]),
+          kj('村', [{ kanjiText:'村', jp:'<ruby>村<rt>むら</rt></ruby>', kana:'むら', id:'desa, kampung', romaji:'mura' }]),
+          kj('かな', [{ kanjiText:'かな', jp:'かな', kana:'かな', id:'huruf Hiragana, huruf Katakana', romaji:'kana' }]),
+          kj('指輪', [{ kanjiText:'指輪', jp:'<ruby>指輪<rt>ゆびわ</rt></ruby>', kana:'ゆびわ', id:'cincin', romaji:'yubiwa' }]),
+          kj('電源', [{ kanjiText:'電源', jp:'<ruby>電源<rt>でんげん</rt></ruby>', kana:'でんげん', id:'power supply', romaji:'dengen' }]),
+          kj('習慣', [{ kanjiText:'習慣', jp:'<ruby>習慣<rt>しゅうかん</rt></ruby>', kana:'しゅうかん', id:'kebiasaan', romaji:'shuukan' }]),
+          kj('健康', [{ kanjiText:'健康', jp:'<ruby>健康<rt>けんこう</rt></ruby>', kana:'けんこう', id:'kesehatan', romaji:'kenkou' }]),
+          kj('～製', [{ kanjiText:'～製', jp:'～<ruby>製<rt>せい</rt></ruby>', kana:'～せい', id:'buatan ～', romaji:'~sei' }]),
+          kj('おととし', [{ kanjiText:'おととし', jp:'おととし', kana:'おととし', id:'dua tahun yang lalu', romaji:'ototoshi' }]),
+          kj('［あ、］いけない。', [{ kanjiText:'［あ、］いけない。', jp:'［あ、］いけない。', kana:'［あ、］いけない。', id:'[Ah,] Salah! (memakai ketika bersalah atau gagal)', romaji:'[a,] ikenai.' }]),
+          kj('お先に［失礼します］。', [{ kanjiText:'お先に［失礼します］。', jp:'お<ruby>先<rt>さき</rt></ruby>に［<ruby>失礼<rt>しつれい</rt></ruby>します］。', kana:'おさきに［しつれいします］。', id:'[Permisi] duluan.', romaji:'osaki ni [shitsureishimasu].' }]),
+          kj('原爆ドーム', [{ kanjiText:'原爆ドーム', jp:'<ruby>原爆<rt>げんばく</rt></ruby>ドーム', kana:'げんばくドーム', id:'dome untuk memperingati kejatuhan bom atom di Hiroshima', romaji:'genbaku doomu' }]),
+          kj('出雲大社', [{ kanjiText:'出雲大社', jp:'<ruby>出雲大社<rt>いずもたいしゃ</rt></ruby>', kana:'いずもたいしゃ', id:'kuil yang ada di Kota Izumo, Prefektur Shimane', romaji:'izumotaisha' }]),
+          kj('チェンマイ', [{ kanjiText:'チェンマイ', jp:'チェンマイ', kana:'チェンマイ', id:'Chiang Mai (Thailand)', romaji:'chenmai' }])
+        ]
+      },
+      {
+        id: 'k38_g2', title: '2. Kosakata Percakapan 〈会話〉 (No. 33–41)', desc: '9 Kanji: 回覧, 研究室, 整理します, 方法, ―冊, 押します, dll.', page: 'Kanji 38 · 33–41', kategori: 'Kanji Bab 38', icon: 'layers', accent: 'accent-gold',
+        cards: [
+          kj('回覧', [{ kanjiText:'回覧', jp:'<ruby>回覧<rt>かいらん</rt></ruby>', kana:'かいらん', id:'edaran', romaji:'kairan' }]),
+          kj('研究室', [{ kanjiText:'研究室', jp:'<ruby>研究室<rt>けんきゅうしつ</rt></ruby>', kana:'けんきゅうしつ', id:'laboratorium / ruang dosen', romaji:'kenkyuushitsu' }]),
+          kj('きちんと', [{ kanjiText:'きちんと', jp:'きちんと', kana:'きちんと', id:'dengan rapi', romaji:'kichinto' }]),
+          kj('整理します', [{ kanjiText:'整理します', jp:'<ruby>整理<rt>せいり</rt></ruby>します', kana:'せいりします', id:'mengatur', romaji:'seirishimasu' }]),
+          kj('方法', [{ kanjiText:'方法', jp:'<ruby>方法<rt>ほうほう</rt></ruby>', kana:'ほうほう', id:'cara', romaji:'houhou' }]),
+          kj('～という', [{ kanjiText:'～という', jp:'～という', kana:'～という', id:'dengan judul ～', romaji:'~to iu' }]),
+          kj('―冊', [{ kanjiText:'―冊', jp:'―<ruby>冊<rt>さつ</rt></ruby>', kana:'―さつ', id:'- buah (kata bantu bilangan untuk menghitung buku, dll.)', romaji:'-satsu' }]),
+          kj('はんこ', [{ kanjiText:'はんこ', jp:'はんこ', kana:'はんこ', id:'cap', romaji:'hanko' }]),
+          kj('押します［はんこを～］', [{ kanjiText:'押します［はんこを～］', jp:'<ruby>押<rt>お</rt></ruby>します［はんこを～］', kana:'おします［はんこを～］', id:'mengecap', romaji:'oshimasu [hanko wo ~]' }])
+        ]
+      },
+      {
+        id: 'k38_g3', title: '3. Kosakata Bacaan 〈読み物〉 (No. 42–57)', desc: '16 Kanji: 双子, 姉妹, ５年生, 似て います, 性格, 優しい, 世話を します, 大好き［な］, 年齢, dll.', page: 'Kanji 38 · 42–57', kategori: 'Kanji Bab 38', icon: 'book', accent: 'accent-indigo',
+        cards: [
+          kj('双子', [{ kanjiText:'双子', jp:'<ruby>双子<rt>ふたご</rt></ruby>', kana:'ふたご', id:'anak kembar', romaji:'futago' }]),
+          kj('姉妹', [{ kanjiText:'姉妹', jp:'<ruby>姉妹<rt>しまい</rt></ruby>', kana:'しまい', id:'saudara perempuan', romaji:'shimai' }]),
+          kj('５年生', [{ kanjiText:'５年生', jp:'５<ruby>年生<rt>ねんせい</rt></ruby>', kana:'５ねんせい', id:'kelas lima', romaji:'gonensei' }]),
+          kj('似て います', [{ kanjiText:'似て います', jp:'<ruby>似<rt>に</rt></ruby>て います', kana:'にて います', id:'mirip', romaji:'nite imasu' }]),
+          kj('性格', [{ kanjiText:'性格', jp:'<ruby>性格<rt>せいかく</rt></ruby>', kana:'せいかく', id:'sifat', romaji:'seikaku' }]),
+          kj('おとなしい', [{ kanjiText:'おとなしい', jp:'おとなしい', kana:'おとなしい', id:'pendiam', romaji:'otonashii' }]),
+          kj('優しい', [{ kanjiText:'優しい', jp:'<ruby>優<rt>やさ</rt></ruby>しい', kana:'やさしい', id:'baik hati', romaji:'yasashii' }]),
+          kj('世話を します', [{ kanjiText:'世話を します', jp:'<ruby>世話<rt>せわ</rt></ruby>を します', kana:'せわを します', id:'merawat', romaji:'sewa wo shimasu' }]),
+          kj('時間が たちます', [{ kanjiText:'時間が たちます', jp:'<ruby>時間<rt>じかん</rt></ruby>が たちます', kana:'じかんが たちます', id:'waktu berlalu', romaji:'jikan ga tachimasu' }]),
+          kj('大好き［な］', [{ kanjiText:'大好き［な］', jp:'<ruby>大好<rt>だいす</rt></ruby>き［な］', kana:'だいすき［な］', id:'suka sekali', romaji:'daisuki [na]' }]),
+          kj('―点', [{ kanjiText:'―点', jp:'―<ruby>点<rt>てん</rt></ruby>', kana:'―てん', id:'- point', romaji:'-ten' }]),
+          kj('気が 強い', [{ kanjiText:'気が 強い', jp:'<ruby>気<rt>き</rt></ruby>が <ruby>強<rt>つよ</rt></ruby>い', kana:'きが つよい', id:'bersifat keras, galak', romaji:'ki ga tsuyoi' }]),
+          kj('けんかします', [{ kanjiText:'けんかします', jp:'けんかします', kana:'けんかします', id:'bertengkar', romaji:'kenkashimasu' }]),
+          kj('不思議［な］', [{ kanjiText:'不思議［な］', jp:'<ruby>不思議<rt>ふしぎ</rt></ruby>［な］', kana:'ふしぎ［な］', id:'aneh', romaji:'fushigi [na]' }]),
+          kj('年齢', [{ kanjiText:'年齢', jp:'<ruby>年齢<rt>ねんれい</rt></ruby>', kana:'ねんれい', id:'usia, umur', romaji:'nenrei' }]),
+          kj('しかた', [{ kanjiText:'しかた', jp:'しかた', kana:'しかた', id:'cara', romaji:'shikata' }])
+        ]
+      }
+    ]
+  },
+  /* ==================== KELOMPOK KANJI REFERENSI (BAB 31–36) ==================== */
+  {
+    id: 'ref_kanji_31',
+    kind: 'kanji',
+    isRef: true,
+    parentBab: '31',
+    number: '31',
+    title: 'Referensi Kanji Pelajaran 31 (専門 — Bidang Keilmuan)',
+    desc: '36 Kosakata Referensi Bidang Keilmuan Bab 31 ber-Kanji & Furigana dalam 2 sub-kelompok',
+    icon: 'scroll', accent: 'accent-indigo',
+    groups: [
+      {
+        id: 'rkj31_g1', title: '1. Ilmu Alam, Eksakta & Rekayasa/Teknik (No. 1–20)', desc: '20 Kanji Referensi: 医学, 薬学, 化学, 数学, 物理学, 工学, 建築学, dll.', page: 'Ref Kanji 31 · 1–20', kategori: 'Referensi Kanji 31', icon: 'hanko', accent: 'accent-indigo',
+        cards: [
+          kj('医学', [{ kanjiText:'医学', jp:'<ruby>医学<rt>いがく</rt></ruby>', kana:'いがく', id:'ilmu kedokteran', romaji:'igaku' }]),
+          kj('薬学', [{ kanjiText:'薬学', jp:'<ruby>薬学<rt>やくがく</rt></ruby>', kana:'やくがく', id:'ilmu farmasi', romaji:'yakugaku' }]),
+          kj('化学', [{ kanjiText:'化学', jp:'<ruby>化学<rt>かがく</rt></ruby>', kana:'かがく', id:'ilmu kimia', romaji:'kagaku' }]),
+          kj('生化学', [{ kanjiText:'生化学', jp:'<ruby>生化学<rt>せいかがく</rt></ruby>', kana:'せいかがく', id:'ilmu biokimia', romaji:'seikagaku' }]),
+          kj('生物学', [{ kanjiText:'生物学', jp:'<ruby>生物学<rt>せいぶつがく</rt></ruby>', kana:'せいぶつがく', id:'ilmu biologi', romaji:'seibutsugaku' }]),
+          kj('農学', [{ kanjiText:'農学', jp:'<ruby>農学<rt>のうがく</rt></ruby>', kana:'のうがく', id:'ilmu pertanian', romaji:'nougaku' }]),
+          kj('地学', [{ kanjiText:'地学', jp:'<ruby>地学<rt>ちがく</rt></ruby>', kana:'ちがく', id:'ilmu geologi', romaji:'chigaku' }]),
+          kj('地理学', [{ kanjiText:'地理学', jp:'<ruby>地理学<rt>ちりがく</rt></ruby>', kana:'ちりがく', id:'ilmu geografi', romaji:'chirigaku' }]),
+          kj('数学', [{ kanjiText:'数学', jp:'<ruby>数学<rt>すうがく</rt></ruby>', kana:'すうがく', id:'ilmu matematika', romaji:'suugaku' }]),
+          kj('物理学', [{ kanjiText:'物理学', jp:'<ruby>物理学<rt>ぶつりがく</rt></ruby>', kana:'ぶつりがく', id:'ilmu fisika', romaji:'butsurigaku' }]),
+          kj('工学', [{ kanjiText:'工学', jp:'<ruby>工学<rt>こうがく</rt></ruby>', kana:'こうがく', id:'ilmu teknik', romaji:'kougaku' }]),
+          kj('土木工学', [{ kanjiText:'土木工学', jp:'<ruby>土木工学<rt>どぼくこうがく</rt></ruby>', kana:'どぼくこうがく', id:'ilmu teknik sipil', romaji:'dobokukougaku' }]),
+          kj('電子工学', [{ kanjiText:'電子工学', jp:'<ruby>電子工学<rt>でんしこうがく</rt></ruby>', kana:'でんしこうがく', id:'ilmu teknik elektronik', romaji:'denshikougaku' }]),
+          kj('電気工学', [{ kanjiText:'電気工学', jp:'<ruby>電気工学<rt>でんきこうがく</rt></ruby>', kana:'でんきこうがく', id:'ilmu teknik listrik', romaji:'denkikougaku' }]),
+          kj('機械工学', [{ kanjiText:'機械工学', jp:'<ruby>機械工学<rt>きかいこうがく</rt></ruby>', kana:'きかいこうがく', id:'ilmu teknik mesin', romaji:'kikaikougaku' }]),
+          kj('コンピューター工学', [{ kanjiText:'コンピューター工学', jp:'コンピューター<ruby>工学<rt>こうがく</rt></ruby>', kana:'コンピューターこうがく', id:'ilmu informatika', romaji:'konpyuutaa kougaku' }]),
+          kj('遺伝子工学', [{ kanjiText:'遺伝子工学', jp:'<ruby>遺伝子工学<rt>いでんしこうがく</rt></ruby>', kana:'いでんしこうがく', id:'ilmu genetika', romaji:'idenshikougaku' }]),
+          kj('建築学', [{ kanjiText:'建築学', jp:'<ruby>建築学<rt>けんちくがく</rt></ruby>', kana:'けんちくがく', id:'ilmu arsitektur', romaji:'kenchikugaku' }]),
+          kj('天文学', [{ kanjiText:'天文学', jp:'<ruby>天文学<rt>てんもんがく</rt></ruby>', kana:'てんもんがく', id:'ilmu astronomi', romaji:'tenmongaku' }]),
+          kj('環境科学', [{ kanjiText:'環境科学', jp:'<ruby>環境科学<rt>かんきょうかがく</rt></ruby>', kana:'かんきょうかがく', id:'ilmu tata lingkungan', romaji:'kankyoukagaku' }])
+        ]
+      },
+      {
+        id: 'rkj31_g2', title: '2. Ilmu Sosial, Humaniora & Seni (No. 21–36)', desc: '16 Kanji Referensi: 政治学, 法律学, 経済学, 社会学, 文学, 心理学, 芸術, dll.', page: 'Ref Kanji 31 · 21–36', kategori: 'Referensi Kanji 31', icon: 'book', accent: 'accent-gold',
+        cards: [
+          kj('政治学', [{ kanjiText:'政治学', jp:'<ruby>政治学<rt>せいじがく</rt></ruby>', kana:'せいじがく', id:'ilmu politik', romaji:'seijigaku' }]),
+          kj('国際関係学', [{ kanjiText:'国際関係学', jp:'<ruby>国際関係学<rt>こくさいかんけいがく</rt></ruby>', kana:'こくさいかんけいがく', id:'ilmu hubungan internasional', romaji:'kokusaikankeigaku' }]),
+          kj('法律学', [{ kanjiText:'法律学', jp:'<ruby>法律学<rt>ほうりつがく</rt></ruby>', kana:'ほうりつがく', id:'ilmu hukum', romaji:'houritsugaku' }]),
+          kj('経済学', [{ kanjiText:'経済学', jp:'<ruby>経済学<rt>けいざいがく</rt></ruby>', kana:'けいざいがく', id:'ilmu ekonomi', romaji:'keizaigaku' }]),
+          kj('経営学', [{ kanjiText:'経営学', jp:'<ruby>経営学<rt>けいえいがく</rt></ruby>', kana:'けいえいがく', id:'ilmu manajemen bisnis', romaji:'keieigaku' }]),
+          kj('社会学', [{ kanjiText:'社会学', jp:'<ruby>社会学<rt>しゃかいがく</rt></ruby>', kana:'しゃかいがく', id:'ilmu sosial', romaji:'shakaigaku' }]),
+          kj('教育学', [{ kanjiText:'教育学', jp:'<ruby>教育学<rt>きょういくがく</rt></ruby>', kana:'きょういくがく', id:'ilmu pendidikan', romaji:'kyouikugaku' }]),
+          kj('文学', [{ kanjiText:'文学', jp:'<ruby>文学<rt>ぶんがく</rt></ruby>', kana:'ぶんがく', id:'ilmu sastra', romaji:'bungaku' }]),
+          kj('言語学', [{ kanjiText:'言語学', jp:'<ruby>言語学<rt>げんごがく</rt></ruby>', kana:'げんごがく', id:'ilmu linguistik', romaji:'gengogaku' }]),
+          kj('心理学', [{ kanjiText:'心理学', jp:'<ruby>心理学<rt>しんりがく</rt></ruby>', kana:'しんりがく', id:'ilmu psikologi', romaji:'shinrigaku' }]),
+          kj('哲学', [{ kanjiText:'哲学', jp:'<ruby>哲学<rt>てつがく</rt></ruby>', kana:'てつがく', id:'ilmu filsafat', romaji:'tetsugaku' }]),
+          kj('宗教学', [{ kanjiText:'宗教学', jp:'<ruby>宗教学<rt>しゅうきょうがく</rt></ruby>', kana:'しゅうきょうがく', id:'ilmu teologi', romaji:'shuukyougaku' }]),
+          kj('芸術', [{ kanjiText:'芸術', jp:'<ruby>芸術<rt>げいじゅつ</rt></ruby>', kana:'げいじゅつ', id:'ilmu seni', romaji:'geijutsu' }]),
+          kj('美術', [{ kanjiText:'美術', jp:'<ruby>美術<rt>びじゅつ</rt></ruby>', kana:'びじゅつ', id:'ilmu seni murni', romaji:'bijutsu' }]),
+          kj('音楽', [{ kanjiText:'音楽', jp:'<ruby>音楽<rt>おんがく</rt></ruby>', kana:'おんがく', id:'ilmu seni musik', romaji:'ongaku' }]),
+          kj('体育学', [{ kanjiText:'体育学', jp:'<ruby>体育学<rt>たいいくがく</rt></ruby>', kana:'たいいくがく', id:'ilmu pendidikan jasmani', romaji:'taiikugaku' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kanji_32',
+    kind: 'kanji',
+    isRef: true,
+    parentBab: '32',
+    number: '32',
+    title: 'Referensi Kanji Pelajaran 32 (天気予報 — Prakiraan Cuaca)',
+    desc: '37 Kosakata Referensi Prakiraan Cuaca Bab 32 ber-Kanji & Furigana dalam 3 sub-kelompok',
+    icon: 'scroll', accent: 'accent-sakura',
+    groups: [
+      {
+        id: 'rkj32_g1', title: '1. Simbol & Kondisi Cuaca (No. 1–7)', desc: '7 Kanji Referensi: 晴れ, 曇り, 雨, 雪, 晴れのち曇り, 曇り時々雨, 曇り所によって雨', page: 'Ref Kanji 32 · 1–7', kategori: 'Referensi Kanji 32', icon: 'target', accent: 'accent-sakura',
+        cards: [
+          kj('晴れ', [{ kanjiText:'晴れ', jp:'<ruby>晴<rt>は</rt></ruby>れ', kana:'はれ', id:'cerah', romaji:'hare' }]),
+          kj('曇り', [{ kanjiText:'曇り', jp:'<ruby>曇<rt>くも</rt></ruby>り', kana:'くもり', id:'mendung/berawan', romaji:'kumori' }]),
+          kj('雨', [{ kanjiText:'雨', jp:'<ruby>雨<rt>あめ</rt></ruby>', kana:'あめ', id:'hujan', romaji:'ame' }]),
+          kj('雪', [{ kanjiText:'雪', jp:'<ruby>雪<rt>ゆき</rt></ruby>', kana:'ゆき', id:'salju', romaji:'yuki' }]),
+          kj('晴れのち曇り', [{ kanjiText:'晴れのち曇り', jp:'<ruby>晴<rt>は</rt></ruby>れのち<ruby>曇<rt>くも</rt></ruby>り', kana:'はれのちくもり', id:'cerah kemudian berawan', romaji:'hare nochi kumori' }]),
+          kj('曇り時々雨', [{ kanjiText:'曇り時々雨', jp:'<ruby>曇<rt>くも</rt></ruby>り<ruby>時々雨<rt>ときどきあめ</rt></ruby>', kana:'くもりときどきあめ', id:'berawan kadang-kadang hujan', romaji:'kumori tokidoki ame' }]),
+          kj('曇り所によって雨', [{ kanjiText:'曇り所によって雨', jp:'<ruby>曇<rt>くも</rt></ruby>り<ruby>所<rt>ところ</rt></ruby>によって<ruby>雨<rt>あめ</rt></ruby>', kana:'くもりところによってあめ', id:'berawan dan hujan di beberapa daerah', romaji:'kumori tokoro ni yotte ame' }])
+        ]
+      },
+      {
+        id: 'rkj32_g2', title: '2. Istilah Suhu, Probabilitas & Fenomena Alam (No. 8–19)', desc: '12 Kanji Referensi: 降水確率, 最高気温, 最低気温, にわか雨／夕立, 雷, 台風, 虹, 湿度, 蒸し暑い, dll.', page: 'Ref Kanji 32 · 8–19', kategori: 'Referensi Kanji 32', icon: 'hanko', accent: 'accent-gold',
+        cards: [
+          kj('降水確率', [{ kanjiText:'降水確率', jp:'<ruby>降水確率<rt>こうすいかくりつ</rt></ruby>', kana:'こうすいかくりつ', id:'kemungkinan turun hujan', romaji:'kousuikakuritsu' }]),
+          kj('最高気温', [{ kanjiText:'最高気温', jp:'<ruby>最高気温<rt>さいこうきおん</rt></ruby>', kana:'さいこうきおん', id:'suhu udara tertinggi', romaji:'saikou kion' }]),
+          kj('最低気温', [{ kanjiText:'最低気温', jp:'<ruby>最低気温<rt>さいていきおん</rt></ruby>', kana:'さいていきおん', id:'suhu udara terendah', romaji:'saitei kion' }]),
+          kj('にわか雨／夕立', [{ kanjiText:'にわか雨／夕立', jp:'にわか<ruby>雨<rt>あめ</rt></ruby>／<ruby>夕立<rt>ゆうだち</rt></ruby>', kana:'にわかあめ／ゆうだち', id:'hujan sebentar', romaji:'niwakaame / yuudachi' }]),
+          kj('雷', [{ kanjiText:'雷', jp:'<ruby>雷<rt>かみなり</rt></ruby>', kana:'かみなり', id:'guntur', romaji:'kaminari' }]),
+          kj('台風', [{ kanjiText:'台風', jp:'<ruby>台風<rt>たいふう</rt></ruby>', kana:'たいふう', id:'angin topan', romaji:'taifuu' }]),
+          kj('虹', [{ kanjiText:'虹', jp:'<ruby>虹<rt>にじ</rt></ruby>', kana:'にじ', id:'pelangi', romaji:'niji' }]),
+          kj('風', [{ kanjiText:'風', jp:'<ruby>風<rt>かぜ</rt></ruby>', kana:'かぜ', id:'angin', romaji:'kaze' }]),
+          kj('雲', [{ kanjiText:'雲', jp:'<ruby>雲<rt>くも</rt></ruby>', kana:'くも', id:'awan', romaji:'kumo' }]),
+          kj('湿度', [{ kanjiText:'湿度', jp:'<ruby>湿度<rt>しつど</rt></ruby>', kana:'しつど', id:'kelembaban', romaji:'shitsudo' }]),
+          kj('蒸し暑い', [{ kanjiText:'蒸し暑い', jp:'<ruby>蒸<rt>む</rt></ruby>し<ruby>暑<rt>あつ</rt></ruby>い', kana:'むしあつい', id:'panas lembab', romaji:'mushiatsui' }]),
+          kj('さわやか［な］', [{ kanjiText:'さわやか［な］', jp:'さわやか［な］', kana:'さわやか［な］', id:'segar', romaji:'sawayaka [na]' }])
+        ]
+      },
+      {
+        id: 'rkj32_g3', title: '3. Nama Daerah & Kota pada Peta Cuaca Jepang (No. 20–37)', desc: '18 Kanji Referensi: 北海道地方, 札幌, 東北地方, 関東地方, 東京, 名古屋, 大阪, 那覇, dll.', page: 'Ref Kanji 32 · 20–37', kategori: 'Referensi Kanji 32', icon: 'layers', accent: 'accent-indigo',
+        cards: [
+          kj('北海道地方', [{ kanjiText:'北海道地方', jp:'<ruby>北海道地方<rt>ほっかいどうちほう</rt></ruby>', kana:'ほっかいどうちほう', id:'daerah Hokkaido', romaji:'hokkaidoo chihou' }]),
+          kj('札幌', [{ kanjiText:'札幌', jp:'<ruby>札幌<rt>さっぽろ</rt></ruby>', kana:'さっぽろ', id:'Sapporo', romaji:'sapporo' }]),
+          kj('東北地方', [{ kanjiText:'東北地方', jp:'<ruby>東北地方<rt>とうほくちほう</rt></ruby>', kana:'とうほくちほう', id:'daerah Tohoku', romaji:'touhoku chihou' }]),
+          kj('仙台', [{ kanjiText:'仙台', jp:'<ruby>仙台<rt>せんだい</rt></ruby>', kana:'せんだい', id:'Sendai', romaji:'sendai' }]),
+          kj('関東地方', [{ kanjiText:'関東地方', jp:'<ruby>関東地方<rt>かんとうちほう</rt></ruby>', kana:'かんとうちほう', id:'daerah Kanto', romaji:'kantou chihou' }]),
+          kj('東京', [{ kanjiText:'東京', jp:'<ruby>東京<rt>とうきょう</rt></ruby>', kana:'とうきょう', id:'Tokyo', romaji:'toukyou' }]),
+          kj('中部地方', [{ kanjiText:'中部地方', jp:'<ruby>中部地方<rt>ちゅうぶちほう</rt></ruby>', kana:'ちゅうぶちほう', id:'daerah Chubu', romaji:'chuubu chihou' }]),
+          kj('長野', [{ kanjiText:'長野', jp:'<ruby>長野<rt>ながの</rt></ruby>', kana:'ながの', id:'Nagano', romaji:'nagano' }]),
+          kj('名古屋', [{ kanjiText:'名古屋', jp:'<ruby>名古屋<rt>なごや</rt></ruby>', kana:'なごや', id:'Nagoya', romaji:'nagoya' }]),
+          kj('近畿地方', [{ kanjiText:'近畿地方', jp:'<ruby>近畿地方<rt>きんきちほう</rt></ruby>', kana:'きんきちほう', id:'daerah Kinki', romaji:'kinki chihou' }]),
+          kj('大阪', [{ kanjiText:'大阪', jp:'<ruby>大阪<rt>おおさか</rt></ruby>', kana:'おおさか', id:'Osaka', romaji:'oosaka' }]),
+          kj('中国地方', [{ kanjiText:'中国地方', jp:'<ruby>中国地方<rt>ちゅうごくちほう</rt></ruby>', kana:'ちゅうごくちほう', id:'daerah Chugoku', romaji:'chuugoku chihou' }]),
+          kj('松江', [{ kanjiText:'松江', jp:'<ruby>松江<rt>まつえ</rt></ruby>', kana:'まつえ', id:'Matsue', romaji:'matsue' }]),
+          kj('四国地方', [{ kanjiText:'四国地方', jp:'<ruby>四国地方<rt>しこくちほう</rt></ruby>', kana:'しこくちほう', id:'daerah Shikoku', romaji:'shikoku chihou' }]),
+          kj('高知', [{ kanjiText:'高知', jp:'<ruby>高知<rt>こうち</rt></ruby>', kana:'こうち', id:'Kochi', romaji:'kouchi' }]),
+          kj('九州地方', [{ kanjiText:'九州地方', jp:'<ruby>九州地方<rt>きゅうしゅうちほう</rt></ruby>', kana:'きゅうしゅうちほう', id:'daerah Kyushu', romaji:'kyuushuu chihou' }]),
+          kj('鹿児島', [{ kanjiText:'鹿児島', jp:'<ruby>鹿児島<rt>かごしま</rt></ruby>', kana:'かごしま', id:'Kagoshima', romaji:'kagoshima' }]),
+          kj('那覇', [{ kanjiText:'那覇', jp:'<ruby>那覇<rt>なは</rt></ruby>', kana:'なは', id:'Naha', romaji:'naha' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kanji_33',
+    kind: 'kanji',
+    isRef: true,
+    parentBab: '33',
+    number: '33',
+    title: 'Referensi Kanji Pelajaran 33 (標識 — Tanda)',
+    desc: '16 Kosakata Referensi Tanda Bab 33 ber-Kanji & Furigana dalam 4 sub-kelompok',
+    icon: 'scroll', accent: 'accent-indigo',
+    groups: [
+      {
+        id: 'rkj33_g1', title: '1. Tanda Toko / Pelayanan (No. 1–4)', desc: '4 Kanji Referensi: 営業中, 準備中, 閉店, 定休日', page: 'Ref Kanji 33 · 1–4', kategori: 'Referensi Kanji 33', icon: 'hanko', accent: 'accent-indigo',
+        cards: [
+          kj('営業中', [{ kanjiText:'営業中', jp:'<ruby>営業中<rt>えいぎょうちゅう</rt></ruby>', kana:'えいぎょうちゅう', id:'Buka', romaji:'eigyouchuu' }]),
+          kj('準備中', [{ kanjiText:'準備中', jp:'<ruby>準備中<rt>じゅんびちゅう</rt></ruby>', kana:'じゅんびちゅう', id:'Dalam Persiapan', romaji:'junbichuu' }]),
+          kj('閉店', [{ kanjiText:'閉店', jp:'<ruby>閉店<rt>へいてん</rt></ruby>', kana:'へいてん', id:'Tutup', romaji:'heiten' }]),
+          kj('定休日', [{ kanjiText:'定休日', jp:'<ruby>定休日<rt>ていきゅうび</rt></ruby>', kana:'ていきゅうび', id:'Hari Libur', romaji:'teikyuubi' }])
+        ]
+      },
+      {
+        id: 'rkj33_g2', title: '2. Fasilitas & Tempat Duduk (No. 5–8)', desc: '4 Kanji Referensi: 化粧室, 禁煙席, 予約席, 非常口', page: 'Ref Kanji 33 · 5–8', kategori: 'Referensi Kanji 33', icon: 'layers', accent: 'accent-gold',
+        cards: [
+          kj('化粧室', [{ kanjiText:'化粧室', jp:'<ruby>化粧室<rt>けしょうしつ</rt></ruby>', kana:'けしょうしつ', id:'Kamar kecil/Toilet/WC', romaji:'keshoushitsu' }]),
+          kj('禁煙席', [{ kanjiText:'禁煙席', jp:'<ruby>禁煙席<rt>きんえんせき</rt></ruby>', kana:'きんえんせき', id:'Tempat duduk bebas rokok', romaji:'kinenseki' }]),
+          kj('予約席', [{ kanjiText:'予約席', jp:'<ruby>予約席<rt>よやくせき</rt></ruby>', kana:'よやくせき', id:'Tempat duduk yang telah dipesan', romaji:'yoyakuseki' }]),
+          kj('非常口', [{ kanjiText:'非常口', jp:'<ruby>非常口<rt>ひじょうぐち</rt></ruby>', kana:'ひじょうぐち', id:'Pintu darurat', romaji:'hijouguchi' }])
+        ]
+      },
+      {
+        id: 'rkj33_g3', title: '3. Tanda Peringatan & Keselamatan (No. 9–12)', desc: '4 Kanji Referensi: 火気厳禁, 割れもの注意, 運転初心者注意, 工事中', page: 'Ref Kanji 33 · 9–12', kategori: 'Referensi Kanji 33', icon: 'shield', accent: 'accent-sakura',
+        cards: [
+          kj('火気厳禁', [{ kanjiText:'火気厳禁', jp:'<ruby>火気厳禁<rt>かきげんきん</rt></ruby>', kana:'かきげんきん', id:'Mudah terbakar', romaji:'kakigenkin' }]),
+          kj('割れもの注意', [{ kanjiText:'割れもの注意', jp:'<ruby>割<rt>わ</rt></ruby>れもの<ruby>注意<rt>ちゅうい</rt></ruby>', kana:'われものちゅうい', id:'Hati-hati barang pecah belah', romaji:'waremonochuui' }]),
+          kj('運転初心者注意', [{ kanjiText:'運転初心者注意', jp:'<ruby>運転初心者注意<rt>うんてんしょしんしゃちゅうい</rt></ruby>', kana:'うんてんしょしんしゃちゅうい', id:'Tanda bagi pengemudi yang baru mendapatkan SIM', romaji:'untenshoshinshachuui' }]),
+          kj('工事中', [{ kanjiText:'工事中', jp:'<ruby>工事中<rt>こうじちゅう</rt></ruby>', kana:'こうじちゅう', id:'Sedang konstruksi', romaji:'koujichuu' }])
+        ]
+      },
+      {
+        id: 'rkj33_g4', title: '4. Tanda Petunjuk Perawatan Pakaian (No. 13–16)', desc: '4 Kanji Referensi: 塩素系漂白剤不可, 手洗い, アイロン（低温）, ドライクリーニング', page: 'Ref Kanji 33 · 13–16', kategori: 'Referensi Kanji 33', icon: 'target', accent: 'accent-indigo',
+        cards: [
+          kj('塩素系漂白剤不可', [{ kanjiText:'塩素系漂白剤不可', jp:'<ruby>塩素系漂白剤不可<rt>えんそけいひょうはくざいふか</rt></ruby>', kana:'えんそけいひょうはくざいふか', id:'Jangan gunakan pemutih', romaji:'ensokeihyouhakuzai fuka' }]),
+          kj('手洗い', [{ kanjiText:'手洗い', jp:'<ruby>手洗<rt>てあら</rt></ruby>い', kana:'てあらい', id:'Cuci dengan tangan', romaji:'tearai' }]),
+          kj('アイロン（低温）', [{ kanjiText:'アイロン（低温）', jp:'アイロン（<ruby>低温<rt>ていおん</rt></ruby>）', kana:'アイロン（ていおん）', id:'Harus disetrika dalam suhu rendah', romaji:'airon (teion)' }]),
+          kj('ドライクリーニング', [{ kanjiText:'ドライクリーニング', jp:'ドライクリーニング', kana:'ドライクリーニング', id:'Hanya untuk di-dry cleaning', romaji:'dorai kuriiningu' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kanji_34',
+    kind: 'kanji',
+    isRef: true,
+    parentBab: '34',
+    number: '34',
+    title: 'Referensi Kanji Pelajaran 34 (料理 — Masakan)',
+    desc: '43 Kosakata Referensi Masakan Bab 34 ber-Kanji & Furigana dalam 3 sub-kelompok',
+    icon: 'scroll', accent: 'accent-gold',
+    groups: [
+      {
+        id: 'rkj34_g1', title: '1. Cara Memasak / Mengolah (No. 1–10)', desc: '10 Kanji Referensi: 煮る, 焼く, 揚げる, いためる, ゆでる, 蒸す, 炊く, むく, 刻む, かき混ぜる', page: 'Ref Kanji 34 · 1–10', kategori: 'Referensi Kanji 34', icon: 'hanko', accent: 'accent-gold',
+        cards: [
+          kj('煮る', [{ kanjiText:'煮る', jp:'<ruby>煮<rt>に</rt></ruby>る', kana:'にる', id:'merebus', romaji:'niru' }]),
+          kj('焼く', [{ kanjiText:'焼く', jp:'<ruby>焼<rt>や</rt></ruby>く', kana:'やく', id:'membakar, memanggang', romaji:'yaku' }]),
+          kj('揚げる', [{ kanjiText:'揚げる', jp:'<ruby>揚<rt>あ</rt></ruby>げる', kana:'あげる', id:'menggoreng', romaji:'ageru' }]),
+          kj('いためる', [{ kanjiText:'いためる', jp:'いためる', kana:'いためる', id:'menumis', romaji:'itameru' }]),
+          kj('ゆでる', [{ kanjiText:'ゆでる', jp:'ゆでる', kana:'ゆでる', id:'memasak, merebus', romaji:'yuderu' }]),
+          kj('蒸す', [{ kanjiText:'蒸す', jp:'<ruby>蒸<rt>む</rt></ruby>す', kana:'むす', id:'mengukus', romaji:'musu' }]),
+          kj('炊く', [{ kanjiText:'炊く', jp:'<ruby>炊<rt>た</rt></ruby>く', kana:'たく', id:'memasak nasi / menanak nasi', romaji:'taku' }]),
+          kj('むく', [{ kanjiText:'むく', jp:'むく', kana:'むく', id:'mengupas', romaji:'muku' }]),
+          kj('刻む', [{ kanjiText:'刻む', jp:'<ruby>刻<rt>きざ</rt></ruby>む', kana:'きざむ', id:'mencincang', romaji:'kizamu' }]),
+          kj('かき混ぜる', [{ kanjiText:'かき混ぜる', jp:'かき<ruby>混<rt>ま</rt></ruby>ぜる', kana:'かきまぜる', id:'mengaduk, mencampur', romaji:'kakimazeru' }])
+        ]
+      },
+      {
+        id: 'rkj34_g2', title: '2. Bumbu-Bumbu Dapur (No. 11–25)', desc: '15 Kanji Referensi: しょうゆ, 砂糖, 塩, 酢, みそ, 油, わさび, カレー粉, dll.', page: 'Ref Kanji 34 · 11–25', kategori: 'Referensi Kanji 34', icon: 'layers', accent: 'accent-sakura',
+        cards: [
+          kj('しょうゆ', [{ kanjiText:'しょうゆ', jp:'しょうゆ', kana:'しょうゆ', id:'kecap asin', romaji:'shouyu' }]),
+          kj('砂糖', [{ kanjiText:'砂糖', jp:'<ruby>砂糖<rt>さとう</rt></ruby>', kana:'さとう', id:'gula', romaji:'satou' }]),
+          kj('塩', [{ kanjiText:'塩', jp:'<ruby>塩<rt>しお</rt></ruby>', kana:'しお', id:'garam', romaji:'shio' }]),
+          kj('酢', [{ kanjiText:'酢', jp:'<ruby>酢<rt>す</rt></ruby>', kana:'す', id:'cuka', romaji:'su' }]),
+          kj('みそ', [{ kanjiText:'みそ', jp:'みそ', kana:'みそ', id:'miso, tauco', romaji:'miso' }]),
+          kj('油', [{ kanjiText:'油', jp:'<ruby>油<rt>あぶら</rt></ruby>', kana:'あぶら', id:'minyak, lemak', romaji:'abura' }]),
+          kj('ソース', [{ kanjiText:'ソース', jp:'ソース', kana:'ソース', id:'saus Inggris', romaji:'soosu' }]),
+          kj('マヨネーズ', [{ kanjiText:'マヨネーズ', jp:'マヨネーズ', kana:'マヨネーズ', id:'mayonese', romaji:'mayoneezu' }]),
+          kj('ケチャップ', [{ kanjiText:'ケチャップ', jp:'ケチャップ', kana:'ケチャップ', id:'saus tomat', romaji:'kechappu' }]),
+          kj('からし（マスタード）', [{ kanjiText:'からし（マスタード）', jp:'からし（マスタード）', kana:'からし（マスタード）', id:'mustard', romaji:'karashi (masutaado)' }]),
+          kj('こしょう', [{ kanjiText:'こしょう', jp:'こしょう', kana:'こしょう', id:'merica', romaji:'koshou' }]),
+          kj('とうがらし', [{ kanjiText:'とうがらし', jp:'とうがらし', kana:'とうがらし', id:'cabai', romaji:'tougarashi' }]),
+          kj('しょうが', [{ kanjiText:'しょうが', jp:'しょうが', kana:'しょうが', id:'jahe', romaji:'shouga' }]),
+          kj('わさび', [{ kanjiText:'わさび', jp:'わさび', kana:'わさび', id:'wasabi (lobak hijau Jepang)', romaji:'wasabi' }]),
+          kj('カレー粉', [{ kanjiText:'カレー粉', jp:'カレー<ruby>粉<rt>こ</rt></ruby>', kana:'カレーこ', id:'tepung kare', romaji:'kareeko' }])
+        ]
+      },
+      {
+        id: 'rkj34_g3', title: '3. Peralatan Dapur (No. 26–43)', desc: '18 Kanji Referensi: なべ, やかん, ふた, まな板, 包丁, 炊飯器, 缶切り, 栓抜き, ガス台, 流し［台］, 換気扇, dll.', page: 'Ref Kanji 34 · 26–43', kategori: 'Referensi Kanji 34', icon: 'target', accent: 'accent-indigo',
+        cards: [
+          kj('なべ', [{ kanjiText:'なべ', jp:'なべ', kana:'なべ', id:'panci', romaji:'nabe' }]),
+          kj('やかん', [{ kanjiText:'やかん', jp:'やかん', id:'ceret, ketel', romaji:'yakan' }]),
+          kj('ふた', [{ kanjiText:'ふた', jp:'ふた', kana:'ふた', id:'tutup', romaji:'futa' }]),
+          kj('おたま', [{ kanjiText:'おたま', jp:'おたま', kana:'おたま', id:'sendok sayur', romaji:'otama' }]),
+          kj('まな板', [{ kanjiText:'まな板', jp:'まな<ruby>板<rt>いた</rt></ruby>', kana:'まないた', id:'talenan', romaji:'manaita' }]),
+          kj('包丁', [{ kanjiText:'包丁', jp:'<ruby>包丁<rt>ほうちょう</rt></ruby>', kana:'ほうちょう', id:'pisau', romaji:'houchou' }]),
+          kj('ふきん', [{ kanjiText:'ふきん', jp:'ふきん', kana:'ふきん', id:'kain lap', romaji:'fukin' }]),
+          kj('フライパン', [{ kanjiText:'フライパン', jp:'フライパン', kana:'フライパン', id:'penggorengan', romaji:'furaipan' }]),
+          kj('電子オーブンレンジ', [{ kanjiText:'電子オーブンレンジ', jp:'<ruby>電子<rt>でんし</rt></ruby>オーブンレンジ', kana:'でんしオーブンレンジ', id:'microwave oven', romaji:'denshi oobun renji' }]),
+          kj('炊飯器', [{ kanjiText:'炊飯器', jp:'<ruby>炊飯器<rt>すいはんき</rt></ruby>', kana:'すいはんき', id:'rice cooker', romaji:'suihanki' }]),
+          kj('しゃもじ', [{ kanjiText:'しゃもじ', jp:'しゃもじ', kana:'しゃもじ', id:'sendok nasi', romaji:'shamoji' }]),
+          kj('缶切り', [{ kanjiText:'缶切り', jp:'<ruby>缶切<rt>かんき</rt></ruby>り', kana:'かんきり', id:'pembuka kaleng', romaji:'kankiri' }]),
+          kj('栓抜き', [{ kanjiText:'栓抜き', jp:'<ruby>栓抜<rt>せんぬ</rt></ruby>き', kana:'せんぬき', id:'pembuka botol', romaji:'sennuki' }]),
+          kj('ざる', [{ kanjiText:'ざる', jp:'ざる', kana:'ざる', id:'saringan', romaji:'zaru' }]),
+          kj('ポット', [{ kanjiText:'ポット', jp:'ポット', kana:'ポット', id:'termos', romaji:'potto' }]),
+          kj('ガス台', [{ kanjiText:'ガス台', jp:'ガス<ruby>台<rt>だい</rt></ruby>', kana:'ガスだい', id:'kompor gas', romaji:'gasudai' }]),
+          kj('流し［台］', [{ kanjiText:'流し［台］', jp:'<ruby>流<rt>なが</rt></ruby>し［<ruby>台<rt>だい</rt></ruby>］', kana:'ながし［だい］', id:'bak cuci piring', romaji:'nagashi [dai]' }]),
+          kj('換気扇', [{ kanjiText:'換気扇', jp:'<ruby>換気扇<rt>かんきせん</rt></ruby>', kana:'かんきせん', id:'kipas ventilasi', romaji:'kankisen' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kanji_35',
+    kind: 'kanji',
+    isRef: true,
+    parentBab: '35',
+    number: '35',
+    title: 'Referensi Kanji Pelajaran 35 (ことわざ — Pepatah)',
+    desc: '6 Pepatah Referensi Bab 35 ber-Kanji & Furigana lengkap dengan arti & makna peribahasa',
+    icon: 'scroll', accent: 'accent-sakura',
+    groups: [
+      {
+        id: 'rkj35_g1', title: '1. Pepatah Klasik Jepang (No. 1–6)', desc: '6 Kanji Referensi: 住めば都, 三人寄れば文殊の知恵, ちりも積もれば山となる, dll.', page: 'Ref Kanji 35 · 1–6', kategori: 'Referensi Kanji 35', icon: 'book', accent: 'accent-sakura',
+        cards: [
+          kj('住めば都', [{ kanjiText:'住めば都', jp:'<ruby>住<rt>す</rt></ruby>めば<ruby>都<rt>みやこ</rt></ruby>', kana:'すめば みやこ', id:'Alah bisa karena biasa (didiami lama terasa tempat terbaik)', romaji:'sumeba miyako' }]),
+          kj('三人寄れば文殊の知恵', [{ kanjiText:'三人寄れば文殊の知恵', jp:'<ruby>三人寄<rt>さんにんよ</rt></ruby>れば<ruby>文殊<rt>もんじゅ</rt></ruby>の<ruby>知恵<rt>ちえ</rt></ruby>', kana:'さんにん よれば もんじゅの ちえ', id:'Dua kepala lebih baik daripada satu (tiga orang berunding dapat ide bagus)', romaji:'sannin yoreba monju no chie' }]),
+          kj('立てばしゃくやく、座ればぼたん、歩く姿はゆりの花', [{ kanjiText:'立てばしゃくやく、座ればぼたん、歩く姿はゆりの花', jp:'<ruby>立<rt>た</rt></ruby>てばしゃくやく、<ruby>座<rt>すわ</rt></ruby>ればぼたん、<ruby>歩<rt>ある</rt></ruby>く<ruby>姿<rt>すがた</rt></ruby>はゆりの<ruby>花<rt>はな</rt></ruby>', kana:'たてば しゃくやく、すわれば ぼたん、あるく すがたは ゆりの はな', id:'Cantiknya bagaikan bulan (perumpamaan orang cantik)', romaji:'tateba shakuyaku, suwareba botan, aruku sugata wa yuri no hana' }]),
+          kj('ちりも積もれば山となる', [{ kanjiText:'ちりも積もれば山となる', jp:'ちりも<ruby>積<rt>つ</rt></ruby>もれば<ruby>山<rt>やま</rt></ruby>となる', kana:'ちりも つもれば やまと なる', id:'Sedikit demi sedikit, lama-lama menjadi bukit', romaji:'chiri mo tsumoreba yama to naru' }]),
+          kj('うわさをすれば影', [{ kanjiText:'うわさをすれば影', jp:'うわさをすれば<ruby>影<rt>かげ</rt></ruby>', kana:'うわさを すれば かげ', id:'Panjang umur (orang yang dibicarakan suka muncul)', romaji:'uwasa wo sureba kage' }]),
+          kj('苦あれば楽あり、楽あれば苦あり', [{ kanjiText:'苦あれば楽あり、楽あれば苦あり', jp:'<ruby>苦<rt>く</rt></ruby>あれば<ruby>楽<rt>らく</rt></ruby>あり、<ruby>楽<rt>らく</rt></ruby>あれば<ruby>苦<rt>く</rt></ruby>あり', kana:'く あれば らく あり、らく あれば く あり', id:'Berakit-rakit kita ke hulu, berenang kemudian', romaji:'ku areba raku ari, raku areba ku ari' }])
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ref_kanji_36',
+    kind: 'kanji',
+    isRef: true,
+    parentBab: '36',
+    number: '36',
+    title: 'Referensi Kanji Pelajaran 36 (健康 — Kesehatan)',
+    desc: '19 Kosakata Referensi Kesehatan Bab 36 ber-Kanji & Furigana dalam 2 sub-kelompok',
+    icon: 'scroll', accent: 'accent-indigo',
+    groups: [
+      {
+        id: 'rkj36_g1', title: '1. Pola Hidup Sehat & Buruk (No. 1–14)', desc: '14 Kanji Referensi: 規則正しい生活をする, 早寝、早起きをする, 夜更かしをする, 健康診断を受ける, dll.', page: 'Ref Kanji 36 · 1–14', kategori: 'Referensi Kanji 36', icon: 'hanko', accent: 'accent-indigo',
+        cards: [
+          kj('規則正しい生活をする', [{ kanjiText:'規則正しい生活をする', jp:'<ruby>規則正<rt>きそくただ</rt></ruby>しい<ruby>生活<rt>せいかつ</rt></ruby>をする', kana:'きそくただしい せいかつを する', id:'hidup secara teratur (いいださん)', romaji:'kisokutadashii seikatsu wo suru' }]),
+          kj('早寝、早起きをする', [{ kanjiText:'早寝、早起きをする', jp:'<ruby>早寝<rt>はやね</rt></ruby>、<ruby>早起<rt>はやお</rt></ruby>きをする', kana:'はやね、はやおきを する', id:'cepat tidur dan bangun pagi-pagi (いいださん)', romaji:'hayane, hayaoki wo suru' }]),
+          kj('運動する／スポーツをする', [{ kanjiText:'運動する／スポーツをする', jp:'<ruby>運動<rt>うんどう</rt></ruby>する／スポーツをする', kana:'うんどうする／スポーツをする', id:'berolahraga (いいださん)', romaji:'undousuru / supootsu wo suru' }]),
+          kj('よく歩く', [{ kanjiText:'よく歩く', jp:'よく<ruby>歩<rt>ある</rt></ruby>く', kana:'よく あるく', id:'suka berjalan kaki (いいださん)', romaji:'yoku aruku' }]),
+          kj('好き嫌いがない', [{ kanjiText:'好き嫌いがない', jp:'<ruby>好<rt>す</rt></ruby>き<ruby>嫌<rt>きら</rt></ruby>いがない', kana:'すききらいが ない', id:'tidak pilih makan (いいださん)', romaji:'sukikirai ga nai' }]),
+          kj('栄養のバランスを考えて食べる', [{ kanjiText:'栄養のバランスを考えて食べる', jp:'<ruby>栄養<rt>えいよう</rt></ruby>のバランスを<ruby>考<rt>かんが</rt></ruby>えて<ruby>食<rt>た</rt></ruby>べる', kana:'えいようの バランスを かんがえて たべる', id:'makan dengan mempertimbangkan keseimbangan gizi (いいださん)', romaji:'eiyou no baransu wo kangaete taberu' }]),
+          kj('健康診断を受ける', [{ kanjiText:'健康診断を受ける', jp:'<ruby>健康診断<rt>けんこうしんだん</rt></ruby>を<ruby>受<rt>う</rt></ruby>ける', kana:'けんこうしんだんを うける', id:'mengikuti pemeriksaan kesehatan (いいださん)', romaji:'kenkoushindan wo ukeru' }]),
+          kj('夜更かしをする', [{ kanjiText:'夜更かしをする', jp:'<ruby>夜更<rt>よふ</rt></ruby>かしをする', kana:'よふかしを する', id:'begadang (だめださん)', romaji:'yofukashi wo suru' }]),
+          kj('あまり運動しない', [{ kanjiText:'あまり運動しない', jp:'あまり<ruby>運動<rt>うんどう</rt></ruby>しない', kana:'あまり うんどうしない', id:'kurang berolahraga (だめださん)', romaji:'amari undoushinai' }]),
+          kj('好き嫌いがある', [{ kanjiText:'好き嫌いがある', jp:'<ruby>好<rt>す</rt></ruby>き<ruby>嫌<rt>きら</rt></ruby>いがある', kana:'すききらいが ある', id:'pilih makan (だめださん)', romaji:'sukikirai ga aru' }]),
+          kj('よくインスタント食品を食べる', [{ kanjiText:'よくインスタント食品を食べる', jp:'よくインスタント<ruby>食品<rt>しょくひん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べる', kana:'よく インスタント しょくひんを たべる', id:'suka makan makanan instan (だめださん)', romaji:'yoku insutanto shokuhin wo taberu' }]),
+          kj('外食が多い', [{ kanjiText:'外食が多い', jp:'<ruby>外食<rt>がいしょく</rt></ruby>が<ruby>多<rt>おお</rt></ruby>い', kana:'がいしょくが おおい', id:'sering makan di luar (だめださん)', romaji:'gaishoku ga ooi' }]),
+          kj('たばこを吸う', [{ kanjiText:'たばこを吸う', jp:'たばこを<ruby>吸<rt>す</rt></ruby>う', kana:'たばこを すう', id:'merokok (だめださん)', romaji:'tabako wo suu' }]),
+          kj('よくお酒を飲む', [{ kanjiText:'よくお酒を飲む', jp:'よくお<ruby>酒<rt>さけ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>む', kana:'よく おさけを のむ', id:'suka minum minuman keras (だめださん)', romaji:'yoku osake wo nomu' }])
+        ]
+      },
+      {
+        id: 'rkj36_g2', title: '2. 5 Nutrisi Penting & Makanan (No. 15–19)', desc: '5 Kanji Referensi: 炭水化物, 脂肪, たんぱく質, カルシウム, ビタミン', page: 'Ref Kanji 36 · 15–19', kategori: 'Referensi Kanji 36', icon: 'layers', accent: 'accent-gold',
+        cards: [
+          kj('炭水化物', [{ kanjiText:'炭水化物', jp:'<ruby>炭水化物<rt>たんすいかぶつ</rt></ruby>', kana:'たんすいかぶつ', id:'karbohidrat (roti, nasi, いも, gula)', romaji:'tansuikabutsu' }]),
+          kj('脂肪', [{ kanjiText:'脂肪', jp:'<ruby>脂肪<rt>しぼう</rt></ruby>', kana:'しぼう', id:'lemak (mentega, minyak goreng/salad)', romaji:'shibou' }]),
+          kj('たんぱく質', [{ kanjiText:'たんぱく質', jp:'たんぱく<ruby>質<rt>しつ</rt></ruby>', kana:'たんぱくしつ', id:'protein (とうふ, daging, ikan, telur, kacang)', romaji:'tanpakushitsu' }]),
+          kj('カルシウム', [{ kanjiText:'カルシウム', jp:'カルシウム', kana:'カルシウム', id:'kalsium (susu, keju, のり, 豆, 海草)', romaji:'karushiumu' }]),
+          kj('ビタミン', [{ kanjiText:'ビタミン', jp:'ビタミン', kana:'ビタミン', id:'vitamin (wortel, bawang bombai, sayur hijau, apel)', romaji:'bitamin' }])
+        ]
+      }
+    ]
   }
 ];
 
@@ -1454,14 +2580,14 @@ const CHAPTERS = [
    ============================================================ */
 const STORE = { 
   theme:'waFlashcards.theme', 
-  learned:'waFlashcards.learnedIds_mnn_bab31_35_full_v1', 
-  excluded:'waFlashcards.excludedIds_mnn_bab31_35_full_v1', 
+  learned:'waFlashcards.learnedIds_mnn_bab31_38_ref_v1', 
+  excluded:'waFlashcards.excludedIds_mnn_bab31_38_ref_v1', 
   streak:'waFlashcards.streakCount', 
   lastVisit:'waFlashcards.lastVisit',
   reverseMode:'waFlashcards.reverseMode',
   autoTTS:'waFlashcards.autoTTS',
-  typeHistory:'waFlashcards.typeQuizHistory_mnn31_35_full_v1',
-  speedrunSeconds:'waFlashcards.speedrunSeconds_mnn31_35_full_v1',
+  typeHistory:'waFlashcards.typeQuizHistory_mnn31_38_ref_v1',
+  speedrunSeconds:'waFlashcards.speedrunSeconds_mnn31_38_ref_v1',
   infiniteMode:'waFlashcards.infiniteMode_v1'
 };
 function safeGet(k, fb){ try{ const r = localStorage.getItem(k); return r === null ? fb : JSON.parse(r); }catch(e){ return fb; } }
@@ -1496,7 +2622,7 @@ function speakKana(htmlStr){
       .replace(/\[.*?\]/g, '')
       .replace(/（.*?）/g, '')
       .replace(/\(.*?\)/g, '')
-      .replace(/[～\-－]/g, '')
+      .replace(/[～\-－―]/g, '')
       .trim();
     const ut = new SpeechSynthesisUtterance(cleanText);
     ut.lang = 'ja-JP';
@@ -1506,222 +2632,659 @@ function speakKana(htmlStr){
 }
 
 /* ============================================================
-   HIERARKI KELOMPOK BESAR & SUB-KELOMPOK (KOTOBA + KANJI 31–35)
+   HIERARKI KELOMPOK BESAR & SUB-KELOMPOK (UTAMA + REFERENSI 31–38)
    ============================================================ */
 const BIG_GROUPS = [
+  /* --- KOTOBA UTAMA --- */
   {
     id: 'bab_31',
     kind: 'kotoba',
+    isRef: false,
     title: 'Kotoba Pelajaran 31 (Bab 31)',
     desc: '36 Kosakata Kotoba Bab 31 murni huruf Kana dalam 3 sub-kelompok',
     icon: 'book',
     accent: 'accent-gold',
     allScope: 'bab_31_all',
+    withRefScope: 'bab_31_with_ref',
     subScopes: ['b31_g1', 'b31_g2', 'b31_g3']
   },
   {
     id: 'bab_32',
     kind: 'kotoba',
+    isRef: false,
     title: 'Kotoba Pelajaran 32 (Bab 32)',
     desc: '56 Kosakata Kotoba Bab 32 murni huruf Kana dalam 4 sub-kelompok',
     icon: 'target',
     accent: 'accent-sakura',
     allScope: 'bab_32_all',
+    withRefScope: 'bab_32_with_ref',
     subScopes: ['b32_g1', 'b32_g2', 'b32_g3', 'b32_g4']
   },
   {
     id: 'bab_33',
     kind: 'kotoba',
+    isRef: false,
     title: 'Kotoba Pelajaran 33 (Bab 33)',
     desc: '50 Kosakata Kotoba Bab 33 murni huruf Kana dalam 4 sub-kelompok',
     icon: 'layers',
     accent: 'accent-indigo',
     allScope: 'bab_33_all',
+    withRefScope: 'bab_33_with_ref',
     subScopes: ['b33_g1', 'b33_g2', 'b33_g3', 'b33_g4']
   },
   {
     id: 'bab_34',
     kind: 'kotoba',
+    isRef: false,
     title: 'Kotoba Pelajaran 34 (Bab 34)',
     desc: '50 Kosakata Kotoba Bab 34 murni huruf Kana dalam 3 sub-kelompok',
     icon: 'book',
     accent: 'accent-gold',
     allScope: 'bab_34_all',
+    withRefScope: 'bab_34_with_ref',
     subScopes: ['b34_g1', 'b34_g2', 'b34_g3']
   },
   {
     id: 'bab_35',
     kind: 'kotoba',
+    isRef: false,
     title: 'Kotoba Pelajaran 35 (Bab 35)',
     desc: '42 Kosakata Kotoba Bab 35 murni huruf Kana dalam 3 sub-kelompok',
     icon: 'target',
     accent: 'accent-sakura',
     allScope: 'bab_35_all',
+    withRefScope: 'bab_35_with_ref',
     subScopes: ['b35_g1', 'b35_g2', 'b35_g3']
   },
   {
+    id: 'bab_36',
+    kind: 'kotoba',
+    isRef: false,
+    title: 'Kotoba Pelajaran 36 (Bab 36)',
+    desc: '39 Kosakata Kotoba Bab 36 murni huruf Kana dalam 3 sub-kelompok',
+    icon: 'layers',
+    accent: 'accent-indigo',
+    allScope: 'bab_36_all',
+    withRefScope: 'bab_36_with_ref',
+    subScopes: ['b36_g1', 'b36_g2', 'b36_g3']
+  },
+  {
+    id: 'bab_37',
+    kind: 'kotoba',
+    isRef: false,
+    title: 'Kotoba Pelajaran 37 (Bab 37)',
+    desc: '51 Kosakata Kotoba Bab 37 murni huruf Kana dalam 3 sub-kelompok',
+    icon: 'book',
+    accent: 'accent-gold',
+    allScope: 'bab_37_all',
+    subScopes: ['b37_g1', 'b37_g2', 'b37_g3']
+  },
+  {
+    id: 'bab_38',
+    kind: 'kotoba',
+    isRef: false,
+    title: 'Kotoba Pelajaran 38 (Bab 38)',
+    desc: '57 Kosakata Kotoba Bab 38 murni huruf Kana dalam 3 sub-kelompok',
+    icon: 'target',
+    accent: 'accent-sakura',
+    allScope: 'bab_38_all',
+    subScopes: ['b38_g1', 'b38_g2', 'b38_g3']
+  },
+  /* --- KOTOBA REFERENSI --- */
+  {
+    id: 'ref_kotoba_31',
+    kind: 'kotoba',
+    isRef: true,
+    title: 'Referensi Kotoba Pelajaran 31 (せんもん)',
+    desc: '36 Kosakata Referensi Bidang Keilmuan Bab 31 dalam 2 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-indigo',
+    allScope: 'ref_k31_all',
+    subScopes: ['rk31_g1', 'rk31_g2']
+  },
+  {
+    id: 'ref_kotoba_32',
+    kind: 'kotoba',
+    isRef: true,
+    title: 'Referensi Kotoba Pelajaran 32 (てんきよほう)',
+    desc: '37 Kosakata Referensi Prakiraan Cuaca Bab 32 dalam 3 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-sakura',
+    allScope: 'ref_k32_all',
+    subScopes: ['rk32_g1', 'rk32_g2', 'rk32_g3']
+  },
+  {
+    id: 'ref_kotoba_33',
+    kind: 'kotoba',
+    isRef: true,
+    title: 'Referensi Kotoba Pelajaran 33 (ひょうしき)',
+    desc: '16 Kosakata Referensi Tanda Bab 33 dalam 4 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-indigo',
+    allScope: 'ref_k33_all',
+    subScopes: ['rk33_g1', 'rk33_g2', 'rk33_g3', 'rk33_g4']
+  },
+  {
+    id: 'ref_kotoba_34',
+    kind: 'kotoba',
+    isRef: true,
+    title: 'Referensi Kotoba Pelajaran 34 (りょうり)',
+    desc: '43 Kosakata Referensi Masakan Bab 34 dalam 3 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-gold',
+    allScope: 'ref_k34_all',
+    subScopes: ['rk34_g1', 'rk34_g2', 'rk34_g3']
+  },
+  {
+    id: 'ref_kotoba_35',
+    kind: 'kotoba',
+    isRef: true,
+    title: 'Referensi Kotoba Pelajaran 35 (ことわざ)',
+    desc: '6 Pepatah Referensi Bab 35 lengkap dengan arti & makna',
+    icon: 'scroll',
+    accent: 'accent-sakura',
+    allScope: 'ref_k35_all',
+    subScopes: ['rk35_g1']
+  },
+  {
+    id: 'ref_kotoba_36',
+    kind: 'kotoba',
+    isRef: true,
+    title: 'Referensi Kotoba Pelajaran 36 (けんこう)',
+    desc: '19 Kosakata Referensi Kesehatan Bab 36 dalam 2 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-indigo',
+    allScope: 'ref_k36_all',
+    subScopes: ['rk36_g1', 'rk36_g2']
+  },
+  /* --- KANJI UTAMA --- */
+  {
     id: 'kanji_31',
     kind: 'kanji',
+    isRef: false,
     title: 'Kanji Pelajaran 31 (Bab 31)',
     desc: '36 Kosakata ber-Kanji & Furigana Bab 31 dalam 3 sub-kelompok',
     icon: 'hanko',
     accent: 'accent-gold',
     allScope: 'kanji_31_all',
+    withRefScope: 'kanji_31_with_ref',
     subScopes: ['k31_g1', 'k31_g2', 'k31_g3']
   },
   {
     id: 'kanji_32',
     kind: 'kanji',
+    isRef: false,
     title: 'Kanji Pelajaran 32 (Bab 32)',
     desc: '56 Kosakata ber-Kanji & Furigana Bab 32 dalam 4 sub-kelompok',
     icon: 'hanko',
     accent: 'accent-sakura',
     allScope: 'kanji_32_all',
+    withRefScope: 'kanji_32_with_ref',
     subScopes: ['k32_g1', 'k32_g2', 'k32_g3', 'k32_g4']
   },
   {
     id: 'kanji_33',
     kind: 'kanji',
+    isRef: false,
     title: 'Kanji Pelajaran 33 (Bab 33)',
     desc: '50 Kosakata ber-Kanji & Furigana Bab 33 dalam 4 sub-kelompok',
     icon: 'hanko',
     accent: 'accent-indigo',
     allScope: 'kanji_33_all',
+    withRefScope: 'kanji_33_with_ref',
     subScopes: ['k33_g1', 'k33_g2', 'k33_g3', 'k33_g4']
   },
   {
     id: 'kanji_34',
     kind: 'kanji',
+    isRef: false,
     title: 'Kanji Pelajaran 34 (Bab 34)',
     desc: '50 Kosakata ber-Kanji & Furigana Bab 34 dalam 3 sub-kelompok',
     icon: 'hanko',
     accent: 'accent-gold',
     allScope: 'kanji_34_all',
+    withRefScope: 'kanji_34_with_ref',
     subScopes: ['k34_g1', 'k34_g2', 'k34_g3']
   },
   {
     id: 'kanji_35',
     kind: 'kanji',
+    isRef: false,
     title: 'Kanji Pelajaran 35 (Bab 35)',
     desc: '42 Kosakata ber-Kanji & Furigana Bab 35 dalam 3 sub-kelompok',
     icon: 'hanko',
     accent: 'accent-sakura',
     allScope: 'kanji_35_all',
+    withRefScope: 'kanji_35_with_ref',
     subScopes: ['k35_g1', 'k35_g2', 'k35_g3']
+  },
+  {
+    id: 'kanji_36',
+    kind: 'kanji',
+    isRef: false,
+    title: 'Kanji Pelajaran 36 (Bab 36)',
+    desc: '39 Kosakata ber-Kanji & Furigana Bab 36 dalam 3 sub-kelompok',
+    icon: 'hanko',
+    accent: 'accent-indigo',
+    allScope: 'kanji_36_all',
+    withRefScope: 'kanji_36_with_ref',
+    subScopes: ['k36_g1', 'k36_g2', 'k36_g3']
+  },
+  {
+    id: 'kanji_37',
+    kind: 'kanji',
+    isRef: false,
+    title: 'Kanji Pelajaran 37 (Bab 37)',
+    desc: '51 Kosakata ber-Kanji & Furigana Bab 37 dalam 3 sub-kelompok',
+    icon: 'hanko',
+    accent: 'accent-gold',
+    allScope: 'kanji_37_all',
+    subScopes: ['k37_g1', 'k37_g2', 'k37_g3']
+  },
+  {
+    id: 'kanji_38',
+    kind: 'kanji',
+    isRef: false,
+    title: 'Kanji Pelajaran 38 (Bab 38)',
+    desc: '57 Kosakata ber-Kanji & Furigana Bab 38 dalam 3 sub-kelompok',
+    icon: 'hanko',
+    accent: 'accent-sakura',
+    allScope: 'kanji_38_all',
+    subScopes: ['k38_g1', 'k38_g2', 'k38_g3']
+  },
+  /* --- KANJI REFERENSI --- */
+  {
+    id: 'ref_kanji_31',
+    kind: 'kanji',
+    isRef: true,
+    title: 'Referensi Kanji Pelajaran 31 (専門)',
+    desc: '36 Kosakata Referensi Bidang Keilmuan Bab 31 ber-Kanji dalam 2 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-indigo',
+    allScope: 'ref_kj31_all',
+    subScopes: ['rkj31_g1', 'rkj31_g2']
+  },
+  {
+    id: 'ref_kanji_32',
+    kind: 'kanji',
+    isRef: true,
+    title: 'Referensi Kanji Pelajaran 32 (天気予報)',
+    desc: '37 Kosakata Referensi Prakiraan Cuaca Bab 32 ber-Kanji dalam 3 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-sakura',
+    allScope: 'ref_kj32_all',
+    subScopes: ['rkj32_g1', 'rkj32_g2', 'rkj32_g3']
+  },
+  {
+    id: 'ref_kanji_33',
+    kind: 'kanji',
+    isRef: true,
+    title: 'Referensi Kanji Pelajaran 33 (標識)',
+    desc: '16 Kosakata Referensi Tanda Bab 33 ber-Kanji dalam 4 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-indigo',
+    allScope: 'ref_kj33_all',
+    subScopes: ['rkj33_g1', 'rkj33_g2', 'rkj33_g3', 'rkj33_g4']
+  },
+  {
+    id: 'ref_kanji_34',
+    kind: 'kanji',
+    isRef: true,
+    title: 'Referensi Kanji Pelajaran 34 (料理)',
+    desc: '43 Kosakata Referensi Masakan Bab 34 ber-Kanji dalam 3 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-gold',
+    allScope: 'ref_kj34_all',
+    subScopes: ['rkj34_g1', 'rkj34_g2', 'rkj34_g3']
+  },
+  {
+    id: 'ref_kanji_35',
+    kind: 'kanji',
+    isRef: true,
+    title: 'Referensi Kanji Pelajaran 35 (ことわざ)',
+    desc: '6 Pepatah Referensi Bab 35 ber-Kanji lengkap dengan arti & makna',
+    icon: 'scroll',
+    accent: 'accent-sakura',
+    allScope: 'ref_kj35_all',
+    subScopes: ['rkj35_g1']
+  },
+  {
+    id: 'ref_kanji_36',
+    kind: 'kanji',
+    isRef: true,
+    title: 'Referensi Kanji Pelajaran 36 (健康)',
+    desc: '19 Kosakata Referensi Kesehatan Bab 36 ber-Kanji dalam 2 sub-kelompok',
+    icon: 'scroll',
+    accent: 'accent-indigo',
+    allScope: 'ref_kj36_all',
+    subScopes: ['rkj36_g1', 'rkj36_g2']
   }
 ];
 
 const SCOPES = {
+  /* --- GABUNGAN UTAMA & GABUNGAN + REFERENSI --- */
   all_kotoba: { 
-    get label() { return `Semua Kotoba Bab 31–35 (${this.build().length} Butir)`; }, 
-    get desc() { return `Uji gabungan seluruh kosakata murni Kana Bab 31, 32, 33, 34, dan 35`; }, 
+    get label() { return `Semua Kotoba Bab 31–38 (${this.build().length} Butir)`; }, 
+    get desc() { return `Gabungan lengkap kotoba utama Bab 31–38 (tanpa referensi)`; }, 
     icon: 'book', 
     accent: 'accent-gold', 
-    build: () => collectPool(['bab_31', 'bab_32', 'bab_33', 'bab_34', 'bab_35']) 
+    build: () => collectPool(['bab_31', 'bab_32', 'bab_33', 'bab_34', 'bab_35', 'bab_36', 'bab_37', 'bab_38']) 
+  },
+  all_kotoba_with_ref: {
+    get label() { return `Kotoba Lengkap + Referensi Bab 31–38 (${this.build().length} Butir)`; },
+    get desc() { return `Gabungan seluruh kotoba utama Bab 31–38 ditambah kotoba referensi Bab 31–36`; },
+    icon: 'scroll',
+    accent: 'accent-indigo',
+    build: () => collectPool(['bab_31', 'bab_32', 'bab_33', 'bab_34', 'bab_35', 'bab_36', 'bab_37', 'bab_38', 'ref_kotoba_31', 'ref_kotoba_32', 'ref_kotoba_33', 'ref_kotoba_34', 'ref_kotoba_35', 'ref_kotoba_36'])
   },
   all_kanji: { 
-    get label() { return `Semua Kanji Bab 31–35 (${this.build().length} Butir)`; }, 
-    get desc() { return `Uji gabungan seluruh kosakata Kanji Bab 31, 32, 33, 34, dan 35`; }, 
+    get label() { return `Semua Kanji Bab 31–38 (${this.build().length} Butir)`; }, 
+    get desc() { return `Gabungan lengkap kanji utama Bab 31–38 (tanpa referensi)`; }, 
     icon: 'hanko', 
     accent: 'accent-sakura', 
-    build: () => collectPool(['kanji_31', 'kanji_32', 'kanji_33', 'kanji_34', 'kanji_35']) 
+    build: () => collectPool(['kanji_31', 'kanji_32', 'kanji_33', 'kanji_34', 'kanji_35', 'kanji_36', 'kanji_37', 'kanji_38']) 
   },
-  /* --- KOTOBA SCOPES --- */
+  all_kanji_with_ref: {
+    get label() { return `Kanji Lengkap + Referensi Bab 31–38 (${this.build().length} Butir)`; },
+    get desc() { return `Gabungan seluruh kanji utama Bab 31–38 ditambah kanji referensi Bab 31–36`; },
+    icon: 'scroll',
+    accent: 'accent-indigo',
+    build: () => collectPool(['kanji_31', 'kanji_32', 'kanji_33', 'kanji_34', 'kanji_35', 'kanji_36', 'kanji_37', 'kanji_38', 'ref_kanji_31', 'ref_kanji_32', 'ref_kanji_33', 'ref_kanji_34', 'ref_kanji_35', 'ref_kanji_36'])
+  },
+
+  /* --- KOTOBA UTAMA SCOPES (MURNI TANPA REFERENSI) --- */
   bab_31_all: { 
     get label() { return `Semua Kotoba Bab 31 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 3 sub-kelompok Kotoba Pelajaran 31`; }, 
     icon: 'book', accent: 'accent-gold', 
     build: () => collectPool(['bab_31']) 
   },
+  bab_31_with_ref: {
+    get label() { return `Kotoba Lengkap + Referensi Bab 31 (${this.build().length})`; },
+    get desc() { return `36 Kotoba Bab 31 + 36 Referensi Bidang Keilmuan (せんもん)`; },
+    icon: 'scroll', accent: 'accent-indigo',
+    build: () => collectPool(['bab_31', 'ref_kotoba_31'])
+  },
   b31_g1: { label: '1. Kata Kerja & Aktivitas (No. 1–12)', desc: '12 Kotoba aktivitas, ujian, & upacara (Bab 31)', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('b31_g1') },
   b31_g2: { label: '2. Tempat, Acara & Keterangan (No. 13–24)', desc: '12 Kotoba kantor, tempat wisata, & keterangan (Bab 31)', icon: 'layers', accent: 'accent-sakura', build: () => collectPoolGroup('b31_g2') },
   b31_g3: { label: '3. Pendidikan, Desa & Alam (No. 25–36)', desc: '12 Kotoba pendidikan, desa, kota, & kebebasan (Bab 31)', icon: 'target', accent: 'accent-indigo', build: () => collectPoolGroup('b31_g3') },
+
   bab_32_all: { 
     get label() { return `Semua Kotoba Bab 32 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 4 sub-kelompok Kotoba Pelajaran 32`; }, 
     icon: 'target', accent: 'accent-sakura', 
     build: () => collectPool(['bab_32']) 
   },
+  bab_32_with_ref: {
+    get label() { return `Kotoba Lengkap + Referensi Bab 32 (${this.build().length})`; },
+    get desc() { return `56 Kotoba Bab 32 + 37 Referensi Prakiraan Cuaca (てんきよほう)`; },
+    icon: 'scroll', accent: 'accent-indigo',
+    build: () => collectPool(['bab_32', 'ref_kotoba_32'])
+  },
   b32_g1: { label: '1. Aktivitas, Cuaca & Kondisi (No. 1–14)', desc: '14 Kotoba hasil ujian, cuaca, & lalu lintas (Bab 32)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('b32_g1') },
   b32_g2: { label: '2. Sifat, Kesehatan & Alam (No. 15–28)', desc: '14 Kotoba kesehatan, gejala sakit, & langit (Bab 32)', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('b32_g2') },
-  b32_g3: { label: '3. Arah, Benda & Keterangan (No. 29–42)', desc: '14 Kotoba arah mata angin, mesin, & tingkat (Bab 32)', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('b32_g3') },
+  b32_g3: { label: '3. Arah, Benda & Keterangan Tingkat (No. 29–42)', desc: '14 Kotoba arah mata angin, mesin, & tingkat (Bab 32)', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('b32_g3') },
   b32_g4: { label: '4. Tubuh, Horoskop & Percakapan (No. 43–56)', desc: '14 Kotoba horoskop, lotre, kesehatan, & asmara (Bab 32)', icon: 'book', accent: 'accent-sakura', build: () => collectPoolGroup('b32_g4') },
+
   bab_33_all: { 
     get label() { return `Semua Kotoba Bab 33 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 4 sub-kelompok Kotoba Pelajaran 33`; }, 
     icon: 'layers', accent: 'accent-indigo', 
     build: () => collectPool(['bab_33']) 
   },
+  bab_33_with_ref: {
+    get label() { return `Kotoba Lengkap + Referensi Bab 33 (${this.build().length})`; },
+    get desc() { return `50 Kotoba Bab 33 + 16 Referensi Tanda (ひょうしき)`; },
+    icon: 'scroll', accent: 'accent-gold',
+    build: () => collectPool(['bab_33', 'ref_kotoba_33'])
+  },
   b33_g1: { label: '1. Kata Kerja & Tindakan (No. 1–13)', desc: '13 Kotoba tindakan, rapat, & daur ulang (Bab 33)', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('b33_g1') },
   b33_g2: { label: '2. Aturan, Larangan & Pintu (No. 14–26)', desc: '13 Kotoba peraturan, larangan, & pintu masuk (Bab 33)', icon: 'shield', accent: 'accent-gold', build: () => collectPoolGroup('b33_g2') },
   b33_g3: { label: '3. Papan Informasi & Ungkapan (No. 27–38)', desc: '12 Kotoba papan tanda, diskon, & ungkapan (Bab 33)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('b33_g3') },
   b33_g4: { label: '4. Lalu Lintas, Bencana & Sikap (No. 39–50)', desc: '12 Kotoba denda, gempa, salam, & perasaan (Bab 33)', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('b33_g4') },
+
   bab_34_all: { 
     get label() { return `Semua Kotoba Bab 34 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 3 sub-kelompok Kotoba Pelajaran 34`; }, 
     icon: 'book', accent: 'accent-gold', 
     build: () => collectPool(['bab_34']) 
   },
+  bab_34_with_ref: {
+    get label() { return `Kotoba Lengkap + Referensi Bab 34 (${this.build().length})`; },
+    get desc() { return `50 Kotoba Bab 34 + 43 Referensi Masakan (りょうり)`; },
+    icon: 'scroll', accent: 'accent-sakura',
+    build: () => collectPool(['bab_34', 'ref_kotoba_34'])
+  },
   b34_g1: { label: '1. Kosakata Pokok (No. 1–27)', desc: '27 Kotoba kegiatan, warna, bumbu, & petunjuk (Bab 34)', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('b34_g1') },
   b34_g2: { label: '2. Kosakata Percakapan (No. 28–34)', desc: '7 Kotoba upacara teh & ungkapan percakapan (Bab 34)', icon: 'layers', accent: 'accent-sakura', build: () => collectPoolGroup('b34_g2') },
   b34_g3: { label: '3. Kosakata Bacaan (No. 35–50)', desc: '16 Kotoba resep oyakodonburi & memasak (Bab 34)', icon: 'target', accent: 'accent-indigo', build: () => collectPoolGroup('b34_g3') },
+
   bab_35_all: { 
     get label() { return `Semua Kotoba Bab 35 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 3 sub-kelompok Kotoba Pelajaran 35`; }, 
     icon: 'target', accent: 'accent-sakura', 
     build: () => collectPool(['bab_35']) 
   },
+  bab_35_with_ref: {
+    get label() { return `Kotoba Lengkap + Referensi Bab 35 (${this.build().length})`; },
+    get desc() { return `42 Kotoba Bab 35 + 6 Referensi Pepatah (ことわざ)`; },
+    icon: 'scroll', accent: 'accent-indigo',
+    build: () => collectPool(['bab_35', 'ref_kotoba_35'])
+  },
   b35_g1: { label: '1. Kosakata Pokok (No. 1–30)', desc: '30 Kotoba alam, peralatan, tempat, & operasi alat (Bab 35)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('b35_g1') },
   b35_g2: { label: '2. Kosakata Percakapan (No. 31–36)', desc: '6 Kotoba wisata, bus malam, & agen perjalanan (Bab 35)', icon: 'layers', accent: 'accent-gold', build: () => collectPoolGroup('b35_g2') },
   b35_g3: { label: '3. Kosakata Bacaan (No. 37–42)', desc: '6 Kotoba pergaulan, pepatah, & hubungan (Bab 35)', icon: 'book', accent: 'accent-indigo', build: () => collectPoolGroup('b35_g3') },
-  /* --- KANJI SCOPES --- */
+
+  bab_36_all: { 
+    get label() { return `Semua Kotoba Bab 36 (${this.build().length})`; }, 
+    get desc() { return `Gabungan lengkap 3 sub-kelompok Kotoba Pelajaran 36`; }, 
+    icon: 'layers', accent: 'accent-indigo', 
+    build: () => collectPool(['bab_36']) 
+  },
+  bab_36_with_ref: {
+    get label() { return `Kotoba Lengkap + Referensi Bab 36 (${this.build().length})`; },
+    get desc() { return `39 Kotoba Bab 36 + 19 Referensi Kesehatan (けんこう)`; },
+    icon: 'scroll', accent: 'accent-gold',
+    build: () => collectPool(['bab_36', 'ref_kotoba_36'])
+  },
+  b36_g1: { label: '1. Kosakata Pokok (No. 1–21)', desc: '21 Kotoba peristiwa, kebiasaan, & keterangan frekuensi (Bab 36)', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('b36_g1') },
+  b36_g2: { label: '2. Kosakata Percakapan (No. 22–29)', desc: '8 Kotoba ragam hormat, renang, & tantangan (Bab 36)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('b36_g2') },
+  b36_g3: { label: '3. Kosakata Bacaan (No. 30–39)', desc: '10 Kotoba sejarah transportasi & angkutan (Bab 36)', icon: 'book', accent: 'accent-gold', build: () => collectPoolGroup('b36_g3') },
+
+  bab_37_all: { 
+    get label() { return `Semua Kotoba Bab 37 (${this.build().length})`; }, 
+    get desc() { return `Gabungan lengkap 3 sub-kelompok Kotoba Pelajaran 37`; }, 
+    icon: 'book', accent: 'accent-gold', 
+    build: () => collectPool(['bab_37']) 
+  },
+  b37_g1: { label: '1. Kosakata Pokok (No. 1–30)', desc: '30 Kotoba pujian, peringatan, ekspor-impor, & penemuan (Bab 37)', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('b37_g1') },
+  b37_g2: { label: '2. Kosakata Percakapan (No. 31–40)', desc: '10 Kotoba situs warisan dunia, emas, & keindahan (Bab 37)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('b37_g2') },
+  b37_g3: { label: '3. Kosakata Bacaan (No. 41–51)', desc: '11 Kotoba ukiran, tradisi, & kisah pengrajin (Bab 37)', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('b37_g3') },
+
+  bab_38_all: { 
+    get label() { return `Semua Kotoba Bab 38 (${this.build().length})`; }, 
+    get desc() { return `Gabungan lengkap 3 sub-kelompok Kotoba Pelajaran 38`; }, 
+    icon: 'target', accent: 'accent-sakura', 
+    build: () => collectPool(['bab_38']) 
+  },
+  b38_g1: { label: '1. Kosakata Pokok (No. 1–32)', desc: '32 Kotoba partisipasi, rumah sakit, power supply, & tempat (Bab 38)', icon: 'hanko', accent: 'accent-sakura', build: () => collectPoolGroup('b38_g1') },
+  b38_g2: { label: '2. Kosakata Percakapan (No. 33–41)', desc: '9 Kotoba edaran, merapikan, buku, & cap/stempel (Bab 38)', icon: 'layers', accent: 'accent-gold', build: () => collectPoolGroup('b38_g2') },
+  b38_g3: { label: '3. Kosakata Bacaan (No. 42–57)', desc: '16 Kotoba anak kembar, sifat, merawat, & usia (Bab 38)', icon: 'book', accent: 'accent-indigo', build: () => collectPoolGroup('b38_g3') },
+
+  /* --- KOTOBA REFERENSI SCOPES --- */
+  ref_k31_all: { get label() { return `Semua Referensi Kotoba Bab 31 (${this.build().length})`; }, get desc() { return `Bidang Keilmuan (せんもん) — 36 butir`; }, icon: 'scroll', accent: 'accent-indigo', build: () => collectPool(['ref_kotoba_31']) },
+  rk31_g1: { label: '1. Ilmu Alam, Eksakta & Teknik (No. 1–20)', desc: '20 Referensi Bab 31', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('rk31_g1') },
+  rk31_g2: { label: '2. Ilmu Sosial, Humaniora & Seni (No. 21–36)', desc: '16 Referensi Bab 31', icon: 'book', accent: 'accent-gold', build: () => collectPoolGroup('rk31_g2') },
+
+  ref_k32_all: { get label() { return `Semua Referensi Kotoba Bab 32 (${this.build().length})`; }, get desc() { return `Prakiraan Cuaca (てんきよほう) — 37 butir`; }, icon: 'scroll', accent: 'accent-sakura', build: () => collectPool(['ref_kotoba_32']) },
+  rk32_g1: { label: '1. Simbol & Kondisi Cuaca (No. 1–7)', desc: '7 Referensi Bab 32', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('rk32_g1') },
+  rk32_g2: { label: '2. Suhu, Probabilitas & Alam (No. 8–19)', desc: '12 Referensi Bab 32', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('rk32_g2') },
+  rk32_g3: { label: '3. Daerah & Kota Peta Cuaca (No. 20–37)', desc: '18 Referensi Bab 32', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('rk32_g3') },
+
+  ref_k33_all: { get label() { return `Semua Referensi Kotoba Bab 33 (${this.build().length})`; }, get desc() { return `Tanda (ひょうしき) — 16 butir`; }, icon: 'scroll', accent: 'accent-indigo', build: () => collectPool(['ref_kotoba_33']) },
+  rk33_g1: { label: '1. Tanda Toko / Pelayanan (No. 1–4)', desc: '4 Referensi Bab 33', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('rk33_g1') },
+  rk33_g2: { label: '2. Fasilitas & Tempat Duduk (No. 5–8)', desc: '4 Referensi Bab 33', icon: 'layers', accent: 'accent-gold', build: () => collectPoolGroup('rk33_g2') },
+  rk33_g3: { label: '3. Peringatan & Keselamatan (No. 9–12)', desc: '4 Referensi Bab 33', icon: 'shield', accent: 'accent-sakura', build: () => collectPoolGroup('rk33_g3') },
+  rk33_g4: { label: '4. Perawatan Pakaian (No. 13–16)', desc: '4 Referensi Bab 33', icon: 'target', accent: 'accent-indigo', build: () => collectPoolGroup('rk33_g4') },
+
+  ref_k34_all: { get label() { return `Semua Referensi Kotoba Bab 34 (${this.build().length})`; }, get desc() { return `Masakan (りょうり) — 43 butir`; }, icon: 'scroll', accent: 'accent-gold', build: () => collectPool(['ref_kotoba_34']) },
+  rk34_g1: { label: '1. Cara Memasak / Mengolah (No. 1–10)', desc: '10 Referensi Bab 34', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('rk34_g1') },
+  rk34_g2: { label: '2. Bumbu-Bumbu Dapur (No. 11–25)', desc: '15 Referensi Bab 34', icon: 'layers', accent: 'accent-sakura', build: () => collectPoolGroup('rk34_g2') },
+  rk34_g3: { label: '3. Peralatan Dapur (No. 26–43)', desc: '18 Referensi Bab 34', icon: 'target', accent: 'accent-indigo', build: () => collectPoolGroup('rk34_g3') },
+
+  ref_k35_all: { get label() { return `Semua Referensi Kotoba Bab 35 (${this.build().length})`; }, get desc() { return `Pepatah (ことわざ) — 6 butir`; }, icon: 'scroll', accent: 'accent-sakura', build: () => collectPool(['ref_kotoba_35']) },
+  rk35_g1: { label: '1. Pepatah Klasik Jepang (No. 1–6)', desc: '6 Referensi Bab 35', icon: 'book', accent: 'accent-sakura', build: () => collectPoolGroup('rk35_g1') },
+
+  ref_k36_all: { get label() { return `Semua Referensi Kotoba Bab 36 (${this.build().length})`; }, get desc() { return `Kesehatan (けんこう) — 19 butir`; }, icon: 'scroll', accent: 'accent-indigo', build: () => collectPool(['ref_kotoba_36']) },
+  rk36_g1: { label: '1. Pola Hidup Sehat & Buruk (No. 1–14)', desc: '14 Referensi Bab 36', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('rk36_g1') },
+  rk36_g2: { label: '2. 5 Nutrisi Penting & Makanan (No. 15–19)', desc: '5 Referensi Bab 36', icon: 'layers', accent: 'accent-gold', build: () => collectPoolGroup('rk36_g2') },
+
+  /* --- KANJI UTAMA SCOPES (MURNI TANPA REFERENSI) --- */
   kanji_31_all: { 
     get label() { return `Semua Kanji Bab 31 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 3 sub-kelompok Kanji Pelajaran 31`; }, 
     icon: 'hanko', accent: 'accent-gold', 
     build: () => collectPool(['kanji_31']) 
   },
+  kanji_31_with_ref: {
+    get label() { return `Kanji Lengkap + Referensi Bab 31 (${this.build().length})`; },
+    get desc() { return `36 Kanji Bab 31 + 36 Referensi Bidang Keilmuan (専門)`; },
+    icon: 'scroll', accent: 'accent-indigo',
+    build: () => collectPool(['kanji_31', 'ref_kanji_31'])
+  },
   k31_g1: { label: '1. Kata Kerja & Aktivitas (No. 1–12)', desc: '12 Kanji aktivitas, ujian, & upacara (Bab 31)', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('k31_g1') },
   k31_g2: { label: '2. Tempat, Acara & Keterangan (No. 13–24)', desc: '12 Kanji kantor, tempat wisata, & keterangan (Bab 31)', icon: 'layers', accent: 'accent-sakura', build: () => collectPoolGroup('k31_g2') },
   k31_g3: { label: '3. Pendidikan, Desa & Alam (No. 25–36)', desc: '12 Kanji pendidikan, desa, kota, & kebebasan (Bab 31)', icon: 'target', accent: 'accent-indigo', build: () => collectPoolGroup('k31_g3') },
+
   kanji_32_all: { 
     get label() { return `Semua Kanji Bab 32 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 4 sub-kelompok Kanji Pelajaran 32`; }, 
     icon: 'hanko', accent: 'accent-sakura', 
     build: () => collectPool(['kanji_32']) 
   },
+  kanji_32_with_ref: {
+    get label() { return `Kanji Lengkap + Referensi Bab 32 (${this.build().length})`; },
+    get desc() { return `56 Kanji Bab 32 + 37 Referensi Prakiraan Cuaca (天気予報)`; },
+    icon: 'scroll', accent: 'accent-indigo',
+    build: () => collectPool(['kanji_32', 'ref_kanji_32'])
+  },
   k32_g1: { label: '1. Aktivitas, Cuaca & Kondisi (No. 1–14)', desc: '14 Kanji hasil ujian, cuaca, & lalu lintas (Bab 32)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('k32_g1') },
   k32_g2: { label: '2. Sifat, Kesehatan & Alam (No. 15–28)', desc: '14 Kanji kesehatan, gejala sakit, & langit (Bab 32)', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('k32_g2') },
-  k32_g3: { label: '3. Arah, Benda & Keterangan (No. 29–42)', desc: '14 Kanji arah mata angin, mesin, & tingkat (Bab 32)', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('k32_g3') },
+  k32_g3: { label: '3. Arah, Benda & Keterangan Tingkat (No. 29–42)', desc: '14 Kanji arah mata angin, mesin, & tingkat (Bab 32)', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('k32_g3') },
   k32_g4: { label: '4. Tubuh, Horoskop & Percakapan (No. 43–56)', desc: '14 Kanji horoskop, lotre, kesehatan, & asmara (Bab 32)', icon: 'book', accent: 'accent-sakura', build: () => collectPoolGroup('k32_g4') },
+
   kanji_33_all: { 
     get label() { return `Semua Kanji Bab 33 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 4 sub-kelompok Kanji Pelajaran 33`; }, 
     icon: 'hanko', accent: 'accent-indigo', 
     build: () => collectPool(['kanji_33']) 
   },
+  kanji_33_with_ref: {
+    get label() { return `Kanji Lengkap + Referensi Bab 33 (${this.build().length})`; },
+    get desc() { return `50 Kanji Bab 33 + 16 Referensi Tanda (標識)`; },
+    icon: 'scroll', accent: 'accent-gold',
+    build: () => collectPool(['kanji_33', 'ref_kanji_33'])
+  },
   k33_g1: { label: '1. Kata Kerja & Tindakan (No. 1–13)', desc: '13 Kanji tindakan, rapat, & daur ulang (Bab 33)', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('k33_g1') },
   k33_g2: { label: '2. Aturan, Larangan & Pintu (No. 14–26)', desc: '13 Kanji peraturan, larangan, & pintu masuk (Bab 33)', icon: 'shield', accent: 'accent-gold', build: () => collectPoolGroup('k33_g2') },
   k33_g3: { label: '3. Papan Informasi & Ungkapan (No. 27–38)', desc: '12 Kanji papan tanda, diskon, & ungkapan (Bab 33)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('k33_g3') },
   k33_g4: { label: '4. Lalu Lintas, Bencana & Sikap (No. 39–50)', desc: '12 Kanji denda, gempa, salam, & perasaan (Bab 33)', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('k33_g4') },
+
   kanji_34_all: { 
     get label() { return `Semua Kanji Bab 34 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 3 sub-kelompok Kanji Pelajaran 34`; }, 
     icon: 'hanko', accent: 'accent-gold', 
     build: () => collectPool(['kanji_34']) 
   },
+  kanji_34_with_ref: {
+    get label() { return `Kanji Lengkap + Referensi Bab 34 (${this.build().length})`; },
+    get desc() { return `50 Kanji Bab 34 + 43 Referensi Masakan (料理)`; },
+    icon: 'scroll', accent: 'accent-sakura',
+    build: () => collectPool(['kanji_34', 'ref_kanji_34'])
+  },
   k34_g1: { label: '1. Kosakata Pokok (No. 1–27)', desc: '27 Kanji kegiatan, warna, bumbu, & petunjuk (Bab 34)', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('k34_g1') },
   k34_g2: { label: '2. Kosakata Percakapan (No. 28–34)', desc: '7 Kanji upacara teh & ungkapan percakapan (Bab 34)', icon: 'layers', accent: 'accent-sakura', build: () => collectPoolGroup('k34_g2') },
   k34_g3: { label: '3. Kosakata Bacaan (No. 35–50)', desc: '16 Kanji resep oyakodonburi & memasak (Bab 34)', icon: 'target', accent: 'accent-indigo', build: () => collectPoolGroup('k34_g3') },
+
   kanji_35_all: { 
     get label() { return `Semua Kanji Bab 35 (${this.build().length})`; }, 
     get desc() { return `Gabungan lengkap 3 sub-kelompok Kanji Pelajaran 35`; }, 
     icon: 'hanko', accent: 'accent-sakura', 
     build: () => collectPool(['kanji_35']) 
   },
+  kanji_35_with_ref: {
+    get label() { return `Kanji Lengkap + Referensi Bab 35 (${this.build().length})`; },
+    get desc() { return `42 Kanji Bab 35 + 6 Referensi Pepatah (ことわざ)`; },
+    icon: 'scroll', accent: 'accent-indigo',
+    build: () => collectPool(['kanji_35', 'ref_kanji_35'])
+  },
   k35_g1: { label: '1. Kosakata Pokok (No. 1–30)', desc: '30 Kanji alam, peralatan, tempat, & operasi alat (Bab 35)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('k35_g1') },
   k35_g2: { label: '2. Kosakata Percakapan (No. 31–36)', desc: '6 Kanji wisata, bus malam, & agen perjalanan (Bab 35)', icon: 'layers', accent: 'accent-gold', build: () => collectPoolGroup('k35_g2') },
-  k35_g3: { label: '3. Kosakata Bacaan (No. 37–42)', desc: '6 Kanji pergaulan, pepatah, & hubungan (Bab 35)', icon: 'book', accent: 'accent-indigo', build: () => collectPoolGroup('k35_g3') }
+  k35_g3: { label: '3. Kosakata Bacaan (No. 37–42)', desc: '6 Kanji pergaulan, pepatah, & hubungan (Bab 35)', icon: 'book', accent: 'accent-indigo', build: () => collectPoolGroup('k35_g3') },
+
+  kanji_36_all: { 
+    get label() { return `Semua Kanji Bab 36 (${this.build().length})`; }, 
+    get desc() { return `Gabungan lengkap 3 sub-kelompok Kanji Pelajaran 36`; }, 
+    icon: 'hanko', accent: 'accent-indigo', 
+    build: () => collectPool(['kanji_36']) 
+  },
+  kanji_36_with_ref: {
+    get label() { return `Kanji Lengkap + Referensi Bab 36 (${this.build().length})`; },
+    get desc() { return `39 Kanji Bab 36 + 19 Referensi Kesehatan (健康)`; },
+    icon: 'scroll', accent: 'accent-gold',
+    build: () => collectPool(['kanji_36', 'ref_kanji_36'])
+  },
+  k36_g1: { label: '1. Kosakata Pokok (No. 1–21)', desc: '21 Kanji peristiwa, kebiasaan, & keterangan frekuensi (Bab 36)', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('k36_g1') },
+  k36_g2: { label: '2. Kosakata Percakapan (No. 22–29)', desc: '8 Kanji ragam hormat, renang, & tantangan (Bab 36)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('k36_g2') },
+  k36_g3: { label: '3. Kosakata Bacaan (No. 30–39)', desc: '10 Kanji sejarah transportasi & angkutan (Bab 36)', icon: 'book', accent: 'accent-gold', build: () => collectPoolGroup('k36_g3') },
+
+  kanji_37_all: { 
+    get label() { return `Semua Kanji Bab 37 (${this.build().length})`; }, 
+    get desc() { return `Gabungan lengkap 3 sub-kelompok Kanji Pelajaran 37`; }, 
+    icon: 'hanko', accent: 'accent-gold', 
+    build: () => collectPool(['kanji_37']) 
+  },
+  k37_g1: { label: '1. Kosakata Pokok (No. 1–30)', desc: '30 Kanji pujian, peringatan, ekspor-impor, & penemuan (Bab 37)', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('k37_g1') },
+  k37_g2: { label: '2. Kosakata Percakapan (No. 31–40)', desc: '10 Kanji situs warisan dunia, emas, & keindahan (Bab 37)', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('k37_g2') },
+  k37_g3: { label: '3. Kosakata Bacaan (No. 41–51)', desc: '11 Kanji ukiran, tradisi, & kisah pengrajin (Bab 37)', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('k37_g3') },
+
+  kanji_38_all: { 
+    get label() { return `Semua Kanji Bab 38 (${this.build().length})`; }, 
+    get desc() { return `Gabungan lengkap 3 sub-kelompok Kanji Pelajaran 38`; }, 
+    icon: 'hanko', accent: 'accent-sakura', 
+    build: () => collectPool(['kanji_38']) 
+  },
+  k38_g1: { label: '1. Kosakata Pokok (No. 1–32)', desc: '32 Kanji partisipasi, rumah sakit, power supply, & tempat (Bab 38)', icon: 'hanko', accent: 'accent-sakura', build: () => collectPoolGroup('k38_g1') },
+  k38_g2: { label: '2. Kosakata Percakapan (No. 33–41)', desc: '9 Kanji edaran, merapikan, buku, & cap/stempel (Bab 38)', icon: 'layers', accent: 'accent-gold', build: () => collectPoolGroup('k38_g2') },
+  k38_g3: { label: '3. Kosakata Bacaan (No. 42–57)', desc: '16 Kanji anak kembar, sifat, merawat, & usia (Bab 38)', icon: 'book', accent: 'accent-indigo', build: () => collectPoolGroup('k38_g3') },
+
+  /* --- KANJI REFERENSI SCOPES --- */
+  ref_kj31_all: { get label() { return `Semua Referensi Kanji Bab 31 (${this.build().length})`; }, get desc() { return `Bidang Keilmuan (専門) — 36 butir`; }, icon: 'scroll', accent: 'accent-indigo', build: () => collectPool(['ref_kanji_31']) },
+  rkj31_g1: { label: '1. Ilmu Alam, Eksakta & Teknik (No. 1–20)', desc: '20 Kanji Referensi Bab 31', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('rkj31_g1') },
+  rkj31_g2: { label: '2. Ilmu Sosial, Humaniora & Seni (No. 21–36)', desc: '16 Kanji Referensi Bab 31', icon: 'book', accent: 'accent-gold', build: () => collectPoolGroup('rkj31_g2') },
+
+  ref_kj32_all: { get label() { return `Semua Referensi Kanji Bab 32 (${this.build().length})`; }, get desc() { return `Prakiraan Cuaca (天気予報) — 37 butir`; }, icon: 'scroll', accent: 'accent-sakura', build: () => collectPool(['ref_kanji_32']) },
+  rkj32_g1: { label: '1. Simbol & Kondisi Cuaca (No. 1–7)', desc: '7 Kanji Referensi Bab 32', icon: 'target', accent: 'accent-sakura', build: () => collectPoolGroup('rkj32_g1') },
+  rkj32_g2: { label: '2. Suhu, Probabilitas & Alam (No. 8–19)', desc: '12 Kanji Referensi Bab 32', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('rkj32_g2') },
+  rkj32_g3: { label: '3. Daerah & Kota Peta Cuaca (No. 20–37)', desc: '18 Kanji Referensi Bab 32', icon: 'layers', accent: 'accent-indigo', build: () => collectPoolGroup('rkj32_g3') },
+
+  ref_kj33_all: { get label() { return `Semua Referensi Kanji Bab 33 (${this.build().length})`; }, get desc() { return `Tanda (標識) — 16 butir`; }, icon: 'scroll', accent: 'accent-indigo', build: () => collectPool(['ref_kanji_33']) },
+  rkj33_g1: { label: '1. Tanda Toko / Pelayanan (No. 1–4)', desc: '4 Kanji Referensi Bab 33', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('rkj33_g1') },
+  rkj33_g2: { label: '2. Fasilitas & Tempat Duduk (No. 5–8)', desc: '4 Kanji Referensi Bab 33', icon: 'layers', accent: 'accent-gold', build: () => collectPoolGroup('rkj33_g2') },
+  rk33_g3: { label: '3. Peringatan & Keselamatan (No. 9–12)', desc: '4 Kanji Referensi Bab 33', icon: 'shield', accent: 'accent-sakura', build: () => collectPoolGroup('rkj33_g3') },
+  rkj33_g4: { label: '4. Perawatan Pakaian (No. 13–16)', desc: '4 Kanji Referensi Bab 33', icon: 'target', accent: 'accent-indigo', build: () => collectPoolGroup('rkj33_g4') },
+
+  ref_kj34_all: { get label() { return `Semua Referensi Kanji Bab 34 (${this.build().length})`; }, get desc() { return `Masakan (料理) — 43 butir`; }, icon: 'scroll', accent: 'accent-gold', build: () => collectPool(['ref_kanji_34']) },
+  rkj34_g1: { label: '1. Cara Memasak / Mengolah (No. 1–10)', desc: '10 Kanji Referensi Bab 34', icon: 'hanko', accent: 'accent-gold', build: () => collectPoolGroup('rkj34_g1') },
+  rkj34_g2: { label: '2. Bumbu-Bumbu Dapur (No. 11–25)', desc: '15 Kanji Referensi Bab 34', icon: 'layers', accent: 'accent-sakura', build: () => collectPoolGroup('rkj34_g2') },
+  rkj34_g3: { label: '3. Peralatan Dapur (No. 26–43)', desc: '18 Kanji Referensi Bab 34', icon: 'target', accent: 'accent-indigo', build: () => collectPoolGroup('rkj34_g3') },
+
+  ref_kj35_all: { get label() { return `Semua Referensi Kanji Bab 35 (${this.build().length})`; }, get desc() { return `Pepatah (ことわざ) — 6 butir`; }, icon: 'scroll', accent: 'accent-sakura', build: () => collectPool(['ref_kanji_35']) },
+  rkj35_g1: { label: '1. Pepatah Klasik Jepang (No. 1–6)', desc: '6 Kanji Referensi Bab 35', icon: 'book', accent: 'accent-sakura', build: () => collectPoolGroup('rkj35_g1') },
+
+  ref_kj36_all: { get label() { return `Semua Referensi Kanji Bab 36 (${this.build().length})`; }, get desc() { return `Kesehatan (健康) — 19 butir`; }, icon: 'scroll', accent: 'accent-indigo', build: () => collectPool(['ref_kanji_36']) },
+  rkj36_g1: { label: '1. Pola Hidup Sehat & Buruk (No. 1–14)', desc: '14 Kanji Referensi Bab 36', icon: 'hanko', accent: 'accent-indigo', build: () => collectPoolGroup('rkj36_g1') },
+  rkj36_g2: { label: '2. 5 Nutrisi Penting & Makanan (No. 15–19)', desc: '5 Kanji Referensi Bab 36', icon: 'layers', accent: 'accent-gold', build: () => collectPoolGroup('rkj36_g2') }
 };
 
 /* ============================================================
@@ -1806,7 +3369,7 @@ function pickDistractors(pool, target, count){
   const same = pool.filter(p => p.uniqueId !== target.uniqueId && p.card[compareKey] !== target.card[compareKey]);
   let cand = shuffleArray(same).slice(0, count);
   if(cand.length < count){
-    const fallbackScope = isKanji ? 'all_kanji' : 'all_kotoba';
+    const fallbackScope = isKanji ? 'all_kanji_with_ref' : 'all_kotoba_with_ref';
     const fallback = SCOPES[fallbackScope].build().filter(
       p => p.uniqueId !== target.uniqueId &&
            p.card[compareKey] !== target.card[compareKey] &&
@@ -1902,7 +3465,7 @@ function extractAcceptedAnswers(card){
   const cleanList = [];
   accepted.forEach(val => {
     if(!val) return;
-    const norm = val.toLowerCase().replace(/[\s\.\,\!\?。、～~・\-－—\[\]\(\)（）［］]/g, '');
+    const norm = val.toLowerCase().replace(/[\s\.\,\!\?。、～~・\-－―—\[\]\(\)（）［］]/g, '');
     if(norm) cleanList.push(norm);
   });
   return Array.from(new Set(cleanList));
@@ -1910,7 +3473,7 @@ function extractAcceptedAnswers(card){
 
 function checkTypeAnswer(userInput, card){
   if(!userInput || !userInput.trim()) return false;
-  const cleanUser = userInput.toLowerCase().replace(/[\s\.\,\!\?。、～~・\-－—\[\]\(\)（）［］]/g, '');
+  const cleanUser = userInput.toLowerCase().replace(/[\s\.\,\!\?。、～~・\-－―—\[\]\(\)（）［］]/g, '');
   const accepted = extractAcceptedAnswers(card);
   return accepted.includes(cleanUser);
 }
@@ -1941,6 +3504,16 @@ const state = {
   autoTTS: safeGet(STORE.autoTTS, false)
 };
 const screenEl = document.getElementById('screen');
+
+function isCombinedScopeKey(sKey){
+  return sKey === 'all_kotoba' || sKey === 'all_kotoba_with_ref' || sKey === 'all_kanji' || sKey === 'all_kanji_with_ref';
+}
+
+function getCombinedChapters(sKey){
+  const isKanji = sKey === 'all_kanji' || sKey === 'all_kanji_with_ref';
+  const includeRef = sKey === 'all_kotoba_with_ref' || sKey === 'all_kanji_with_ref';
+  return CHAPTERS.filter(c => c.kind === (isKanji ? 'kanji' : 'kotoba') && (includeRef ? true : !c.isRef));
+}
 
 function playCurrentCardTTS(){
   if(!state.autoTTS) return;
@@ -2195,14 +3768,16 @@ function exportChapterTxt(chapterId, mode){
 }
 
 /* ============================================================
-   RENDER: HOME (KELOMPOK KOTOBA & KELOMPOK KANJI BAB 31–35)
+   RENDER: HOME (KOTOBA UTAMA, REFERENSI & KANJI UTAMA, REFERENSI)
    ============================================================ */
 function renderChapterCard(c){
   const t = totalCardsInChapter(c);
   const l = learnedCountInChapter(c);
   const pct = t ? Math.round((l/t)*100) : 0;
   const isKanji = c.kind === 'kanji';
-  const eyebrowLabel = (isKanji ? 'KANJI & FURIGANA · BAB ' : 'KOTOBA KANA · BAB ') + c.number;
+  const eyebrowLabel = c.isRef
+    ? (isKanji ? `REFERENSI KANJI · BAB ${c.number}` : `REFERENSI KOTOBA · BAB ${c.number}`)
+    : (isKanji ? `KANJI & FURIGANA · BAB ${c.number}` : `KOTOBA KANA · BAB ${c.number}`);
 
   return `
     <div style="margin-bottom:12px;">
@@ -2237,11 +3812,10 @@ function renderHome(){
   const learned = learnedCountAll();
   const total = totalCardsAll();
 
-  const kotobaChapters = CHAPTERS.filter(c => c.kind === 'kotoba');
-  const kanjiChapters = CHAPTERS.filter(c => c.kind === 'kanji');
-
-  const kotobaHtml = kotobaChapters.map(renderChapterCard).join('');
-  const kanjiHtml = kanjiChapters.map(renderChapterCard).join('');
+  const kotobaMain = CHAPTERS.filter(c => c.kind === 'kotoba' && !c.isRef);
+  const kotobaRef = CHAPTERS.filter(c => c.kind === 'kotoba' && c.isRef);
+  const kanjiMain = CHAPTERS.filter(c => c.kind === 'kanji' && !c.isRef);
+  const kanjiRef = CHAPTERS.filter(c => c.kind === 'kanji' && c.isRef);
 
   screenEl.innerHTML = `
     <div class="screen-inner">
@@ -2258,19 +3832,25 @@ function renderHome(){
         </div>
       </div>
 
-      <div class="section-label">Kelompok Kotoba (Kana Murni · Bab 31–35)</div>
-      ${kotobaHtml}
+      <div class="section-label">Kelompok Kotoba Utama (Kana Murni · Bab 31–38)</div>
+      ${kotobaMain.map(renderChapterCard).join('')}
 
-      <div class="section-label">Kelompok Kanji (Kanji &amp; Furigana · Bab 31–35)</div>
-      ${kanjiHtml}
+      <div class="section-label">Kelompok Kotoba Referensi (Bab 31–36)</div>
+      ${kotobaRef.map(renderChapterCard).join('')}
+
+      <div class="section-label">Kelompok Kanji Utama (Kanji &amp; Furigana · Bab 31–38)</div>
+      ${kanjiMain.map(renderChapterCard).join('')}
+
+      <div class="section-label">Kelompok Kanji Referensi (Bab 31–36)</div>
+      ${kanjiRef.map(renderChapterCard).join('')}
 
       <div class="section-label">Latihan &amp; Speedrun Kotoba / Kanji</div>
       <button class="bento bab-tile test-cta" id="openTestHub">
         <span class="glow"></span>
         <span class="emblem"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('clipboard')}</svg></span>
-        <span class="eyebrow">UJI HAFALAN KOTOBA &amp; KANJI</span>
+        <span class="eyebrow">UJI HAFALAN KOTOBA, KANJI &amp; REFERENSI</span>
         <div class="bab-title">Mulai Latihan Mandiri</div>
-        <div class="bab-desc">Pilihan ganda, pasangan kata, &amp; esai ketik manual terpisah untuk kelompok Kotoba dan kelompok Kanji Bab 31–35.</div>
+        <div class="bab-desc">Pilihan ganda, pasangan kata, &amp; esai ketik manual terpisah untuk kelompok Kotoba Utama, Referensi, dan Kanji Bab 31–38.</div>
         <div class="bab-meta">
           <div><div class="meta-num">${BIG_GROUPS.length}</div><div class="meta-label">Kelompok Bab</div></div>
           <div><div class="meta-num">3</div><div class="meta-label">Metode Kuis</div></div>
@@ -2301,7 +3881,7 @@ function renderChapter(cid){
           <span class="g-title">${g.title}</span>
           <span class="g-desc">${g.desc}</span>
           <span class="g-tags">
-            <span class="g-tag page-tag">${g.page}</span>
+            <span class="g-tag ${chap.isRef ? 'ref-tag' : 'page-tag'}">${g.page}</span>
             <span class="g-tag">${t} kartu</span>
             <span class="g-tag ${done ? 'done' : ''}">${l}/${t} dipelajari</span>
           </span>
@@ -2324,7 +3904,7 @@ function renderChapter(cid){
     </div>`;
 }
 /* ============================================================
-   RENDER: DECK (KARTU SISI BELAKANG PROMINENT)
+   RENDER: DECK (KARTU SISI BELAKANG PROMINENT + ROMAJI KOTOBA)
    ============================================================ */
 function renderCardFace(card, kat, pageStr){
   const isKanji = card.type === 'kanji';
@@ -2365,7 +3945,10 @@ function renderCardFace(card, kat, pageStr){
       <div class="face-top-left"><span class="badge">${kat} · ${pageStr}</span><span class="learned-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${icon('check')}</svg></span></div>
       <button class="sound-btn" type="button" aria-label="Audio" style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card-bg-soft);border:1px solid var(--card-border);cursor:pointer;"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px;stroke:var(--ink-soft);">${icon('speaker')}</svg></button>
     </div>
-    <div class="face-mid"><span class="kanji-display ${isKanji ? 'is-kanji-card font-kanji-light' : 'font-kanji'}" lang="ja">${frontMain}</span></div>
+    <div class="face-mid ${!isKanji ? 'kotoba-mid' : ''}">
+      <span class="kanji-display ${isKanji ? 'is-kanji-card font-kanji-light' : 'font-kanji'}" lang="ja">${frontMain}</span>
+      ${!isKanji && word.romaji ? `<span class="kotoba-romaji-sub">${word.romaji}</span>` : ''}
+    </div>
     <div class="face-bottom"><span class="flip-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg>Ketuk untuk lihat ${isKanji ? 'furigana &amp; arti' : 'arti'}</span></div>`;
 
   const back = `
@@ -2478,66 +4061,93 @@ function renderDeck(cid, gid){
 }
 
 /* ============================================================
-   RENDER: TEST HUB & KUIS INTERAKTIF (KOTOBA & KANJI TERPISAH)
+   RENDER: TEST HUB & KUIS INTERAKTIF (UTAMA & REFERENSI TERPISAH)
    ============================================================ */
 function renderBigGroupRow(bg){
   const total = SCOPES[bg.allScope].build().length;
   const unitLabel = bg.kind === 'kanji' ? 'butir kanji' : 'butir kotoba';
+  const tagLabel = bg.isRef ? 'Referensi' : 'Paket Lengkap';
+  const tagClass = bg.isRef ? 'ref-tag' : 'page-tag';
   return `
     <button class="group-row ${bg.accent}" data-open-subhub="${bg.id}">
       <span class="g-icon ${bg.accent}"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon(bg.icon)}</svg></span>
       <span class="g-body">
         <span class="g-title">${bg.title}</span>
         <span class="g-desc">${bg.desc}</span>
-        <span class="g-tags"><span class="g-tag page-tag">Paket Lengkap</span><span class="g-tag">${total} ${unitLabel}</span></span>
+        <span class="g-tags"><span class="g-tag ${tagClass}">${tagLabel}</span><span class="g-tag">${total} ${unitLabel}</span></span>
       </span>
       <span class="g-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('chevRight')}</svg></span>
     </button>`;
 }
 
 function renderTestHub(){
-  const kotobaGroups = BIG_GROUPS.filter(b => b.kind === 'kotoba');
-  const kanjiGroups = BIG_GROUPS.filter(b => b.kind === 'kanji');
-
-  const kotobaRows = kotobaGroups.map(renderBigGroupRow).join('');
-  const kanjiRows = kanjiGroups.map(renderBigGroupRow).join('');
+  const kotobaMain = BIG_GROUPS.filter(b => b.kind === 'kotoba' && !b.isRef);
+  const kotobaRef = BIG_GROUPS.filter(b => b.kind === 'kotoba' && b.isRef);
+  const kanjiMain = BIG_GROUPS.filter(b => b.kind === 'kanji' && !b.isRef);
+  const kanjiRef = BIG_GROUPS.filter(b => b.kind === 'kanji' && b.isRef);
 
   const allKotobaTotal = SCOPES['all_kotoba'].build().length;
+  const allKotobaWithRefTotal = SCOPES['all_kotoba_with_ref'].build().length;
   const allKanjiTotal = SCOPES['all_kanji'].build().length;
+  const allKanjiWithRefTotal = SCOPES['all_kanji_with_ref'].build().length;
 
   screenEl.innerHTML = `
     <div class="screen-inner">
       <div class="back-row">
         <button class="back-btn" id="backHome"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('chevLeft')}</svg></button>
         <div class="crumb">
-          <span class="eyebrow">UJI HAFALAN KOTOBA &amp; KANJI</span>
+          <span class="eyebrow">UJI HAFALAN KOTOBA, KANJI &amp; REFERENSI</span>
           <span class="crumb-title">Pilih Kelompok Latihan</span>
         </div>
       </div>
 
-      <div class="section-label">Kelompok Kotoba (Kana Murni · Bab 31–35)</div>
-      ${kotobaRows}
+      <div class="section-label">Kelompok Kotoba Utama (Kana Murni · Bab 31–38)</div>
+      ${kotobaMain.map(renderBigGroupRow).join('')}
       <button class="group-row accent-gold" data-open-quiz-mode="all_kotoba">
         <span class="g-icon accent-gold"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('trophy')}</svg></span>
         <span class="g-body">
-          <span class="g-title">Semua Kotoba (Bab 31–35)</span>
-          <span class="g-desc">Latihan gabungan seluruh kosakata murni Kana Bab 31–35</span>
-          <span class="g-tags"><span class="g-tag">${allKotobaTotal} butir kotoba</span></span>
+          <span class="g-title">Semua Kotoba (Bab 31–38) · Gabungan Lengkap</span>
+          <span class="g-desc">Latihan gabungan seluruh kosakata murni Kana Bab 31–38 (tanpa referensi)</span>
+          <span class="g-tags"><span class="g-tag page-tag">Gabungan Lengkap</span><span class="g-tag">${allKotobaTotal} butir kotoba</span></span>
+        </span>
+        <span class="g-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('chevRight')}</svg></span>
+      </button>
+      <button class="group-row accent-indigo" data-open-quiz-mode="all_kotoba_with_ref">
+        <span class="g-icon accent-indigo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('scroll')}</svg></span>
+        <span class="g-body">
+          <span class="g-title">Kotoba Lengkap + Referensi (Bab 31–38)</span>
+          <span class="g-desc">Latihan gabungan seluruh kotoba utama Bab 31–38 ditambah kotoba referensi Bab 31–36</span>
+          <span class="g-tags"><span class="g-tag ref-tag">Lengkap + Referensi</span><span class="g-tag">${allKotobaWithRefTotal} butir kotoba</span></span>
         </span>
         <span class="g-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('chevRight')}</svg></span>
       </button>
 
-      <div class="section-label">Kelompok Kanji (Kanji &amp; Furigana · Bab 31–35)</div>
-      ${kanjiRows}
+      <div class="section-label">Kelompok Kotoba Referensi (Bab 31–36)</div>
+      ${kotobaRef.map(renderBigGroupRow).join('')}
+
+      <div class="section-label">Kelompok Kanji Utama (Kanji &amp; Furigana · Bab 31–38)</div>
+      ${kanjiMain.map(renderBigGroupRow).join('')}
       <button class="group-row accent-sakura" data-open-quiz-mode="all_kanji">
         <span class="g-icon accent-sakura"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('trophy')}</svg></span>
         <span class="g-body">
-          <span class="g-title">Semua Kanji (Bab 31–35)</span>
-          <span class="g-desc">Latihan gabungan seluruh kosakata Kanji Bab 31–35</span>
-          <span class="g-tags"><span class="g-tag">${allKanjiTotal} butir kanji</span></span>
+          <span class="g-title">Semua Kanji (Bab 31–38) · Gabungan Lengkap</span>
+          <span class="g-desc">Latihan gabungan seluruh kosakata Kanji Bab 31–38 (tanpa referensi)</span>
+          <span class="g-tags"><span class="g-tag page-tag">Gabungan Lengkap</span><span class="g-tag">${allKanjiTotal} butir kanji</span></span>
         </span>
         <span class="g-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('chevRight')}</svg></span>
       </button>
+      <button class="group-row accent-indigo" data-open-quiz-mode="all_kanji_with_ref">
+        <span class="g-icon accent-indigo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('scroll')}</svg></span>
+        <span class="g-body">
+          <span class="g-title">Kanji Lengkap + Referensi (Bab 31–38)</span>
+          <span class="g-desc">Latihan gabungan seluruh kanji utama Bab 31–38 ditambah kanji referensi Bab 31–36</span>
+          <span class="g-tags"><span class="g-tag ref-tag">Lengkap + Referensi</span><span class="g-tag">${allKanjiWithRefTotal} butir kanji</span></span>
+        </span>
+        <span class="g-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('chevRight')}</svg></span>
+      </button>
+
+      <div class="section-label">Kelompok Kanji Referensi (Bab 31–36)</div>
+      ${kanjiRef.map(renderBigGroupRow).join('')}
     </div>`;
 }
 
@@ -2546,6 +4156,22 @@ function renderTestSubHub(){
   const allScopeData = SCOPES[bg.allScope];
   const totalAll = allScopeData.build().length;
   const unitLabel = bg.kind === 'kanji' ? 'butir kanji' : 'butir kotoba';
+
+  let extraCombinedRow = '';
+  if(!bg.isRef && bg.withRefScope && SCOPES[bg.withRefScope]){
+    const refCombData = SCOPES[bg.withRefScope];
+    const totalWithRef = refCombData.build().length;
+    extraCombinedRow = `
+      <button class="group-row accent-indigo" data-open-quiz-mode="${bg.withRefScope}">
+        <span class="g-icon accent-indigo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('scroll')}</svg></span>
+        <span class="g-body">
+          <span class="g-title">${refCombData.label}</span>
+          <span class="g-desc">${refCombData.desc}</span>
+          <span class="g-tags"><span class="g-tag ref-tag">Lengkap + Referensi</span><span class="g-tag">${totalWithRef} butir</span></span>
+        </span>
+        <span class="g-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('chevRight')}</svg></span>
+      </button>`;
+  }
 
   let subRows = '';
   bg.subScopes.forEach(sKey => {
@@ -2573,16 +4199,17 @@ function renderTestSubHub(){
         </div>
       </div>
 
-      <div class="section-label">Latihan Penuh Bab Ini</div>
+      <div class="section-label">${bg.isRef ? 'Latihan Penuh Referensi Ini' : 'Cakupan Soal Bab Ini'}</div>
       <button class="group-row accent-gold" data-open-quiz-mode="${bg.allScope}">
         <span class="g-icon accent-gold"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon(bg.icon)}</svg></span>
         <span class="g-body">
-          <span class="g-title">${allScopeData.label}</span>
+          <span class="g-title">${allScopeData.label} · Gabungan lengkap</span>
           <span class="g-desc">${allScopeData.desc}</span>
-          <span class="g-tags"><span class="g-tag page-tag">Lengkap</span><span class="g-tag">${totalAll} butir</span></span>
+          <span class="g-tags"><span class="g-tag page-tag">Gabungan lengkap</span><span class="g-tag">${totalAll} butir</span></span>
         </span>
         <span class="g-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon('chevRight')}</svg></span>
       </button>
+      ${extraCombinedRow}
 
       <div class="section-label">Pilih Sub-Kelompok Tematik</div>
       ${subRows}
@@ -2590,7 +4217,7 @@ function renderTestSubHub(){
 }
 
 function isKanjiScopeKey(sKey){
-  return sKey === 'all_kanji' || sKey.startsWith('kanji_') || sKey.startsWith('k3');
+  return sKey === 'all_kanji' || sKey === 'all_kanji_with_ref' || sKey.startsWith('kanji_') || sKey.startsWith('k3') || sKey.startsWith('ref_kj') || sKey.startsWith('rkj');
 }
 
 function renderQuizMode(){
@@ -2603,9 +4230,13 @@ function renderQuizMode(){
   const matchDesc = isKanji
     ? 'Cocokkan tulisan kanji dengan cara baca hiragana yang tepat'
     : 'Cocokkan kotoba kana dengan arti bahasa Indonesia';
-  const typeDesc = isKanji
-    ? 'Soal tulisan kanji → ketik cara baca Hiragana atau Romaji'
-    : 'Soal bahasa Indonesia → ketik Hiragana, Katakana, atau Romaji';
+  const typeDesc = isCombinedScopeKey(state.pendingScope)
+    ? (isKanji
+        ? 'Pilih per Bab (checkbox) & satu per satu · Kanji → Hiragana/Romaji'
+        : 'Pilih per Bab (checkbox) & satu per satu · Indonesia → Kana/Romaji')
+    : (isKanji
+        ? 'Soal tulisan kanji → ketik cara baca Hiragana atau Romaji'
+        : 'Soal bahasa Indonesia → ketik Hiragana, Katakana, atau Romaji');
 
   screenEl.innerHTML = `
     <div class="screen-inner">
@@ -2647,12 +4278,39 @@ function renderQuizMode(){
     </div>`;
 }
 
+function getChapterItemUids(chapterId){
+  return state.typeSelectionPool
+    .filter(item => item.chapterId === chapterId)
+    .map(item => item.uniqueId);
+}
+
+function syncChapterCheckboxStates(sKey){
+  if(!isCombinedScopeKey(sKey)) return;
+  const chaps = getCombinedChapters(sKey);
+  chaps.forEach(c => {
+    const uids = getChapterItemUids(c.id);
+    const checkedCount = uids.filter(uid => state.selectedTypeUids.has(uid)).length;
+    const isFull = uids.length > 0 && checkedCount === uids.length;
+
+    const rowEl = screenEl.querySelector(`[data-toggle-chapter-id="${c.id}"]`);
+    if(rowEl){
+      rowEl.classList.toggle('is-checked', isFull);
+    }
+    const cntEl = screenEl.querySelector(`[data-chapter-count-id="${c.id}"]`);
+    if(cntEl){
+      cntEl.textContent = `${checkedCount}/${uids.length}`;
+    }
+  });
+}
+
 function updateTypeSelectUI(){
   const pool = state.typeSelectionPool;
   const selectedCount = state.selectedTypeUids.size;
   const allCount = pool.length;
   const isAllSelected = selectedCount === allCount;
   const isKanji = isKanjiScopeKey(state.pendingScope);
+
+  syncChapterCheckboxStates(state.pendingScope);
 
   const metaCount = document.getElementById('selectMetaCount');
   if(metaCount) metaCount.textContent = `${selectedCount} dari ${allCount} ${isKanji ? 'Kanji' : 'Kotoba'} Terpilih`;
@@ -2674,6 +4332,42 @@ function renderTypeSelect(){
   const selectedCount = state.selectedTypeUids.size;
   const allCount = pool.length;
   const isKanji = isKanjiScopeKey(sKey);
+  const isCombined = isCombinedScopeKey(sKey);
+
+  let chapterFilterHtml = '';
+  if(isCombined){
+    const chaps = getCombinedChapters(sKey);
+    const chapItemsHtml = chaps.map(c => {
+      const uids = getChapterItemUids(c.id);
+      const checkedCount = uids.filter(uid => state.selectedTypeUids.has(uid)).length;
+      const isFull = uids.length > 0 && checkedCount === uids.length;
+      return `
+        <div class="chapter-check-item ${isFull ? 'is-checked' : ''}" data-toggle-chapter-id="${c.id}">
+          <div class="chapter-check-left">
+            <span class="chapter-checkbox-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">${icon('check')}</svg>
+            </span>
+            <span class="chapter-check-label">${c.title}</span>
+          </div>
+          <span class="chapter-check-count" data-chapter-count-id="${c.id}">${checkedCount}/${uids.length}</span>
+        </div>
+      `;
+    }).join('');
+
+    chapterFilterHtml = `
+      <div class="chapter-filter-card">
+        <div class="chapter-filter-head">
+          <div>
+            <div class="chapter-filter-title">Filter Kelompok Bab (Checkbox)</div>
+            <div class="chapter-filter-sub">Centang bab tertentu (mis. Bab 31 &amp; Bab 34), lalu atur per butir di bawah</div>
+          </div>
+        </div>
+        <div class="chapter-check-list">
+          ${chapItemsHtml}
+        </div>
+      </div>
+    `;
+  }
 
   const gridHtml = pool.map(item => {
     const checked = state.selectedTypeUids.has(item.uniqueId);
@@ -2764,7 +4458,10 @@ function renderTypeSelect(){
         </div>
       </div>
 
-      <!-- SELECTION HEADER -->
+      <!-- FILTER PER BAB KHUSUS LATIHAN GABUNGAN -->
+      ${chapterFilterHtml}
+
+      <!-- SELECTION HEADER (SATU PER SATU) -->
       <div class="kanji-select-bar">
         <span class="kanji-select-meta" id="selectMetaCount">${selectedCount} dari ${allCount} ${isKanji ? 'Kanji' : 'Kotoba'} Terpilih</span>
         <button type="button" class="nav-btn" id="toggleSelectAllKanji" style="padding:6px 11px;font-size:11px;">
@@ -2772,7 +4469,7 @@ function renderTypeSelect(){
         </button>
       </div>
 
-      <!-- TILES GRID -->
+      <!-- TILES GRID (PILIH SATU PER SATU) -->
       <div class="kanji-select-grid">
         ${gridHtml}
       </div>
@@ -3090,7 +4787,7 @@ screenEl.addEventListener('click', (e)=>{
   if(e.target.closest('#openTestHub')){ goTestHub(); return; }
   if(e.target.closest('#backTestHub')){ goTestHub(); return; }
   if(e.target.closest('#backSubHub')){
-    if(state.pendingScope === 'all_kotoba' || state.pendingScope === 'all_kanji') goTestHub();
+    if(isCombinedScopeKey(state.pendingScope)) goTestHub();
     else if(state.pendingBigGroup) goTestSubHub(state.pendingBigGroup);
     else goTestHub();
     return;
@@ -3135,7 +4832,28 @@ screenEl.addEventListener('click', (e)=>{
     return;
   }
 
-  /* Interaksi Pemilihan Soal Ketik Manual (In-Place DOM: Scroll Tetap Diam) */
+  /* Toggle Checkbox per Bab (Khusus Latihan Gabungan, In-Place DOM) */
+  const chapCheckRow = e.target.closest('[data-toggle-chapter-id]');
+  if(chapCheckRow){
+    const chapId = chapCheckRow.getAttribute('data-toggle-chapter-id');
+    const uids = getChapterItemUids(chapId);
+    const allCheckedInChap = uids.length > 0 && uids.every(uid => state.selectedTypeUids.has(uid));
+
+    uids.forEach(uid => {
+      if(allCheckedInChap){
+        state.selectedTypeUids.delete(uid);
+      } else {
+        state.selectedTypeUids.add(uid);
+      }
+      const tile = screenEl.querySelector(`[data-toggle-kanji-uid="${uid}"]`);
+      if(tile) tile.classList.toggle('is-checked', !allCheckedInChap);
+    });
+
+    updateTypeSelectUI();
+    return;
+  }
+
+  /* Interaksi Pemilihan Soal Ketik Manual Satu per Satu (In-Place DOM: Scroll Tetap Diam) */
   const tileKanji = e.target.closest('[data-toggle-kanji-uid]');
   if(tileKanji){
     const uid = tileKanji.getAttribute('data-toggle-kanji-uid');
@@ -3294,7 +5012,7 @@ screenEl.addEventListener('click', (e)=>{
   }
 
   if(e.target.closest('#resetProgress')){
-    if(confirm('Setel ulang seluruh progres hafalan Kotoba & Kanji Bab 31–35?')){
+    if(confirm('Setel ulang seluruh progres hafalan Kotoba, Kanji & Referensi Bab 31–38?')){
       Object.values(STORE).forEach(k => localStorage.removeItem(k));
       location.reload();
     }
